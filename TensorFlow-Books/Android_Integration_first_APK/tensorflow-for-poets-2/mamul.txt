@@ -1,0 +1,320 @@
+https://codelabs.developers.google.com/codelabs/tensorflow-for-poets-2/#0
+
+
+
+1. Introduction
+
+TensorFlow is a multipurpose machine learning framework. TensorFlow can be used anywhere from training huge models across clusters in the cloud, to running models locally on an embedded system like your phone.
+
+Note: This codelab uses the more stable and mature TensorFlow on mobile. If you're looking for the new and mobile-optimized TensorFlow Lite see this version of the codelab.
+
+If you're not sure which to use, see this overview.
+What you'll Learn
+
+    In TensorFlow for Poets: How to train a custom image recognition model.
+    How to optimize your model.
+    How to compress your model.
+    How to run it in a pre-made Android app.
+
+What you will build
+
+A simple camera app that runs a TensorFlow image recognition program to identify flowers.
+
+CC-BY by Felipe Venâncio
+
+Note: This Codelab is based on Pete Warden's blog post. There is also a screencast of this tutorial, which may help clarify some parts.
+
+
+2. Setup
+
+Most of this codelab will be using the terminal. Open it now.
+Install TensorFlow
+
+Before we can begin the tutorial you need to install tensorflow.
+If you have the git repository from the first codelab
+
+This codelab uses files generated during the TensorFlow for Poets 1 codelab. If you have not completed that codelab we recommend you go do it now. If you prefer not to, instructions for downloading the missing files are given in the next sub-section.
+
+
+In TensorFlow for Poets 1, you also cloned the relevant files for this codelab. We will be working in that same git directory, ensure that it is your current working directory, and check the contents, as follows:
+
+cd tensorflow-for-poets-2
+ls
+
+This directory should contain three other subdirectories:
+
+    The android/tfmobile/ directory contains all the files necessary to build the a simple Android app that classifies images as it reads them from the camera. The only files missing for the app are those defining the image classification model, which you will create in this tutorial.
+    The scripts/ directory contains the python scripts you'll be using throughout the tutorial. These include scripts to prepare, test and evaluate the model.
+    The tf_files/ directory contains the files you should have generated in the first part. At minimum you should have the following files containing the retrained tensorflow program:
+
+ls tf_files/
+
+retrained_graph.pb  retrained_labels.txt
+
+Otherwise (if you don't have the files from Part 1)
+Clone the Git repository
+
+The following command will clone the Git repository containing the files required for this codelab:
+
+git clone https://github.com/googlecodelabs/tensorflow-for-poets-2
+
+Now cd into the directory of the clone you just created. That's where you will be working for the rest of this codelab:
+
+cd tensorflow-for-poets-2
+
+The repo contains three directories: android/, scripts/, and tf_files/
+Checkout the branch with the required files
+
+git checkout end_of_first_codelab
+ls tf_files/
+
+
+
+
+
+
+3. Test the model
+
+Next, verify that the model is producing sane results before starting to modifying it.
+
+The scripts/ directory contains a simple command line script, label_image.py, to test the network. Now we'll test label_image.py on this picture of some daisies:
+
+flower_photos/daisy/3475870145_685a19116d.jpg
+
+Image CC-BY, by Fabrizio Sciami
+
+Now test the model. If you are using a different architecture you will need to set the "--input_size" flag.
+
+python -m scripts.label_image \
+  --graph=tf_files/retrained_graph.pb  \
+  --image=tf_files/flower_photos/daisy/3475870145_685a19116d.jpg
+
+The script will print the probability the model has assigned to each flower type. Something like this:
+
+Evaluation time (1-image): 0.140s
+
+daisy 0.7361
+dandelion 0.242222
+tulips 0.0185161
+roses 0.0031544
+sunflowers 8.00981e-06
+
+This should hopefully produce a sensible top label for your example. You'll be using this command to make sure you're still getting sensible results as you do further processing on the model file to prepare it for use in a mobile app.
+
+
+
+
+4. Optimize the model
+
+Mobile devices have significant limitations, so any pre-processing that can be done to reduce an app's footprint is worth considering.
+Limited libraries on mobile
+
+One way the TensorFlow library is kept small, for mobile, is by only supporting the subset of operations that are commonly used during inference. This is a reasonable approach, as training is rarely conducted on mobile platforms. Similarly it also excludes support for operations with large external dependencies. You can see the list of supported ops in the tensorflow/contrib/makefile/tf_op_files.txt file.
+
+By default, most graphs contain training ops that the mobile version of TensorFlow doesn't support. . TensorFlow won't load a graph that contains an unsupported operation (even if the unsupported operation is irrelevant for inference).
+Optimize for inference
+
+To avoid problems caused by unsupported training ops, the TensorFlow installation includes a tool, optimize_for_inference, that removes all nodes that aren't needed for a given set of input and outputs.
+
+The script also does a few other optimizations that help speed up the model, such as merging explicit batch normalization operations into the convolutional weights to reduce the number of calculations. This can give a 30% speed up, depending on the input model. Here's how you run the script:
+
+python -m tensorflow.python.tools.optimize_for_inference \
+  --input=tf_files/retrained_graph.pb \
+  --output=tf_files/optimized_graph.pb \
+  --input_names="input" \
+  --output_names="final_result"
+
+Running this script creates a new file at tf_files/optimized_graph.pb.
+Verify the optimized model
+
+To check that optimize_for_inference hasn't altered the output of the network, compare the label_image output for retrained_graph.pb with that of optimized_graph.pb:
+
+python -m scripts.label_image \
+  --graph=tf_files/retrained_graph.pb\
+  --image=tf_files/flower_photos/daisy/3475870145_685a19116d.jpg
+
+python -m scripts.label_image \
+    --graph=tf_files/optimized_graph.pb \
+    --image=tf_files/flower_photos/daisy/3475870145_685a19116d.jpg
+
+When I run these commands I see no change in the output probabilities to 5 decimal places.
+
+Now run it yourself to confirm that you see similar results.
+Investigate the changes with TensorBoard
+
+If you followed along for the first tutorial, you should have a tf_files/training_summaries/ directory (otherwise, just create the directory by issuing the following Linux command: mkdir tf_files/training_summaries/).
+
+The following two commands will kill any runninng TensorBoard instances and launch a new instance, in the background watching that directory:
+
+pkill -f tensorboard
+tensorboard --logdir tf_files/training_summaries &
+
+TensorBoard, running in the background, may occasionally print the following warning to your terminal, which you may safely ignore
+
+WARNING:tensorflow:path ../external/data/plugin/text/runs not found, sending 404.
+
+Now add your two graphs as TensorBoard logs:
+
+python -m scripts.graph_pb2tb tf_files/training_summaries/retrained \
+  tf_files/retrained_graph.pb 
+
+python -m scripts.graph_pb2tb tf_files/training_summaries/optimized \
+  tf_files/optimized_graph.pb 
+
+Now open TensorBoard, and navigate to the "Graph" tab. Then from the pick-list labeled "Run"on the left side, select "Retrained".
+
+Explore the graph a little, then select "Optimized" from the "Run" menu.
+
+From here you can confirm some nodes have been merged to simplify the graph. You can expand the various blocks by double-clicking them.
+
+
+
+
+
+5. Make the model compressible
+Check the compression baseline
+
+The retrained model is still 84MB in size at this point. That large download size may be a limiting factor for any app that includes it.
+
+Every mobile app distribution system compresses the package before distribution. So test how much the graph can be compressed using the gzip command:
+
+gzip -c tf_files/optimized_graph.pb > tf_files/optimized_graph.pb.gz
+
+gzip -l tf_files/optimized_graph.pb.gz
+
+         compressed        uncompressed  ratio uncompressed_name
+            5028302             5460013   7.9% tf_files/optimized_graph.pb
+
+Not much!
+
+On its own, compression is not a huge help. For me this only shaves 8% off the model size. If you're familiar with how neural networks and compression work this should be unsurprising.
+
+The majority of the space taken up by the graph is by the weights, which are large blocks of floating point numbers. Each weight has a slightly different floating point value, with very little regularity.
+
+But compression works by exploiting regularity in the data, which explains the failure here.
+Example: Quantize an Image
+
+Images can also be thought of as large blocks of numbers. One simple technique for compressing images it to reduce the number of colors. You will do the same thing to your network weights, after I demonstrate the effect on an image.
+
+Below I've used ImageMagick's convert utility to reduce an image to 32 colors. This reduces the image size by more than a factor of 5 (png has built in compression), but has degraded the image quality.
+
+24 bit color: 290KB
+	
+
+32 colors: 55KB
+
+Image CC-BY, by Fabrizio Sciami
+Quantize the network weights
+
+Applying an almost identical process to your neural network weights has a similar effect. It gives a lot more repetition for the compression algorithm to take advantage of, while reducing the precision by a small amount (typically less than a 1% drop in precision).
+
+It does this without any changes to the structure of the network, it simply quantizes the constants in place.
+
+Now use the quantize_graph script to apply these changes:
+
+(This script is from the TensorFlow repository, but it is not included in the default installation)
+
+python -m scripts.quantize_graph \
+  --input=tf_files/optimized_graph.pb \
+  --output=tf_files/rounded_graph.pb \
+  --output_node_names=final_result \
+  --mode=weights_rounded
+
+Now try compressing this quantized model:
+
+gzip -c tf_files/rounded_graph.pb > tf_files/rounded_graph.pb.gz
+
+gzip -l tf_files/rounded_graph.pb.gz
+
+         compressed        uncompressed  ratio uncompressed_name
+            1633131             5460032  70.1% tf_files/rounded_graph.pb
+
+You should see a significant improvement. I get 70% compression instead of the 8% that gzip provided for the original model.
+
+Now before you continue, verify that the quantization process hasn't had too negative an effect on the model's performance.
+
+First manually compare the two models on an example image.
+
+python -m scripts.label_image \
+  --image=tf_files/flower_photos/daisy/3475870145_685a19116d.jpg \
+  --graph=tf_files/optimized_graph.pb
+
+python -m scripts.label_image \
+  --image=tf_files/flower_photos/daisy/3475870145_685a19116d.jpg \
+  --graph=tf_files/rounded_graph.pb
+
+For me, on this input image, the output probabilities have each changed by less than one tenth of a percent (absolute).
+
+Next verify the change on a larger slice if the data to see how it affects overall performance.
+
+Note: If you started with the end_of_first_codelab branch, instead of working through TensorFlow for Poets, you will not have the full set of photos. The model evaluation below will fail. You should either:
+
+    Skip to the next section.
+    Download the photos with the following command (200MB):
+
+curl http://download.tensorflow.org/example_images/flower_photos.tgz \
+
+| tar xz -C tf_files
+
+First evaluate the performance of the baseline model on the validation set. The last two lines of the output show the average performance. It may take a minute or two to get the results back.
+
+python -m scripts.evaluate  tf_files/optimized_graph.pb
+
+For me, optimized_graph.pb scores scores 90.9% accuracy, and 0.270 for cross entropy error (lower is better).
+
+Now compare that with the performance of the model in rounded_graph.pb:
+
+python -m scripts.evaluate  tf_files/rounded_graph.pb
+
+You should see less than a 1% change in the model accuracy.
+
+These differences are far from statistically significant. The goal is simply to confirm that the model was clearly not broken by this change.
+
+
+
+
+
+
+
+A
+A
+A
+A
+A
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+
