@@ -9,11 +9,14 @@ https://github.com/vpatilvasu/tensorflow-opencv-android.git
 https://github.com/scipianus/PocketLibrary.git
 
 
-
-
-
-=================================================================================
+===============================================================================
+Integrating Caffe2, OpenCV with Android Native Camera API
 https://github.com/yge58/caffe2-opencv-ndkcamera.git
+
+===================================================================================
+This is an example of an Android app that uses OpenCV DNN module to load a Caffe model and predict an image. It implements the tutorial from http://docs.opencv.org/master/d5/de7/tutorial_dnn_googlenet.html#gsc.tab=0
+
+
 https://github.com/alexkarargyris/Caffe_OpenCV_Android_App.git
 =================================================================================
 
