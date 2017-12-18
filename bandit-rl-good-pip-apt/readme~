@@ -1,0 +1,250 @@
+
+ Ubuntu 16.04 apt-get更换为国内阿里云源
+>/etc/apt/sources.list
+
+cat >>/etc/apt/sources.list<<EOF
+# deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted
+deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties
+deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe #Added by software-properties
+deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe #Added by software-properties
+deb http://mirrors.aliyun.com/ubuntu/ xenial universe
+deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe
+deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse #Added by software-properties
+deb http://archive.canonical.com/ubuntu xenial partner
+deb-src http://archive.canonical.com/ubuntu xenial partner
+deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe #Added by software-properties
+deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe
+deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse
+EOF
+
+
+
+
+ubuntu 16.04 LTS 修改 国内源（以中科大源为例）
+国内有很多ubuntu的源，包括：网易源（这个之前用过，速度很快的），阿里源，还有很多教育网的源，如：清华源，中科大源。
+
+这里要下载的是中科大ubuntu16.04的源列表，可以在这里获得：https://lug.ustc.edu.cn/repogen/
+
+ 编辑/etc/apt/sources.list文件, 在文件最前面添加以下条目(操作前请做好相应备份)：
+
+deb http://mirrors.ustc.edu.cn/ubuntu/ xenial main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
+
+之后输入：
+
+sudo apt-get update
+
+更新源。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+一、源文件位置
+
+备份并替换/etc/apt/sources.list的源内容：
+
+二、更改源文件内容
+
+sudo vi /etc/apt/sources.list
+deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
+##测试版源
+deb http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse
+# 源码
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
+##测试版源
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse
+# Canonical 合作伙伴和附加
+deb http://archive.canonical.com/ubuntu/ xenial partner
+deb http://extras.ubuntu.com/ubuntu/ xenial main
+更多Ubuntu相关信息见Ubuntu 专题页面 http://www.linuxidc.com/topicnews.aspx?tid=2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://github.com/qiyeboy/IPProxyPool
+
+
+
+速度比较快的国内镜像，都来自清华大学，服务器在北京。公网的服务器为官方镜像
+公网：http://e.pypi.python.org/simple
+教育网：http://pypi.tuna.tsinghua.edu.cn/simple
+
+ 
+http://pypi.douban.com/  豆瓣
+http://pypi.hustunique.com/  华中理工大学
+http://pypi.sdutlinux.org/  山东理工大学
+http://pypi.mirrors.ustc.edu.cn/  中国科学技术大学
+ 
+对于pip这种在线安装的方式来说，很方便，但网络不稳定的话很要命。使用国内镜像相对好一些，
+ 
+如果想手动指定源，可以在pip后面跟-i 来指定源，比如用豆瓣的源来安装web.py框架：
+pip install web.py -i http://pypi.douban.com/simple
+ 
+注意后面要有/simple目录！！！
+
+
+
+
+
+
+linux
+~/.pip/pip.conf
+
+windows
+%HOME%\pip\pip.ini
+
+文件内容
+
+[global] 
+
+index-url = http://pypi.douban.com/simple 
+trusted-host = pypi.douban.com    
+timeout = 6000
+
+
+
+
+pip安装第三方库以及版本
+　　这篇blog只是写给自己看看的。
+
+　　今天突然遇到sqlalchemy映射到数据库时，一个字段类型是datetime(6)，我这边死活访问不上，之前一直没有问题，最后查明原因，原来是第三方库的版本问题，真是个惨痛的教训，以后一定要注意，客户端和服务器端的库版本一定要确认再确认。这边延伸出一个问题，pip安装第三方库，每次都要查询别人的blog，这次自己总结一下。
+
+　　pip安装某一个库，非常简单，　　　　
+
+pip install requests
+　　可是国外的pip官方源太慢了，可以用国内的，命令如下
+
+pip install -i https://pypi.doubanio.com/simple --trusted-host pypi.doubanio.com  requests
+　　升级某一个模块
+
+pip install -i https://pypi.doubanio.com/simple --trusted-host pypi.doubanio.com  --upgrade requests
+　　我们大多数时候，开发端的库版本和正式服务器库版本要一致，要一致，要一致(重要的事说3遍)。
+
+　　客户端先获取本地库的版本
+
+pip freeze > requirement.txt
+　　打开requirtment.txt看看
+
+复制代码
+dium-theme-ubuntu==0.3.4
+alembic==0.8.5
+amqp==1.0.13
+anyjson==0.3.3
+APScheduler==3.0.5
+
+复制代码
+　　大概就这样，然后在服务器再按照这个安装一下，中间可以删除一些没有必要的。
+
+　　服务器端运行如下命令
+
+pip install -i https://pypi.doubanio.com/simple --trusted-host pypi.doubanio.com  -r requirement.txt
+
+
+
+或者使用-i指令:
+
+easy_install -i http://pypi.douban.com/simple/ saltTesting 
+pip install -i http://pypi.douban.com/simple/ saltTesting  
+
+
+
+如何查看已经安装的python软件包和版本
+pip freeze可以查看已经安装的python软件包和版本
+pip list 也可以
+
+
+
+
+
+
+pip install pycallgraph
+A simple use of the API is:
+
+from pycallgraph import PyCallGraph
+from pycallgraph.output import GraphvizOutput
+
+with PyCallGraph(output=GraphvizOutput()):
+    code_to_profile()
+
+
+pycallgraph graphviz -- ../demo.py
+
+
+
+sudo apt-get install graphviz
+sudo apt-get install doxygen-gui
+doxywizard
+
+
+
+https://pip.pypa.io/en/stable/reference/pip_wheel/
+Build wheels for a requirement (and all its dependencies), and then install
+
+$ pip wheel --wheel-dir=/tmp/wheelhouse SomePackage
+$ pip install --no-index --find-links=/tmp/wheelhouse SomePackage
