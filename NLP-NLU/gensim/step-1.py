@@ -10,8 +10,8 @@ import multiprocessing
 
 
 
-import sys  
-reload(sys)  
+import sys 
+reload(sys) 
 sys.setdefaultencoding('utf8')   
 reload(sys)
 
