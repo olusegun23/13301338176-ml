@@ -1,0 +1,10 @@
+model/
+prediction/
+*.pdf
+*/__pycache__/
+*.out
+*.csv
+*.tfrecord
+*.pyc
+.*.swp
+eda/data/

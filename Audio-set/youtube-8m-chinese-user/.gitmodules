@@ -1,0 +1,6 @@
+[submodule "3rd_party/annoy"]
+	path = 3rd_party/annoy
+	url = git@github.com:spotify/annoy.git
+[submodule "tensorflow"]
+	path = tensorflow
+	url = git@github.com:tensorflow/tensorflow.git
