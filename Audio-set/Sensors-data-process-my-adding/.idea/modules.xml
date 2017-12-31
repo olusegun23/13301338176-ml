@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ch05_clustering.iml" filepath="$PROJECT_DIR$/.idea/ch05_clustering.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Sensors-data-process-my-adding.iml" filepath="$PROJECT_DIR$/.idea/Sensors-data-process-my-adding.iml" />
     </modules>
   </component>
 </project>
