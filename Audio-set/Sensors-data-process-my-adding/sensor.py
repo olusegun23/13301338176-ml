@@ -189,7 +189,7 @@ class Sensor(object):
         d1= d[:,1:-1]
 
         data = numpy.float32(d1)
-        labels = numpy.array(l, 'str')
+        labels = numpy.array(lables, 'str')
         # print data, labels
 
         # tensorflow
