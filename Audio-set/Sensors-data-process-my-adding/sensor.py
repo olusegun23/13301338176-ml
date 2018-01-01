@@ -8,28 +8,15 @@ Implements
 
 # Python version
 import sys
-print('Python: {}'.format(sys.version))
-# scipy
 import scipy
-print('scipy: {}'.format(scipy.__version__))
-# numpy
 import numpy as np
-print('numpy: {}'.format(np.__version__))
-# matplotlib
-import matplotlib
-print('matplotlib: {}'.format(matplotlib.__version__))
-# pandas
-
-import pandas
-print('pandas: {}'.format(pandas.__version__))
-# scikit-learn
-import sklearn
-print('sklearn: {}'.format(sklearn.__version__))
+import matplotlib as plt
+import pandas as pd
+import sklearn as sk
+import keras
+import tensorflow as tf
 
 
-
-# Load libraries
-import pandas
 from pandas.tools.plotting import scatter_matrix
 import matplotlib.pyplot as plt
 from sklearn import model_selection
@@ -55,6 +42,23 @@ from sklearn.preprocessing import Normalizer
 import matplotlib as mpl;
 import matplotlib.pyplot as plt;
 
+
+
+def version():
+    print("Tensor Flow Version: {}".format(tf.__version__))
+    print("Keras Version: {}".format(keras.__version__))
+    print("Python {}".format(sys.version))
+    print('Pandas {}'.format(pd.__version__))
+    print('Scikit-Learn {}'.format(sk.__version__))
+    print('Python: {}'.format(sys.version))
+    print('scipy: {}'.format(scipy.__version__))
+
+    print('numpy: {}'.format(np.__version__))
+
+    print('matplotlib: {}'.format(plt.__version__))
+
+
+    print('sklearn: {}'.format(sk.__version__))
 
 
 class Sensor(object):
@@ -87,7 +91,7 @@ class Sensor(object):
         n=np.array(a)
 
         names = ['timestamp', 't','x', 'y', 'z','t1','x1', 'y1', 'z1','t2','x2', 'y2', 'z2', 'class']
-        dataset = pandas.DataFrame(n, columns=names)
+        dataset = pd.DataFrame(n, columns=names)
 
         print dataset.describe()
 
@@ -99,7 +103,7 @@ class Sensor(object):
         #url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
         url='20171226-clean.csv'
         names = ['timestamp', 't', 'x', 'y', 'z', 't1', 'x1', 'y1', 'z1', 't2', 'x2', 'y2', 'z2', 'class']
-        dataset = pandas.read_csv(url, names=names,dtype=np.float32,verbose=True)
+        dataset = pd.read_csv(url, names=names,dtype=np.float32,verbose=True)
 
         tensor=dataset.as_matrix()
 
@@ -207,11 +211,15 @@ class Sensor(object):
 
 def run():
 
-    sensor= Sensor()
+    #sensor= Sensor()
     #sensor.load_python_csv()
     #sensor.load_panda_csv()
     #sensor.example_panda_csv()
-    sensor.csv_panda_tf()
+    #sensor.csv_panda_tf()
+    import  zhj.tools.mix_input as test
+    #test.SimpleRegression()
+    #test.RegressionEarlyStop()
+    test.ClassificationModelEarlyStop()
 
 
 
