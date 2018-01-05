@@ -19,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/zhj/tools/IOBridge.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1320">
-              <caret line="180" column="25" lean-forward="true" selection-start-line="180" selection-start-column="7" selection-end-line="180" selection-end-column="26" />
+              <caret line="180" column="25" lean-forward="false" selection-start-line="180" selection-start-column="7" selection-end-line="180" selection-end-column="26" />
               <folding>
                 <element signature="e#65#102#0" expanded="true" />
               </folding>
@@ -31,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/pytorch/DNN_np_torch.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="66">
-              <caret line="3" column="14" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="563" selection-end-column="7" />
+              <caret line="3" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="563" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -49,14 +49,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="yeild-states-mode.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="yeild-states-mode.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/yeild-states-mode.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="181">
-              <caret line="553" column="33" lean-forward="true" selection-start-line="553" selection-start-column="33" selection-end-line="553" selection-end-column="33" />
+              <caret line="553" column="33" lean-forward="false" selection-start-line="553" selection-start-column="33" selection-end-line="553" selection-end-column="33" />
               <folding>
                 <element signature="e#1532#1550#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auto-mpg.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/auto-mpg.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1254">
+              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="iris.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iris.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1188">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="audio_pcm_wave.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/zhj/tools/audio_pcm_wave.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2337">
+              <caret line="118" column="12" lean-forward="false" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,6 +120,7 @@
         <option value="$PROJECT_DIR$/TF/cnn_test.py" />
         <option value="$PROJECT_DIR$/yeild-others.py" />
         <option value="$PROJECT_DIR$/yeild-states-mode.py" />
+        <option value="$PROJECT_DIR$/zhj/tools/audio_pcm_wave.py" />
       </list>
     </option>
   </component>
@@ -136,7 +167,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TF" />
+              <option name="myItemId" value="zhj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sensors-data-process-my-adding" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sensors-data-process-my-adding" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -168,7 +217,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.yeild-others">
+  <component name="RunManager" selected="Python.audio_pcm_wave">
     <configuration default="false" name="IOBridge" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -182,23 +231,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Sensors-data-process-my-adding" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/zhj/tools/IOBridge.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <method />
-    </configuration>
-    <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pytorch" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Sensors-data-process-my-adding" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pytorch/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <method />
@@ -250,6 +282,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Sensors-data-process-my-adding" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/yeild-states-mode.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <method />
+    </configuration>
+    <configuration default="false" name="audio_pcm_wave" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/zhj/tools" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Sensors-data-process-my-adding" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/zhj/tools/audio_pcm_wave.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <method />
@@ -408,18 +457,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.sensor" />
       <item index="1" class="java.lang.String" itemvalue="Python.IOBridge" />
-      <item index="2" class="java.lang.String" itemvalue="Python.test" />
-      <item index="3" class="java.lang.String" itemvalue="Python.DNN_np_torch" />
-      <item index="4" class="java.lang.String" itemvalue="Python.cnn_test" />
-      <item index="5" class="java.lang.String" itemvalue="Python.yeild-others" />
+      <item index="2" class="java.lang.String" itemvalue="Python.DNN_np_torch" />
+      <item index="3" class="java.lang.String" itemvalue="Python.cnn_test" />
+      <item index="4" class="java.lang.String" itemvalue="Python.yeild-others" />
+      <item index="5" class="java.lang.String" itemvalue="Python.audio_pcm_wave" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.yeild-others" />
-        <item index="1" class="java.lang.String" itemvalue="Python.cnn_test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.IOBridge" />
-        <item index="3" class="java.lang.String" itemvalue="Python.DNN_np_torch" />
-        <item index="4" class="java.lang.String" itemvalue="Python.test" />
+        <item index="0" class="java.lang.String" itemvalue="Python.audio_pcm_wave" />
+        <item index="1" class="java.lang.String" itemvalue="Python.yeild-others" />
+        <item index="2" class="java.lang.String" itemvalue="Python.cnn_test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.IOBridge" />
+        <item index="4" class="java.lang.String" itemvalue="Python.DNN_np_torch" />
       </list>
     </recent_temporary>
   </component>
@@ -463,7 +512,7 @@
     <frame x="49" y="24" width="1391" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29108328" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22328666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -563,24 +612,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/sensor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="84" column="0" lean-forward="true" selection-start-line="65" selection-start-column="6" selection-end-line="85" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zhj/tools/mix_input.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3212">
-          <caret line="146" column="52" lean-forward="true" selection-start-line="146" selection-start-column="52" selection-end-line="146" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zhj/tools/IOBridge.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -619,6 +650,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#29#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -735,13 +769,6 @@
     <entry file="file://$PROJECT_DIR$/../13301338176-ml-bak/TensorFlow-Books/Android_Activity_recong/health/explore_data.ipynb" />
     <entry file="file://$PROJECT_DIR$/20171226-clean.csv" />
     <entry file="file://$PROJECT_DIR$/../13301338176-ml-bak/TensorFlow-Books/Android_Activity_recong/health/utils/utilities.py" />
-    <entry file="file://$PROJECT_DIR$/auto-mpg.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zhj/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -767,6 +794,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#29#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -818,7 +848,7 @@
     <entry file="file://$PROJECT_DIR$/pytorch/DNN_np_torch.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
-          <caret line="3" column="14" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="563" selection-end-column="7" />
+          <caret line="3" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="563" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -836,7 +866,7 @@
     <entry file="file://$PROJECT_DIR$/zhj/tools/IOBridge.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1320">
-          <caret line="180" column="25" lean-forward="true" selection-start-line="180" selection-start-column="7" selection-end-line="180" selection-end-column="26" />
+          <caret line="180" column="25" lean-forward="false" selection-start-line="180" selection-start-column="7" selection-end-line="180" selection-end-column="26" />
           <folding>
             <element signature="e#65#102#0" expanded="true" />
           </folding>
@@ -846,10 +876,34 @@
     <entry file="file://$PROJECT_DIR$/yeild-states-mode.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
-          <caret line="553" column="33" lean-forward="true" selection-start-line="553" selection-start-column="33" selection-end-line="553" selection-end-column="33" />
+          <caret line="553" column="33" lean-forward="false" selection-start-line="553" selection-start-column="33" selection-end-line="553" selection-end-column="33" />
           <folding>
             <element signature="e#1532#1550#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-mpg.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1254">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iris.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1188">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhj/tools/audio_pcm_wave.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2337">
+          <caret line="118" column="12" lean-forward="false" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
