@@ -1,0 +1,69 @@
+% The Clever Algorithms Project: http://www.CleverAlgorithms.com
+% (c) Copyright 2010 Jason Brownlee. Some Rights Reserved.
+% This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 2.5 Australia License.
+
+% This is a chapter
+
+\chapter{Evolutionary Algorithms}
+\label{ch:evolutionary}
+\renewcommand{\bibsection}{\subsection{\bibname}}
+\begin{bibunit}
+\index{Evolutionary Algorithms}
+\index{Evolutionary Computation}
+
+\section{Overview}
+This chapter describes Evolutionary Algorithms.
+
+% Evolution
+\subsection{Evolution}
+\index{Evolution}
+\index{Natural Selection}
+Evolutionary Algorithms belong to the Evolutionary Computation field of study concerned with computational methods inspired by the process and mechanisms of biological evolution.
+The process of evolution by means of natural selection (descent with modification) was proposed by Darwin to account for the variety of life and its suitability (adaptive fit) for its environment. The mechanisms of evolution describe how evolution actually takes place through the modification and propagation of genetic material (proteins).
+Evolutionary Algorithms are concerned with investigating computational systems that resemble simplified versions of the processes and mechanisms of evolution toward achieving the effects of these processes and mechanisms, namely the development of adaptive systems.
+% related
+Additional subject areas that fall within the realm of Evolutionary Computation are algorithms that seek to exploit the properties from the related fields of Population Genetics, Population Ecology, Coevolutionary Biology, and Developmental Biology.
+
+% References
+\subsection{References}
+Evolutionary Algorithms share properties of adaptation through an iterative process that accumulates and amplifies beneficial variation through trial and error. Candidate solutions represent members of a virtual population striving to survive in an environment defined by a problem specific objective function. In each case, the evolutionary process refines the adaptive fit of the population of candidate solutions in the environment, typically using surrogates for the mechanisms of evolution such as genetic recombination and mutation.
+
+% references
+There are many excellent texts on the theory of evolution, although Darwin's original source can be an interesting and surprisingly enjoyable read \cite{Darwin1859}. Huxley's book defined the modern synthesis in evolutionary biology that combined Darwin's natural selection with Mendel's genetic mechanisms \cite{Huxley1942}, although any good textbook on evolution will suffice (such as Futuyma's ``\emph{Evolution}'' \cite{Futuyma2009}). Popular science books on evolution are an easy place to start, such as Dawkins' ``\emph{The Selfish Gene}'' that presents a gene-centric perspective on evolution \cite{Dawkins1976}, and Dennett's ``\emph{Darwin's Dangerous Idea}'' that considers the algorithmic properties of the process \cite{Dennett1995}.
+
+% classical
+Goldberg's classic text is still a valuable resource for the Genetic Algorithm \cite{Goldberg1989}, and Holland's text is interesting for those looking to learn about the research into adaptive systems that became the Genetic Algorithm \cite{Holland1975}. Additionally, the seminal work by Koza should be considered for those interested in Genetic Programming \cite{Koza1992}, and Schwefel's seminal work should be considered for those with an interest in Evolution Strategies \cite{Schwefel1981}. For an in-depth review of the history of research into the use of simulated evolutionary processed for problem solving, see Fogel \cite{Fogel1998}
+% modern
+For a rounded and modern review of the field of Evolutionary Computation, B\"ack, Fogel, and Michalewicz's two volumes of ``\emph{Evolutionary Computation}'' are an excellent resource covering the major techniques, theory, and application specific concerns \cite{Baeck2000, Baeck2000a}.
+% other books
+For some additional modern books on the unified field of Evolutionary Computation and Evolutionary Algorithms, see De Jong \cite{Jong2006}, a recent edition of Fogel \cite{Fogel1995}, and Eiben and Smith \cite{Eiben2003}.
+
+%
+% Extensions
+%
+\subsection{Extensions}
+There are many other algorithms and classes of algorithm that were not described from the field of Evolutionary Computation, not limited to:
+
+\begin{itemize}
+	\item \textbf{Distributed Evolutionary Computation}: that are designed to partition a population across computer networks or computational units such as the Distributed or `Island Population' Genetic Algorithm \cite{Tanese1989, Cantu-Paz2000} and Diffusion Genetic Algorithms (also known as Cellular Genetic Algorithms) \cite{Alba2008}.
+	\item \textbf{Niching Genetic Algorithms}: that form groups or sub-populations automatically within a population such as the Deterministic Crowding Genetic Algorithm \cite{Mahfoud1992, Mahfoud1995}, Restricted Tournament Selection \cite{Harik1994, Harik1995}, and Fitness Sharing Genetic Algorithm \cite{Goldberg1987, Deb1989}.
+	\item \textbf{Evolutionary Multiple Objective Optimization Algorithms}: such as Vector-Evaluated Genetic Algorithm (VEGA) \cite{Schaffer1984}, Pareto Archived Evolution Strategy (PAES) \cite{Knowles1999, Knowles1999a}, and the Niched Pareto Genetic Algorithm (NPGA) \cite{Horn1994}.
+	\item \textbf{Classical Techniques}: such as GENITOR \cite{Whitley1989}, and the CHC Genetic Algorithm \cite{Eshelman1991}.
+	\item \textbf{Competent Genetic Algorithms}: (so-called \cite{Goldberg2002}) such as the Messy Genetic Algorithm \cite{Goldberg1989a, Goldberg1990}, Fast Messy Genetic Algorithm \cite{Goldberg1993}, Gene Expression Messy Genetic Algorithm \cite{Kargupta1996}, and the Linkage-Learning Genetic Algorithm \cite{Harik1996}.
+\end{itemize}
+
+
+\putbib
+\end{bibunit}
+
+\newpage\begin{bibunit}\input{a_evolution/genetic_algorithm}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_evolution/genetic_programming}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_evolution/evolution_strategies}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_evolution/differential_evolution}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_evolution/evolutionary_programming}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_evolution/grammatical_evolution}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_evolution/gene_expression_programming}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_evolution/learning_classifier_system}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_evolution/nsga}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_evolution/spea}\putbib\end{bibunit}
+

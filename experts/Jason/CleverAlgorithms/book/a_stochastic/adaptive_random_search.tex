@@ -1,0 +1,165 @@
+% The Clever Algorithms Project: http://www.CleverAlgorithms.com
+% (c) Copyright 2010 Jason Brownlee. Some Rights Reserved. 
+% This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 2.5 Australia License.
+
+% This is an algorithm description, see:
+% Jason Brownlee. A Template for Standardized Algorithm Descriptions. Technical Report CA-TR-20100107-1, The Clever Algorithms Project http://www.CleverAlgorithms.com, January 2010.
+
+% Name
+% The algorithm name defines the canonical name used to refer to the technique, in addition to common aliases, abbreviations, and acronyms. The name is used in terms of the heading and sub-headings of an algorithm description.
+\section{Adaptive Random Search} 
+\label{sec:adaptive_random_search}
+\index{Adaptive Random Search}
+
+% other names
+% What is the canonical name and common aliases for a technique?
+% What are the common abbreviations and acronyms for a technique?
+\emph{Adaptive Random Search, ARS, Adaptive Step Size Random Search, ASSRS, Variable Step-Size Random Search.}
+
+% Taxonomy: Lineage and locality
+% The algorithm taxonomy defines where a techniques fits into the field, both the specific subfields of Computational Intelligence and Biologically Inspired Computation as well as the broader field of Artificial Intelligence. The taxonomy also provides a context for determining the relation- ships between algorithms. The taxonomy may be described in terms of a series of relationship statements or pictorially as a venn diagram or a graph with hierarchical structure.
+\subsection{Taxonomy}
+% To what fields of study does a technique belong?
+% What are the closely related approaches to a technique?
+% field
+The Adaptive Random Search algorithm belongs to the general set of approaches known as Stochastic Optimization and Global Optimization. It is a direct search method in that it does not require derivatives to navigate the search space.
+% related
+Adaptive Random Search is an extension of the Random Search (Section~\ref{sec:random_search}) and Localized Random Search algorithms.
+
+
+% Strategy: Problem solving plan
+% The strategy is an abstract description of the computational model. The strategy describes the information processing actions a technique shall take in order to achieve an objective. The strategy provides a logical separation between a computational realization (procedure) and a analogous system (metaphor). A given problem solving strategy may be realized as one of a number specific algorithms or problem solving systems. The strategy description is textual using information processing and algorithmic terminology.
+\subsection{Strategy}
+% What is the information processing objective of a technique?
+% What is a techniques plan of action?
+The Adaptive Random Search algorithm was designed to address the limitations of the fixed step size in the Localized Random Search algorithm. The strategy for Adaptive Random Search is to continually approximate the optimal step size required to reach the global optimum in the search space. This is achieved by trialling and adopting smaller or larger step sizes only if they result in an improvement in the search performance.
+
+% adaptive step size random search
+The Strategy of the Adaptive Step Size Random Search algorithm (the specific technique reviewed) is to trial a larger step in each iteration and adopt the larger step if it results in an improved result. Very large step sizes are trialled in the same manner although with a much lower frequency. This strategy of preferring large moves is intended to allow the technique to escape local optima. Smaller step sizes are adopted if no improvement is made for an extended period.
+
+% Procedure: Abstract computation
+% The algorithmic procedure summarizes the specifics of realizing a strategy as a systemized and parameterized computation. It outlines how the algorithm is organized in terms of the data structures and representations. The procedure may be described in terms of software engineering and computer science artifacts such as Pseudocode, design diagrams, and relevant mathematical equations.
+\subsection{Procedure}
+% What is the computational recipe for a technique?
+% What are the data structures and representations used in a technique?
+Algorithm~\ref{alg:adaptive_random_search} provides a pseudocode listing of the Adaptive Random Search Algorithm for minimizing a cost function based on the specification for `Adaptive Step-Size Random Search' by Schummer and Steiglitz \cite{Schumer1968}.
+
+\begin{algorithm}[htp]
+	\SetLine
+	% data
+	\SetKwData{NumIterations}{$Iter_{max}$}
+	\SetKwData{ProblemSize}{$Problem_{size}$}
+	\SetKwData{SearchSpace}{SearchSpace}	
+	\SetKwData{InitialStepSizeFactor}{$StepSize_{factor}^{init}$}
+	\SetKwData{SmallStepSizeFactor}{$StepSize_{factor}^{small}$}
+	\SetKwData{LargeStepSizeFactor}{$StepSize_{factor}^{large}$}
+	\SetKwData{LargeStepSizeFactorIter}{$StepSize_{factor}^{iter}$}	
+	\SetKwData{MaxIterNoImprovement}{$NoChange_{max}$}
+	% data
+	\SetKwData{StepSize}{$StepSize_{i}$}
+	\SetKwData{LargeStepSize}{$StepSize_{i}^{large}$}	
+	\SetKwData{NoChangeCount}{$NoChange_{count}$}
+	\SetKwData{Current}{$S$}
+	\SetKwData{CandidateOne}{$S_1$}
+	\SetKwData{CandidateTwo}{$S_2$}
+	% functions
+	\SetKwFunction{Cost}{Cost}
+	\SetKwFunction{RandomSolution}{RandomSolution}
+	\SetKwFunction{InitializeStepSize}{InitializeStepSize}
+	\SetKwFunction{TakeStep}{TakeStep}
+  	% I/O
+	\KwIn{\NumIterations, \ProblemSize, \SearchSpace, \InitialStepSizeFactor, \SmallStepSizeFactor, \LargeStepSizeFactor, \LargeStepSizeFactorIter, \MaxIterNoImprovement}
+	\KwOut{\Current}
+  % Algorithm
+	\NoChangeCount $\leftarrow$ 0\;
+	\StepSize $\leftarrow$ \InitializeStepSize{\SearchSpace, \InitialStepSizeFactor}\;
+	\Current $\leftarrow$ \RandomSolution{\ProblemSize, \SearchSpace}\;
+	% main loop
+	\For{$i=0$ \KwTo \NumIterations} {
+		% small step
+		\CandidateOne $\leftarrow$ \TakeStep{\SearchSpace, \Current, \StepSize}\;		
+		\LargeStepSize $\leftarrow$ 0\;
+		% bigger step
+		\eIf{$i$ $\bmod{\LargeStepSizeFactorIter}$} {
+			\LargeStepSize $\leftarrow$ \StepSize $\times$ \LargeStepSizeFactor\;
+		}{
+			\LargeStepSize $\leftarrow$ \StepSize $\times$ \SmallStepSizeFactor\;
+		}
+		\CandidateTwo $\leftarrow$ \TakeStep{\SearchSpace, \Current, \LargeStepSize}\;
+		
+		% step size selection
+		\eIf{\Cost{\CandidateOne}$\leq$\Cost{\Current} || \Cost{\CandidateTwo}$\leq$\Cost{\Current}} {
+			\eIf{\Cost{\CandidateTwo}$<$\Cost{\CandidateOne}} {
+				\Current $\leftarrow$ \CandidateTwo\; 
+				\StepSize $\leftarrow$ \LargeStepSize\;
+			}{
+				\Current $\leftarrow$ \CandidateOne\;
+			}
+			\NoChangeCount $\leftarrow$ 0\;
+		}{
+			\NoChangeCount $\leftarrow$ \NoChangeCount $+$ 1\;
+			% step size modification
+			\If{\NoChangeCount $>$ \MaxIterNoImprovement} {
+				\NoChangeCount $\leftarrow$ 0\;
+				\StepSize $\leftarrow$ $\frac{\StepSize}{\SmallStepSizeFactor}$\;
+			}
+		}
+	}
+	\Return{\Current}\;
+	% caption
+	\caption{Pseudocode for Adaptive Random Search.}
+	\label{alg:adaptive_random_search}
+\end{algorithm}
+
+% Heuristics: Usage guidelines
+% The heuristics element describe the commonsense, best practice, and demonstrated rules for applying and configuring a parameterized algorithm. The heuristics relate to the technical details of the techniques procedure and data structures for general classes of application (neither specific implementations not specific problem instances). The heuristics are described textually, such as a series of guidelines in a bullet-point structure.
+\subsection{Heuristics}
+% What are the suggested configurations for a technique?
+% What are the guidelines for the application of a technique to a problem instance?
+\begin{itemize}
+	\item Adaptive Random Search was designed for continuous function optimization problem domains.
+	\item Candidates with equal cost should be considered improvements to allow the algorithm to make progress across plateaus in the response surface.
+	\item Adaptive Random Search may adapt the search direction in addition to the step size.
+	\item The step size may be adapted for all parameters, or for each parameter individually.
+\end{itemize}
+
+% The code description provides a minimal but functional version of the technique implemented with a programming language. The code description must be able to be typed into an appropriate computer, compiled or interpreted as need be, and provide a working execution of the technique. The technique implementation also includes a minimal problem instance to which it is applied, and both the problem and algorithm implementations are complete enough to demonstrate the techniques procedure. The description is presented as a programming source code listing.
+\subsection{Code Listing}
+% How is a technique implemented as an executable program?
+% How is a technique applied to a concrete problem instance?
+Listing~\ref{adaptive_random_search} provides an example of the Adaptive Random Search Algorithm implemented in the Ruby Programming Language, based on the specification for `Adaptive Step-Size Random Search' by Schummer and Steiglitz \cite{Schumer1968}. 
+% about the algorithm
+In the example, the algorithm runs for a fixed number of iterations and returns the best candidate solution discovered. 
+% about the problem
+The example problem is an instance of a continuous function optimization that seeks $\min f(x)$ where $f=\sum_{i=1}^n x_{i}^2$, $-5.0 < x_i < 5.0$ and $n=2$. The optimal solution for this basin function is $(v_0,\ldots,v_{n-1})=0.0$.
+
+% the listing
+\lstinputlisting[firstline=7,language=ruby,caption=Adaptive Random Search in Ruby, label=adaptive_random_search]{../src/algorithms/stochastic/adaptive_random_search.rb}
+
+% References: Deeper understanding
+% The references element description includes a listing of both primary sources of information about the technique as well as useful introductory sources for novices to gain a deeper understanding of the theory and application of the technique. The description consists of hand-selected reference material including books, peer reviewed conference papers, journal articles, and potentially websites. A bullet-pointed structure is suggested.
+\subsection{References}
+% 
+% Primary Sources
+% 
+\subsubsection{Primary Sources}
+Many works in the 1960s and 1970s experimented with variable step sizes for Random Search methods. 
+% seminal
+Schummer and Steiglitz are commonly credited the adaptive step size procedure, which they called `Adaptive Step-Size Random Search' \cite{Schumer1968}. Their approach only modifies the step size based on an approximation of the optimal step size required to reach the global optima.
+% a second early approach
+Kregting and White review adaptive random search methods and propose an approach called `Adaptive Directional Random Search' that modifies both the algorithms step size and direction in response to the cost function \cite{Kregting1971}.
+
+% 
+% Learn More
+% 
+\subsubsection{Learn More}
+% historical reviews
+White reviews extensions to Rastrigin's `Creeping Random Search' \cite{Rastrigin1963} (fixed step size) that use probabilistic step sizes drawn stochastically from uniform and probabilistic distributions \cite{White1971}. White also reviews works that propose dynamic control strategies for the step size, such as Karnopp \cite{Karnopp1963} who proposes increases and decreases to the step size based on performance over very small numbers of trials.
+% anothe early work
+Schrack and Choit review random search methods that modify their step size in order to approximate optimal moves while searching, including the property of reversal \cite{Schrack1976}.
+% another
+Masri et al.\ describe an adaptive random search strategy that alternates between periods of fixed and variable step sizes \cite{Masri1980}.
+% recent
+% not sure if it's useful: \cite{Kumar2004}.
+
+

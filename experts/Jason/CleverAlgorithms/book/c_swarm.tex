@@ -1,0 +1,53 @@
+% The Clever Algorithms Project: http://www.CleverAlgorithms.com
+% (c) Copyright 2010 Jason Brownlee. Some Rights Reserved.
+% This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 2.5 Australia License.
+
+% This is a chapter
+
+\renewcommand{\bibsection}{\subsection{\bibname}}
+\begin{bibunit}
+
+\chapter{Swarm Algorithms}
+\label{ch:swarm}
+\index{Swarm Algorithms}
+\index{Swarm Intelligence}
+\index{Collective Intelligence}
+\index{Ant Colony Optimization}
+\index{Particle Swarm Optimization}
+
+\section{Overview}
+This chapter describes Swarm Algorithms.
+
+\subsection{Swarm Intelligence}
+Swarm intelligence is the study of computational systems inspired by the `collective intelligence'. Collective Intelligence emerges through the cooperation of large numbers of homogeneous agents in the environment. Examples include schools of fish, flocks of birds, and colonies of ants. Such intelligence is decentralized, self-organizing and distributed through out an environment. In nature such systems are commonly used to solve problems such as effective foraging for food, prey evading, or colony re-location. The information is typically stored throughout the participating homogeneous agents, or is stored or communicated in the environment itself such as through the use of pheromones in ants, dancing in bees, and proximity in fish and birds.
+
+The paradigm consists of two dominant sub-fields 1) \emph{Ant Colony Optimization} that investigates probabilistic algorithms inspired by the stigmergy and foraging behavior of ants, and 2) \emph{Particle Swarm Optimization} that investigates probabilistic algorithms inspired by the flocking, schooling and herding. Like evolutionary computation, swarm intelligence `algorithms' or `strategies' are considered adaptive strategies and are typically applied to search and optimization domains.
+
+% References
+\subsection{References}
+% classical
+Seminal books on the field of Swarm Intelligence include ``\emph{Swarm Intelligence}'' by Kennedy, Eberhart and Shi \cite{Kennedy2001}, and ``\emph{Swarm Intelligence: From Natural to Artificial Systems}'' by Bonabeau, Dorigo, and Theraulaz \cite{Bonabeau1999}. Another excellent text book on the area is ``\emph{Fundamentals of Computational Swarm Intelligence}'' by Engelbrecht \cite{Engelbrecht2006}. The seminal book reference for the field of Ant Colony Optimization is ``\emph{Ant Colony Optimization}'' by Dorigo and St\"utzle \cite{Dorigo2004}.
+
+%
+% Extensions
+%
+\subsection{Extensions}
+There are many other algorithms and classes of algorithm that were not described from the field of Swarm Intelligence, not limited to:
+
+\begin{itemize}
+	\item \textbf{Ant Algorithms}: such as Max-Min Ant Systems \cite{Stutzle2000} Rank-Based Ant Systems \cite{Bullnheimer1999}, Elitist Ant Systems \cite{Dorigo1996}, Hyper Cube Ant Colony Optimization \cite{Blum2001} Approximate Nondeterministic Tree-Search (ANTS) \cite{Maniezzo1999} and Multiple Ant Colony System \cite{Gambardella1999}.
+	\item \textbf{Bee Algorithms}: such as Bee System and Bee Colony Optimization \cite{Lucic2001}, the Honey Bee Algorithm \cite{Tovey2004}, and Artificial Bee Colony Optimization \cite{Karaboga2005, Basturk2006}.
+	\item \textbf{Other Social Insects}: algorithms inspired by other social insects besides ants and bees, such as the Fireﬂy Algorithm \cite{Yang2008} and the Wasp Swarm Algorithm \cite{Pinto2007}.
+	\item \textbf{Extensions to Particle Swarm}: such as Repulsive Particle Swarm Optimization \cite{Urfalioglu2004}.
+	\item \textbf{Bacteria Algorithms}: such as the Bacteria Chemotaxis Algorithm \cite{Muller2002}.
+\end{itemize}
+
+\putbib
+\end{bibunit}
+
+
+\newpage\begin{bibunit}\input{a_swarm/pso}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_swarm/ant_system}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_swarm/ant_colony_system}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_swarm/bees_algorithm}\putbib\end{bibunit}
+\newpage\begin{bibunit}\input{a_swarm/bfoa}\putbib\end{bibunit}

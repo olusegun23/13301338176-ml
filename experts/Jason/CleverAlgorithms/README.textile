@@ -1,0 +1,114 @@
+h1. Clever Algorithms: Nature-Inspired Programming Recipes
+
+!http://www.cleveralgorithms.com/images/CleverAlgorithms_3D_400.jpg!
+
+h2. Overview
+
+*Clever Algorithms: Nature-Inspired Programming Recipes* is an open source book that describes a large number of algorithmic techniques from the the fields of Biologically Inspired Computation, Computational Intelligence and Metaheuristics in a complete, consistent, and centralized manner such that they are accessible, usable, and understandable. This is a repository for the book project used during the development and ongoing maintenance of the books' content.
+
+The book was first released in early 2011 for free on the website "CleverAlgorithms.com":http://cleveralgorithms.com and is available for purchase as a paperback from "Amazon":http://www.amazon.com/gp/product/1446785068/ref=as_li_qf_sp_asin_tl?ie=UTF8&tag=inspiredalgor-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1446785068 and "Lulu":http://www.lulu.com/shop/jason-brownlee/clever-algorithms-nature-inspired-programming-recipes/paperback/product-14696556.html
+
+h3. Book Details
+
+| Title | *Clever Algorithms: Nature-Inspired Programming Recipes* |
+| Author | "Jason Brownlee":http://www.linkedin.com/in/jasonbrownlee |
+| Release |  Revision 2. 16th June 2012  |
+
+h3. Blurb
+
+bq. Implementing an Artificial Intelligence algorithm is difficult. Algorithm descriptions may be incomplete, inconsistent, and distributed across a number of papers, chapters and even websites. This can result in varied interpretations of algorithms, undue attrition of algorithms, and ultimately bad science. This book is an effort to address these issues by providing a handbook of algorithmic recipes drawn from the fields of Metaheuristics, Biologically Inspired Computation and Computational Intelligence, described in a complete, consistent, and centralized manner. These standardized descriptions were carefully designed to be accessible, usable, and understandable. Most of the algorithms described were originally inspired by biological and natural systems, such as the adaptive capabilities of genetic evolution and the acquired immune system, and the foraging behaviors of birds, bees, ants and bacteria. An encyclopedic algorithm reference, this book is intended for research scientists, engineers, students, and interested amateurs. Each algorithm description provides a working code example in the Ruby Programming Language.
+
+h3. Table of Contents
+
+# Background
+## Introduction
+# Algorithms
+## Stochastic Algorithms
+### Random Search
+### Adaptive Random Search
+### Stochastic Hill Climbing
+### Iterated Local Search
+### Guided Local Search
+### Variable Neighborhood Search
+### Greedy Randomized Adaptive Search
+### Scatter Search
+### Tabu Search
+### Reactive Tabu Search
+## Evolutionary Algorithms
+### Genetic Algorithm
+### Genetic Programming
+### Evolution Strategies
+### Differential Evolution
+### Evolutionary Programming
+### Grammatical Evolution
+### Gene Expression Programming
+### Learning Classifier System
+### Non-dominated Sorting Genetic Algorithm
+### Strength Pareto Evolutionary Algorithm
+## Physical Algorithms
+### Simulated Annealing
+### Extremal Optimization
+### Harmony Search
+### Cultural Algorithm
+### Memetic Algorithm
+## Probabilistic Algorithms
+### Population-Based Incremental Learning
+### Univariate Marginal Distribution Algorithm
+### Compact Genetic Algorithm
+### Bayesian Optimization Algorithm
+### Cross-Entropy Method
+## Swarm Algorithms
+### Particle Swarm Optimization
+### Ant System
+### Ant Colony System
+### Bees Algorithm
+### Bacterial Foraging Optimization Algorithm
+## Immune Algorithms
+### Clonal Selection Algorithm
+### Negative Selection Algorithm
+### Artificial Immune Recognition System
+### Immune Network Algorithm
+### Dendritic Cell Algorithm
+## Neural Algorithms
+### Perceptron
+### Back-propagation
+### Hopfield Network
+### Learning Vector Quantization
+### Self-Organizing Map
+# Extensions
+## Advanced Topics
+### Programming Paradigms
+### Devising New Algorithms
+### Testing Algorithms
+### Visualizing Algorithms
+### Problem Solving Strategies
+### Benchmarking Algorithms
+# Appendix A - Ruby: Quick-Start Guide
+
+
+h2. Project
+
+h3. How to Build
+
+# Assumes a Linux or Mac workstation with make, Latex such as "TeXLive":http://www.tug.org/texlive/ or "MacTex":http://www.tug.org/mactex/ installed and maybe "JabRef":http://jabref.sourceforge.net/ 
+# <code>git clone git@github.com:jbrownlee/CleverAlgorithms.git</code>
+# @cd CleverAlgorithms@
+# @make r@ (creates the file @book/book.pdf@)
+# @make vl@ (to view the PDF on linux) or @make vm@ (to view the PDF on mac)
+# @make epub@ (creates epub versions)
+
+h3. Contribute
+
+If you find a typo or a mistake, please email me at "jasonb@CleverAlgorithms.com":mailto:jasonb@CleverAlgorithms.com or clone this project and make, make a change and submit a pull request. I will happily give you credit in the acknowledgments.
+
+h3. Support
+
+The best support you can give to this project is to buy a copy of the paperback and spread the word by writing a review, blog post or tweet.
+
+h2. License 
+
+(c) Copyright 2013 Jason Brownlee. Some Rights Reserved.
+This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/au/">Creative Commons Attribution-Noncommercial-Share Alike 2.5 Australia License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/au/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/2.5/au/88x31.png" />
+</a>
