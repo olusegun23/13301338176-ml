@@ -115,5 +115,5 @@ pylab.subplot(h, w, 12);
 pylab.title("(L) Difference / Error")
 pylab.plot(signal / max(signal) - ibp / max(ibp), 'k')
 
-pylab.savefig("SIG.png", dpi=200)
+#pylab.savefig("SIG.png", dpi=200)
 pylab.show()

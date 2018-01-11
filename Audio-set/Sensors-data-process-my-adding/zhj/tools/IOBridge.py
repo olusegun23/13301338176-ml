@@ -10,6 +10,8 @@ from __future__ import print_function
 
 import math
 
+from pandas.plotting import radviz
+
 
 class IOBridge(object):
 
@@ -195,7 +197,6 @@ class IOBridge(object):
 
 
 
-
     def SensorMLStepByStep(self):
         """
          https://machinelearningmastery.com/machine-learning-in-python-step-by-step/
@@ -215,6 +216,8 @@ class IOBridge(object):
         from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
         from sklearn.naive_bayes import GaussianNB
         from sklearn.svm import SVC
+
+        import numpy as np;
 
         #url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
 
@@ -243,32 +246,168 @@ class IOBridge(object):
 
         url = "20171226-clean.csv"
 
-        names = ['timestamp', 't', 'x', 'y', 'z', 't1', 'x1', 'y1', 'z1', 't2', 'x2', 'y2', 'z2', 'class']
+        names = ['timestamp', 'acc', 'acc_x', 'acc_y', 'acc_z', 'Gyr', 'Gyr_x', 'Gyr_y', 'Gyr_z', 'mag', 'mag_x', 'mag_y', 'mag_z', 'class']
 
         dataset = pandas.read_csv(url, names=names)
+
+        x=range(len(dataset["timestamp"].values))
+        y=len(dataset["timestamp"].values)
+
+        assert(len(x)==len(dataset["acc_x"].values))
+
+        a1 = plt.subplot(2, 2, 1)
+        a1.plot(x,dataset["acc_x"],label="acc_x")
+        a1.plot(x, dataset["acc_y"],label="acc_y")
+        a1.plot(x, dataset["acc_z"],label="acc_z")
+        plt.legend(loc='best')
+        a2 = plt.subplot(2, 2, 2)
+        a2.plot(x, dataset["Gyr_x"], label="Gyr_x")
+        a2.plot(x, dataset["Gyr_y"], label="Gyr_y")
+        a2.plot(x, dataset["Gyr_z"], label="Gyr_z")
+        plt.legend(loc='best')
+        a3 = plt.subplot(2, 2, 3)
+        a3.plot(x, dataset["mag_x"], label="mag_x")
+        a3.plot(x, dataset["mag_y"], label="mag_y")
+        a3.plot(x, dataset["mag_z"], label="mag_z")
+        plt.legend(loc='best')
+
+        plt.show()
+
+        names1 = ['acc', 'acc_x', 'acc_y', 'acc_z', 'Gyr', 'Gyr_x', 'Gyr_y', 'Gyr_z', 'mag', 'mag_x','mag_y', 'mag_z', 'class']
+        dataset1=dataset[names1]
+
+
+
+
         # shape
         print(dataset.shape)
 
         # head
         print(dataset.head(20))
+
+        print(dataset1.head(20))
+
         # descriptions
         print(dataset.describe())
         # class distribution
         print(dataset.groupby('class').size())
 
+        types = dataset.dtypes
+        print(types)
+
+        correlations = dataset.corr()
+        print(correlations)
+
+        skew = dataset.skew()
+        print(skew)
+
+
+
+        """
+        https://seaborn.pydata.org/tutorial/categorical.html
+
+
+
+        """
+        import numpy as np
+        import pandas as pd
+        import matplotlib as mpl
+        import matplotlib.pyplot as plt
+        import seaborn as sns
+        import seaborn as sns
+        import numpy as np
+
+
+
+        #too big slow  ====good
+        # sns.pairplot(dataset, hue='class');
+
+
+
+        #sns.set_style("whitegrid")
+        #tips = sns.load_dataset("tips")  # 载入自带数据集
+        # x轴为分类变量day,y轴为数值变量total_bill，利用颜色再对sex分类
+        ax = sns.barplot(x="timestamp", y="acc_x", hue="class", data=dataset[1:10])
+
+        #sns.countplot(y='acc_x', data=dataset[1:10], hue='class')
+
+
+
+
+
+
+
+
+
+        # 如下图2(DF)
+        #ax = dataset.plot(kind='bar', rot=0)
+        #for label in ax.get_xticklabels():
+
+
+
+        #dataset.hist(by='class')
+
+        #dataset.groupby('class').hist(subplots=True)
+
+        #dataset.plot(kind='hist', subplots=True, sharex=True, sharey=True, title='My title')
+
+
+
+        #plt.show()
+
+
+
+        #plt.figure()
+        #sns.stripplot( x="class",y="acc_x", data=dataset);
+        #plt.figure()
+        #dataset['class'].value_counts().plot(kind='bar')
+        #plt.show()
+
+
+
+
+
 
         # box and whisker plots
-        dataset.plot(kind='box', subplots=True, layout=(4, 4), sharex=False, sharey=False)
-        plt.show()
+        #dataset.plot(kind='box', subplots=True, layout=(4, 4), sharex=False, sharey=False)
+        #plt.show()
 
 
         # histograms
-        dataset.hist()
-        plt.show()
+        #dataset.hist()
+        #plt.show()
 
         # scatter plot matrix
         #scatter_matrix(dataset)
         #plt.show()
+
+
+
+        """borken Density   Plots"""
+
+        #dataset.plot(kind='density', subplots=True, layout=(4, 4), sharex=False, sharey=False)
+        #plt.show()
+
+
+
+
+
+
+        # plot correlation matrix
+
+        correlations = dataset.corr()
+        # plot correlation matrix
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        cax = ax.matshow(correlations, vmin=-1, vmax=1)
+        fig.colorbar(cax)
+        ticks = np.arange(0, 14, 1)
+        ax.set_xticks(ticks)
+        ax.set_yticks(ticks)
+        ax.set_xticklabels(names)
+        ax.set_yticklabels(names)
+        #plt.show()
+
 
         # Split-out validation dataset
         array = dataset.values
@@ -285,9 +424,51 @@ class IOBridge(object):
 
 
 
+
+
+
+
+
         seed = 7
         X_train, X_validation, Y_train, Y_validation = model_selection.train_test_split(X, Y, test_size=validation_size,
                                                                                         random_state=seed)
+
+
+
+
+        from sklearn.model_selection import train_test_split
+        from sklearn.linear_model import LogisticRegressionCV
+
+        from keras.models import Sequential
+        from keras.layers.core import Dense, Activation
+        from keras.utils import np_utils
+
+        def one_hot_encode_object_array(arr):
+            '''One hot encode a numpy array of objects (e.g. strings)'''
+            uniques, ids = np.unique(arr, return_inverse=True)
+            return np_utils.to_categorical(ids, len(uniques))
+
+        train_y_ohe = one_hot_encode_object_array(Y_train)
+        test_y_ohe = one_hot_encode_object_array(Y_validation)
+
+        model = Sequential()
+        model.add(Dense(16, input_shape=(12,)))
+        model.add(Activation('sigmoid'))
+        model.add(Dense(6))
+        model.add(Activation('softmax'))
+        model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=["accuracy"])
+        print ("===epoch=10 neural network Accuracy = 0.95=====\n")
+        print("Keras====neural network before========\n")
+        model.fit( X_train, train_y_ohe, epochs=100, batch_size=1, verbose=1);
+
+        loss, accuracy = model.evaluate(X_validation, test_y_ohe, verbose=1)
+        print("Keras====neural network Accuracy = {:.2f} \n".format(accuracy))
+
+
+
+
+
+
 
 
         # Test options and evaluation metric
@@ -321,6 +502,8 @@ class IOBridge(object):
         ax.set_xticklabels(names)
         plt.show()
 
+
+
         # Make predictions on validation dataset
         knn = KNeighborsClassifier()
         knn.fit(X_train, Y_train)
@@ -331,7 +514,37 @@ class IOBridge(object):
 
 
 
-    def PdCategoricalData():
+
+        from sklearn.preprocessing import MinMaxScaler
+        scaler = MinMaxScaler(feature_range=(0, 1))
+        rescaledX = scaler.fit_transform(X)
+
+        from sklearn.preprocessing import StandardScaler
+        from numpy import set_printoptions
+        scaler = StandardScaler().fit(X)
+        rescaledX = scaler.transform(X)
+
+        # Normalize data (length of 1)
+        from sklearn.preprocessing import Normalizer
+        scaler = Normalizer().fit(X)
+        normalizedX = scaler.transform(X)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def PdCategoricalData(self):
         """
            https://chrisalbon.com/machine-learning/convert_pandas_categorical_column_into_integers_for_scikit-learn.html
         """
