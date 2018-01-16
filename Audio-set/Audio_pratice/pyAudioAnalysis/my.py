@@ -9,7 +9,7 @@ Implements
 
 
 
-
+#======================================https://matplotlib.org/examples/pylab_examples/subplots_demo.html
 
 #from pyAudioAnalysis import audioBasicIO
 #from pyAudioAnalysis import audioFeatureExtraction
@@ -17,7 +17,7 @@ Implements
 import audioBasicIO
 import audioFeatureExtraction
 import matplotlib.pyplot as plt
-
+import numpy as np
 
 
 class MyAudio(object):
@@ -27,10 +27,27 @@ class MyAudio(object):
 
 
     def simple(self):
+        
+	fig,ax=plt.subplots(nrows=1,ncols=2,sharex=True, sharey=True,figsize=(7,4))
+
+	
+	x = np.linspace(0, 2 * np.pi, 400)
+	y = np.sin(x ** 2)
+
+	ax[0].plot(x, y)
+	ax[0].set_title('Simple plot')
+
+	ax[1].scatter(x, y)
+
+
+
+
+
         [Fs, x] = audioBasicIO.readAudioFile("./data/speech_music_sample.wav");
         F = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050 * Fs, 0.025 * Fs);
 
-        plt.subplot(3, 4, 1)
+
+	plt.subplot(3, 4, 1)
         plt.plot(F[0, :]);
         plt.xlabel('Frame no');
         plt.ylabel('ZCR');
