@@ -27,60 +27,65 @@ class MyAudio(object):
 
 
     def simple(self):
-        [Fs, x] = audioBasicIO.readAudioFile("./data/speech_music_sample.wav");
-        F = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050 * Fs, 0.025 * Fs);
+        [Fs00, x00] = audioBasicIO.readAudioFile("00.wav");
+        F00 = audioFeatureExtraction.stFeatureExtraction(x00, Fs00, 0.050 * Fs00, 0.025 * Fs00);
+
+
+	[Fs01, x01] = audioBasicIO.readAudioFile("01.wav");
+        F01 = audioFeatureExtraction.stFeatureExtraction(x01, Fs01, 0.050 * Fs01, 0.025 * Fs01);
 
         plt.subplot(3, 4, 1)
-        plt.plot(F[0, :]);
+        plt.plot(F00[0, :]);
+        plt.plot(F01[0, :]);
         plt.xlabel('Frame no');
         plt.ylabel('ZCR');
         plt.subplot(3, 4, 2);
-        plt.plot(F[1, :]);
+        plt.plot(F00[1, :]);
         plt.xlabel('Frame no');
         plt.ylabel('Energy');
 
         plt.subplot(3, 4, 3);
-        plt.plot(F[2, :]);
+        plt.plot(F00[2, :]);
         plt.xlabel('Frame no');
         plt.ylabel('Entropy ');
 
         plt.subplot(3, 4, 4);
-        plt.plot(F[3, :]);
+        plt.plot(F00[3, :]);
         plt.xlabel('Frame no');
         plt.ylabel('Spectral Centroid ');
 
         plt.subplot(3, 4, 5);
-        plt.plot(F[4, :]);
+        plt.plot(F00[4, :]);
         plt.xlabel('Frame no');
         plt.ylabel('Spectral Spread ');
 
         plt.subplot(3, 4, 6);
-        plt.plot(F[5, :]);
+        plt.plot(F00[5, :]);
         plt.xlabel('Frame no');
         plt.ylabel('Spectral Entropy ');
 
         plt.subplot(3, 4, 7);
-        plt.plot(F[6, :]);
+        plt.plot(F00[6, :]);
         plt.xlabel('Frame no');
         plt.ylabel('Spectral Flux ');
 
         plt.subplot(3, 4, 8);
-        plt.plot(F[7, :]);
+        plt.plot(F00[7, :]);
         plt.xlabel('Frame no');
         plt.ylabel('Spectral Rolloff ');
 
         plt.subplot(3, 4, 9);
-        plt.plot(F[8:20, :]);
+        plt.plot(F00[8:20, :]);
         plt.xlabel('Frame no');
         plt.ylabel('MFCCs 9-21	');
 
         plt.subplot(3, 4, 10);
-        plt.plot(F[21:32, :]);
+        plt.plot(F00[21:32, :]);
         plt.xlabel('Frame no');
         plt.ylabel('Chroma Vector22-33 ');
 
         plt.subplot(3, 4, 11);
-        plt.plot(F[33, :]);
+        plt.plot(F00[33, :]);
         plt.xlabel('Frame no');
         plt.ylabel('Chroma Deviation ');
 
