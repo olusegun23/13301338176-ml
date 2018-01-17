@@ -1,0 +1,49 @@
+<layout >
+<data>
+    <variable
+        name="user"
+        type="com.example.global_lib.User"/>
+</data>
+
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{user.firstName}"/>
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{user.lastName}"/>
+
+
+
+
+
+    <TextView
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="===="
+
+        />
+
+
+    <Button
+        android:id="@+id/buttonapp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="gotolib1"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+
+
+</LinearLayout>
+</layout>
