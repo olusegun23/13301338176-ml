@@ -1,0 +1,33 @@
+https://serv.cusp.nyu.edu/projects/urbansounddataset/
+
+https://www.iotforall.com/tensorflow-sound-classification-machine-learning-applications/
+https://www.juhe.cn/news/index/id/2512
+
+
+https://github.com/tyiannak/pyAudioAnalysis
+
+final
+https://github.com/devicehive/devicehive-audio-analysis
+
+
+
+https://freesound.org/
+
+
+
+two ways:
+
+1. Internal GMM+KNN
+
+2. pyAudioAnalysis
+
+3. Google VGG+https://github.com/devicehive/devicehive-audio-analysis
+4. https://tensorflow.google.cn/tutorials/audio_recognition  
+5. https://magenta.tensorflow.org/datasets/nsynth   (https://github.com/tensorflow/magenta)
+
+Custom Training Data
+By default the script will download the Speech Commands dataset, but you can also supply your own training data. To train on your own data, you should make sure that you have at least several hundred recordings of each sound you would like to recognize, and arrange them into folders by class. For example, if you were trying to recognize dog barks from cat miaows, you would create a root folder called animal_sounds, and then within that two sub-folders called bark and miaow. You would then organize your audio files into the appropriate folders.
+
+To point the script to your new audio files, you'll need to set --data_url= to disable downloading of the Speech Commands dataset, and --data_dir=/your/data/folder/ to find the files you've just created.
+
+The files themselves should be 16-bit little-endian PCM-encoded WAVE format. The sample rate defaults to 16,000, but as long as all your audio is consistently the same rate (the script doesn't support resampling) you can change this with the --sample_rate argument. The clips should also all be roughly the same duration. The default expected duration is one second, but you can set this with the --clip_duration_ms flag. If you have clips with variable amounts of silence at the start, you can look at word alignment tools to standardize them
