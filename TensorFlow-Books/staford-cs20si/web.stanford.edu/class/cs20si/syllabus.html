@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stanford University: Tensorflow for Deep Learning Research</title>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+  <!-- Google fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+
+<body>
+
+<div id="header">
+  <a href="http://nlp.stanford.edu/">
+    <img src="http://nlp.stanford.edu/sentiment/images/nlp-logo.gif" style="height:50px; float: left; margin-left: 20px;">
+  </a>
+  <a href="index.html">
+    <h1>CS 20: Tensorflow for Deep Learning Research</h1>
+  </a>
+  <div style="clear:both;"></div>
+</div>
+
+
+
+<div class="sechighlight">
+<div class="container sec">
+  <h2>Schedule and Syllabus</h2>
+
+  Unless otherwise specified the course lectures and meeting times are:<br><br>
+  Wednesday, Friday 3:30-4:20<br>
+  Location: Gates B12
+  <br><br>
+  This syllabus is subject to change according to the pace of the class. Please post on Piazza or email the course staff if you have any question.
+</div>
+</div>
+
+<div class="container sec">
+<table class="table">
+  <tr class="active">
+    <th>Event</th><th>Date</th><th>Description</th><th>Course Materials</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Jan 10 <br>Week 1</td>
+    <td>No class</td>
+    <td>
+      <a href=https://github.com/chiphuyen/stanford-tensorflow-tutorials/tree/master/setup>Set up Tensorflow</a><br>
+      Suggested Readings: <br>
+      Nothing in particular, but you're welcome to read anything you want.
+  </tr>
+  <tr>
+    <td>Lecture</td>
+    <td>Jan 12</td>
+    <td><b>Overview of Tensorflow</b><br>
+    Why Tensorflow? <br>
+    Graphs and Sessions 
+    </td>
+    <td>
+	<a href='https://docs.google.com/presentation/d/1dizKPtp9hkuTwVDzoGZdYQb_61ULSsSUvaFfDFuhIc4/edit?usp=sharing'>Slides</a><br>
+	<a href='https://docs.google.com/document/d/1gWm3uBnbU6wxZAm0VAiSV_8odzfaE7yEG1lW-NO34fI/edit?usp=sharing'>Lecture note</a>
+    </td>
+  </tr>
+
+  <tr class="danger">
+    <td>To do</td>
+    <td>Jan 12</td>
+    <td><b>Check out TensorBoard</b></td>
+    <td></td>
+  <tr>
+
+  <tr>
+    <td>Lecture</td>
+    <td>Jan 17 <br>Week 2</td>
+    <td><b>Operations</b><br>
+    Basic operations, constants, variables <br>
+    Control dependencies <br>
+    Data pipeline <br>
+    TensorBoard <br>
+    </td>
+    <td>
+	<a href='https://docs.google.com/presentation/d/1iO_bBL_5REuDQ7RJ2F35vH2BxAiGMocLC6t_N-6eXaE/edit?usp=sharing'>Slides</a><br>
+	<a href='https://docs.google.com/document/d/1FSPNZFQsnaUVeTo0OQ2RrEZ0f4el9bIGI5sQALbG_F0/edit?usp=sharing'>Lecture note</a>
+    </td>
+  </tr>
+  </tr>
+  <tr>
+    <td>Workshop</td>
+    <td>Jan 19</td>
+    <td><b>Linear and Logistic Regression</b><br>
+    Tensorflow's Optimizers <br>
+    tf.data<br>
+    Example: Birth rate - life expectancy, MNIST dataset
+    </td>
+    <td>
+        <a href='https://docs.google.com/presentation/d/1lmcQVNAmJrL8x3Iq0VB1mVaka1r6pOIb-TMVTX5Rufc/edit?usp=sharing'>Slides</a><br>
+        <a href='https://docs.google.com/document/d/1kMGs68rIHWHifBiqlU3j_2ZkrNj9RquGTe8tJ7eR1sE/edit?usp=sharing'>Lecture note</a>
+    </td>
+  </tr>
+   <tr class="warning">
+    <td>A1 released</td>
+    <td>Jan 19</td>
+    <td><b>Assignment #1 released</b></td>
+    <td>
+	<a href='https://docs.google.com/document/d/1CpBvivgmo_4sMmnlWqjFAXTXKa_bI9dJVSQLPZIu7Vg/edit?usp=sharing'>Assignment 1</a>
+    </td>
+  <tr>
+    <td>Lecture</td>
+    <td>Jan 24 <br>Week 3</td>
+    <td><b>Eager execution</b><br>
+    Guest lecture by <a href='https://www.akshayagrawal.com/'>Akshay Agrawal</a><br>
+    (TensorFlow team)<br>
+    Example: word2vec, linear regression
+    </td>
+    <td>
+        <a href='https://docs.google.com/presentation/d/1e1gE2JJXipWm1UJgor_y8pHcM8L8oMaCVtvQvZUBlQY/edit?usp=sharing'>Slides</a><br>
+        <a href='https://docs.google.com/document/d/1tLThJGHyMICyXwSIxyZ4D4cZ1hJ1Iuk8WFxe7gBBKa4/edit?usp=sharing'>Lecture note</a>
+    </td>
+  </tr>
+  <tr>
+    <td>Lecture</td>
+    <td>Jan 26</td>
+    <td><b>Variable sharing and managing experiments</b><br>
+    Interfaces <br>
+    Name scope, variable scope <br>
+    Saver object, checkpoints <br>
+    Autodiff
+    Example: word2vec</td>
+    <td>
+        <a href='https://docs.google.com/presentation/d/1SJMsa4BdOFVRCPD9uwaAqDBYYfgbQcbOm7HaxRVpaaY/edit?usp=sharing'>Slides</a><br>
+        <a href='https://docs.google.com/document/d/1wqp8_-H06oE4zB9CHDwzTx5BfAOMM_6nnNJMSfkazkU/edit?usp=sharing'>Lecture note</a>
+    </td>
+  </tr>
+  <tr class="warning">
+    <td>A1 Due</td>
+    <td>Jan 31</td>
+    <td><b>Assignment #1 due</b></td>
+    <td>
+    </td> 
+  </tr>
+  <tr>
+    <td>Lecture</td>
+    <td>Jan 31 <br> Week 4</td>
+    <td><b>Introduction to ConvNet</b><br>
+    </td>
+    <td>
+        <a href='https://docs.google.com/presentation/d/15E7NlyMkG8dAMa70i2OluprBDoz3UPyAk5ZpOiCkEqw/edit?usp=sharing'>Slides</a><br>
+        <a href='http://cs231n.github.io/convolutional-networks/'>Lecture note</a><br>
+        We will be using CS231N's wonderful note
+    </td>
+  </tr>
+   <tr>
+    <td>Lecture</td>
+    <td>Feb 2</td>
+    <td><b>No class</b><br>
+    </td>
+    <td>
+    </td>
+  </tr>
+<tr class="warning">
+    <td>A2 released</td>
+    <td>Feb 7</td>
+    <td><b>Assignment #2 released</b></td>
+    <td>
+	<a href='https://docs.google.com/document/d/1FpueD-3mScnD0SJQDtwmOb1FrSwo1NGowkXzMwPoLH4/edit?usp=sharing'>Assignment 2</a>
+    </td>
+  </tr>
+  <tr>
+    <td>Lecture</td>
+    <td>Feb 7</td>
+    <td>
+        <b>Convnet in TensorFlow</b><br>
+	Example: image classification
+    </td>
+    <td>
+	<a href='https://docs.google.com/presentation/d/17VTArfQVtapBqfYecyvp3Kp9HKy8Pw2WI12acYME2nI/edit?usp=sharing'>Slides</a><br>
+        <a href='https://docs.google.com/document/d/1ph43FB5fZ_iarPTjIXhdtDvHJOpk4ncI2vDyxnOWcqM/edit?usp=sharing'>Lecture note</a>
+    </td>
+</tr>
+<tr>
+    </td>
+    <td>Lecture</td>
+    <td>Feb 9<br> Week 5</td>
+    <td>
+      <b>Convolutional Neural Networks</b><br>
+      Discussion of Assignment #2 <br>
+      Example: Style Transfer
+    </td>
+    <td>
+	<a href='https://docs.google.com/presentation/d/1ftgals7pXNOoNoWe0E9PO27miOpXbHrQIXyBm0YOiyc/edit?usp=sharing'>Slides</a>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Feb 14 <br>Week 6</td>
+    <td>
+	<b>GANs</b><br>
+      	Guest lecture by Alec Radford<br>
+        (Research Scientist at OpenAI)
+    </td>
+    <td> Per Alec's request, slides + code are only<br>available to students in the class
+    </td>
+  </tr>
+  <tr>
+    <td>Lecture</td>
+    <td>Feb 16</td>
+    <td>
+	<b>Variational Auto-Encoders</b><br>
+	Guest lecture by <a href='https://danijar.com'>Danijar Hafner</a><br>
+	(Google Brain, UCL)
+    </td>
+    <td>
+	<a href='https://docs.google.com/presentation/d/1VSNlkGcR-b39tMcuREjzZdhYOPvoZudpcbuNlf5hOIM/edit?usp=sharing'>Slides</a>
+    </td>
+<tr class="warning">
+    <td>A2 Due</td>
+    <td><b>Feb 20</b></td>
+    <td><b>Assignment #2 due</b></td>
+    <td></td>
+  </tr>
+  </tr>
+    <td>Lecture</td>
+    <td>Feb 21 <br> Week 7</td>
+    <td>
+      <b>Recurrent Neural Networks</b><br>
+      Example: Character-level Language Modeling
+    </td>
+    <td>
+		<a href='https://docs.google.com/presentation/d/1QydMhsGFeUzDYZr7dV0tt9WJryleOoKUyJth4ftRDbA/edit?usp=sharing'>Slides</a><br>
+        <a href='https://docs.google.com/document/d/1_ZqzBqFMV8YmdC2PmaTXOB9O1BZ14yLNTQd2_Bkff9Y/edit?usp=sharing'>Lecture note</a>
+   </td>
+  <tr>
+  <tr>
+    <td>Lecture</td>
+    <td>Feb 23</td>
+    <td>
+      <b>Seq2seq with Attention</b><br>
+      Example: Neural machine translation
+   </td>
+   <td>
+	<a href='https://docs.google.com/presentation/d/10FcTewIQuHK4u94IPif6kqSbntLT7I038R32uIOGKpI/edit?usp=sharing'>Slides</a>
+   </td>
+  </tr>
+  <tr>
+    <td>Lecture</td>
+    <td>
+    Feb 28<br>Week 8
+    </td>
+    <td><b>Beyond RNNs: Transformer, Tensor2Tensor</b><br>
+	Guest lecture by Lukasz Kaiser
+    <td>
+	<a href='https://docs.google.com/presentation/d/1I7v3GcyHNGW7G3b6c4uTFxTRhpcowYVCOWspnCCPvR4/edit?usp=sharing'>Slides</a><br>
+	<a href='https://github.com/tensorflow/tensor2tensor'>Code</a>
+    </td>
+  </tr>
+<tr class="warning">
+    <td>A3 released</td>
+    <td>Mar 2</td>
+    <td><b>Assignment #3 released</b></td>
+    <td>
+	<a href='https://docs.google.com/document/d/1GJfn2B6EI8JueDiBwzTAdD34d6pC99BSt6vldOmUCPQ/edit?usp=sharing'>Assignment 3</a>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Mar 2</td>
+    <td>
+      <b>Dialogue agents</b><br>
+    </td>
+    <td>
+	<a href='https://docs.google.com/presentation/d/1bJhLv_sV81uR3tW90VAqIWvZHCQokHspGHnFaB5Qv8g/edit?usp=sharing'>Slides</a>
+    </td>
+  </tr>
+  <tr>
+    <td>Lecture</td>
+    <td>Mar 7 <br>Week 9</td>
+    <td><b>Reinforcement Learning in Tensorflow</b>
+    <br> Guest lecture by <a href='https://febert.github.io/'>Frederik Ebert</a>
+    <td>
+	<a href='lectures/CS20_intro_to_RL.pdf'>Slides</a>
+    </td>
+  </tr>
+  <tr>
+    <td>Lecture</td>
+    <td>Mar 9 </td>
+    <td>
+       <b>Keras</b><br>
+       Guest lecture by François Chollet<br>
+       (Deep learning researcher at Google, author of Keras)
+    </td>
+    <td>
+	<a href='lectures/march9guestlecture.pdf'>Slides</a>
+    </td>
+  </tr>
+   <tr class="warning">
+    <td>A3 Due</td>
+    <td>Mar 15</td>
+    <td><b>Assignment #3 due</b></td>
+    <td></td>
+  </tr>
+<tr>
+    <td>Demo</td>
+    <td>Mar 16 </td>
+    <td><b>Demo</b>
+    </td>
+    <td>
+    </td>
+  </tr>
+</table>
+</div>
+
+
+<!-- jQuery and Boostrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
