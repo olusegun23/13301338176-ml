@@ -1,0 +1,21 @@
+
+ARM's document:
+
+ 
+1. pip install tensorboard
+2. run train_export.py
+3. tensorboard --logdir=/tmp/tensorboard
+4. python tensorflow/python/tools/import_pb_to_tensorboard.py --model_dir
+resnetv1_50.pb --log_dir /tmp/tensorboard
+
+5. In a browser, navigate to http://localhost:6006
+
+bazel-bin/tensorflow/tools/graph_transforms/transform_graph \
+--in_graph=resnetv1_50_fp32.pb \
+--out_graph=optimized_resnetv1_50_fp32.pb \
+--inputs='Placeholder' \
+--outputs='resnet_v1_50/predictions/Reshape_1' \
+--transforms='strip_unused_nodes(type=float, shape="1,224,224,3")
+fold_constants(ignore_errors=true)
+fold_batch_norms
+fold_old_batch_norms'

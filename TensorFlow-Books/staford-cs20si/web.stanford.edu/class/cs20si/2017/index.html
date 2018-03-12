@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stanford University: Tensorflow for Deep Learning Research</title>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+  <!-- Google fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+
+<div id="header">
+  <a href="https://www.tensorflow.org/">
+    <img src="img/tensorflow-logo.jpg" style="height:50px; float: left; margin-left: 20px;">
+  </a>
+  <h1>CS 20SI: Tensorflow for Deep Learning Research</h1>
+  <div style="clear:both;"></div>
+</div>
+<div class="sechighlight">
+<div class="container sec">
+This is an archive of the 2017's course. For the current course, see <a href=https://cs20.stanford.edu>here</a>
+</div>
+</div>
+
+<div class="sechighlight">
+<div class="container sec">
+  <h2>Course Description</h2>
+
+  <div id="coursedesc">
+  Tensorflow is a powerful open-source software library for machine learning developed by researchers at Google Brain. It has many pre-built functions to ease the task of building different neural networks. Tensorflow allows distribution of computation across different computers, as well as multiple CPUs and GPUs within a single machine. TensorFlow provides a Python API, as well as a less documented C++ API. For this course, we will be using Python.
+  <br><br>
+  This course will cover the fundamentals and contemporary usage of the
+  Tensorflow library for deep learning research. We aim to help students understand the graphical computational model of Tensorflow, explore the functions it has to offer, and learn how to build and structure models best suited for a deep learning project. Through the course,
+  students will use Tensorflow to build models of different complexity, from
+  simple linear/logistic regression to convolutional neural network and recurrent
+  neural networks with LSTM to solve tasks such as word embeddings,
+  translation, optical character recognition. Students will also learn best
+  practices to structure a model and manage research experiments.
+  </div>
+</div>
+</div>
+
+<div class="sechighlight">
+<div style="text-align:center; padding:40px 0px 40px 0px;">
+
+    <!-- <button type="button" class="btn btn-success btn-lg">Course Notes (updated each week)</button> -->
+  <a href="syllabus.html">
+    <button type="button" class="btn btn-success btn-lg">Detailed syllabus</button>
+  </a>
+
+  <a href="https://piazza.com/stanford/winter2017/cs20si">
+    <button type="button" class="btn btn-warning btn-lg">Piazza forum</button>
+  </a>
+
+  <a href="https://github.com/chiphuyen/tf-stanford-tutorials">
+    <button type="button" class="btn btn-danger btn-lg">GitHub repo</button>
+  </a>
+
+</div>
+</div>
+
+<div class="container sec">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Class Time and Location</h2>
+      Winter quarter (January - March, 2017)<br>
+      Lecture: Wednesday, Friday 3:30-4:20<br>
+      Location: <a href="http://maps.stanford.edu/ada/building-ada.cfm?FACIL_ID=01-200">200-219</a>
+    </div>
+    <div class="col-md-4">
+      <h2>Instructor</h2>
+      <b>Chip Huyen</b>
+      <br> <img src="img/contact.jpg" style="height:16px; margin-left: 0px;">
+      <br> Office Hours by appointment
+    </div>
+    <div class="col-md-4">
+      <h2>Grading Policy</h2>
+      There're three assignments, each graded on the check/check minus/check plus scale like in the CS106 series. You pass the course if: <br>
+      + You average a check in all three assignments<br>
+      + and you're reasonably active in class. I won't be taking attendance because it's really boring. But I expect to see you often in class.
+  <!--     
+      <a href="assignment1/index.html">Assignment #1</a>: 15%<br>
+      <a href="assignment2/index.html">Assignment #2</a>: 15%<br>
+      <a href="assignment3/index.html">Assignment #3</a>: 15%<br>
+       -->
+    </div>
+  </div>
+</div>
+
+<div class="sechighlight">
+<div class="container sec">
+  <h2>Prerequisites</h2>
+  <ul>
+    <li><span class="spanh">Proficiency in Python</span><br>All class assignments will be in Python. There is a tutorial <a href="http://cs231n.github.io/python-numpy-tutorial/">here</a> for those who aren't as familiar with Python. If you have a lot of programming experience but in a different language (e.g. C/C++/Matlab/Javascript), you will probably be fine.</li>
+    <li><span class="spanh">Equivalent knowledge of CS229 (Machine Learning)</span><br> We will not ask you to take derivatives or build your own optimizers, but you should know what they are and how to use them. </li>
+    <li><span class="spanh">Basic Theoretical Understanding of Neural Networks</span> (e.g. CS 231N)<br>This course focuses more on the practical usage of Tensorflow in deep learning projects, therefore you can benefit more from the course if you already have basic understanding of neural networks: feed-forward, convnet, LSTM, sequence to sequence model.</li>
+  </ul>
+</div>
+</div>
+
+<div class="container sec">
+  <h2>FAQ</h2>
+  <div class="qqa">
+    <div class="qq">Is this the first time this class is offered?</div>
+    <div class="qa">Yes. Therefore, the materials of the class are not yet polished and the teaching might be experimental. Your feedback will be greatly appreciated.</div>
+  </div>
+  <div class="qqa">
+    <div class="qq">Will lectures be recorded?</div>
+    <div class="qa">Because this is a student initiated course, the lectures won't be recorded.</div>
+  </div>
+  <div class="qqa">
+    <div class="qq">Is attendance mandatory?</div>
+    <div class="qa">I won't be taking attendance but I expect to see you often in class. I want to get students' feedback so that I can improve in the future. The class is small (capped at 20), so we will probably get to know each other well.</div>
+  </div>
+  <div class="qqa">
+    <div class="qq">What is the format of the class?</div>
+    <div class="qa">It will be lecture + discussion. All students in the class are really smart, so I believe the class will an excellent opportunity for us to learn from each other. We will often have guest lecturers who are TensorFlow experts.</div>
+  </div>
+   <div class="qqa">
+    <div class="qq">Will the course be in Python 2 or 3?</div>
+    <div class="qa">The code examples are in Python 2.7, following the lead of CS231N. I will translate them into Python 3 as soon as I have a chance. You can do assignments in either Python 2 or 3. There is really not much difference.
+    </div>
+  </div>
+  <div class="qqa">
+    <div class="qq">The course seems to focus on NLP?</div>
+    <div class="qa">The syllabus is currently designed to be 60% Natural Language Processing and 40% Computer Vision. We are hoping to add a class or two about using Tensorflow in Reinforcement Learning.
+    </div>
+  </div>
+  <div class="qqa">
+    <div class="qq">Can I follow along from the outside?</div>
+    <div class="qa">We'd be happy if you join us! All the slides and lecture notes will be posted on this website. You're welcome to join us on <a href="https://piazza.com/class/ix3wqoxjg1v5co">Piazza</a> and ask questions. We answer all the questions pretty fast. You can also subscribe to the <a href="http://mailman.stanford.edu/mailman/listinfo/cs20si-win1617-guests">guest mailing list</a> to get updates from the course. </div>
+  </div>
+  <div class="qqa">
+    <div class="qq">Can I audit or sit in?</div>
+    <div class="qa">In general we are very open to sitting-in guests if you are a member of the Stanford community (registered student, staff, and/or faculty). Out of courtesy, we would appreciate that you first email us or talk to the instructor after the first class you attend.</div>
+  </div>
+  <div class="qqa">
+    <div class="qq">Can I work in groups for the assignment?</div>
+    <div class="qa">Yes, in groups of up to two people.</div>
+  </div>
+  <div class="qqa">
+    <div class="qq">I have a question about the class. What is the best way to reach the course staff?</div>
+    <div class="qa">Stanford students please use an internal class forum on
+    Piazza so that other students may benefit from your questions and our
+    answers. If you have a personal matter, email Chip directly.</div>
+  </div>
+</div>
+
+<div class="sechighlight">
+<div id="footer">
+
+
+
+  <div id="classicons">
+    Webdesign by Andrej Karpathy
+  </div>
+
+</div>
+</div>
+
+<!-- jQuery and Boostrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
