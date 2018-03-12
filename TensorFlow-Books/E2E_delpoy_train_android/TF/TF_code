@@ -1,0 +1,16 @@
+haijunz@haijunz-ThinkPad-T420:/media/haijunz/0064955E649556EE/MY_sync_baidu-big/13301338176-ml-bak$ grep -R  write_graph  *
+Audio-set/ML-KWS-for-MCU/freeze.py:  tf.train.write_graph(
+Audio-set/ML-KWS-for-MCU/train.py:  tf.train.write_graph(sess.graph_def, FLAGS.train_dir,
+TensorFlow-Books/E2E_delpoy_train_android/TF/example1/l1/tools/strip_unused_test.py:      graph_io.write_graph(sess.graph, self.get_temp_dir(), input_graph_name)
+TensorFlow-Books/keras/keras_to_tensorflow/.ipynb_checkpoints/keras_to_tensorflow-checkpoint.ipynb:    "write_graph_def_ascii_flag = True\n",
+TensorFlow-Books/keras/keras_to_tensorflow/.ipynb_checkpoints/keras_to_tensorflow-checkpoint.ipynb:    "if write_graph_def_ascii_flag:\n",
+TensorFlow-Books/keras/keras_to_tensorflow/.ipynb_checkpoints/keras_to_tensorflow-checkpoint.ipynb:    "    tf.train.write_graph(sess.graph.as_graph_def(), output_fld, f, as_text=True)\n",
+TensorFlow-Books/keras/keras_to_tensorflow/.ipynb_checkpoints/keras_to_tensorflow-checkpoint.ipynb:    "graph_io.write_graph(constant_graph, output_fld, output_graph_name, as_text=False)\n",
+TensorFlow-Books/keras/keras_to_tensorflow/keras_to_tensorflow.ipynb:    "    tf.train.write_graph(sess.graph.as_graph_def(), output_fld, f, as_text=True)\n",
+TensorFlow-Books/keras/keras_to_tensorflow/keras_to_tensorflow.ipynb:    "graph_io.write_graph(constant_graph, output_fld, args.output_model_file, as_text=False)\n",
+TensorFlow-Books/keras/keras_to_tensorflow/keras_to_tensorflow.py:    tf.train.write_graph(sess.graph.as_graph_def(), output_fld, f, as_text=True)
+TensorFlow-Books/keras/keras_to_tensorflow/keras_to_tensorflow.py:graph_io.write_graph(constant_graph, output_fld, args.output_model_file, as_text=False)
+TensorFlow-Books/keras/keras_to_tensorflow/old_version/.ipynb_checkpoints/keras_to_tensorflow_via_freeze_graph-checkpoint.ipynb:    "write_graph_def_ascii_flag = True\n",
+TensorFlow-Books/keras/keras_to_tensorflow/old_version/.ipynb_checkpoints/keras_to_tensorflow_via_freeze_graph-checkpoint.ipynb:    "if write_graph_def_ascii_flag:\n",
+TensorFlow-Books/keras/keras_to_tensorflow/old_version/keras_to_tensorflow_via_freeze_graph.ipynb:    "if write_graph_def_ascii_flag:\n",
+
