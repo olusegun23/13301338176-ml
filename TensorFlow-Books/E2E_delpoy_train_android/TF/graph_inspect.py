@@ -10,3 +10,5 @@ for node in graph_def.node:
  
 for node in graph_def.node:
     print(node.name)
+
+#[print(n.name) for n in tf.get_default_graph().as_graph_def().node]
