@@ -1,5 +1,18 @@
 ##!/usr/bin/env python
 ## coding=utf-8
+
+
+'''
+This example demonstrates a simple use of pycallgraph.
+'''
+from pycallgraph import PyCallGraph
+from pycallgraph.output import GraphvizOutput
+
+
+
+
+
+
 import jieba
 
 filePath='corpus.txt'
