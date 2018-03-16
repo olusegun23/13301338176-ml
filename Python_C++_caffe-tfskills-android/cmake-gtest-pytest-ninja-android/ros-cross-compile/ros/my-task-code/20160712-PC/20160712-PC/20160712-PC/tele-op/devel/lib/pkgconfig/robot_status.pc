@@ -1,8 +1,0 @@
-prefix=/home/robot_crd/20160712-PC/tele-op/devel
-
-Name: robot_status
-Description: Description of robot_status
-Version: 0.6.0
-Cflags: 
-Libs: -L/home/robot_crd/20160712-PC/tele-op/devel/lib 
-Requires: 

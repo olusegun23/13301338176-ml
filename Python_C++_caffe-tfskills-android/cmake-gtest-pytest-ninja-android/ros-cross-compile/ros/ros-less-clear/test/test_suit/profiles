@@ -1,9 +1,0 @@
- valgrind --tool=massif ./1
-http://valgrind.org/docs/manual/ms-manual.html
-ms_print massif.out.12345
-
-
-
-http://valgrind.org/docs/manual/quick-start.html
-
-  valgrind --leak-check=yes ./1 
