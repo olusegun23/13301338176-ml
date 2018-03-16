@@ -1,0 +1,53 @@
+# %Tag(FULLTEXT)%
+cmake_minimum_required(VERSION 2.8.3)
+
+project(ros_image_pub_app)
+
+##set(THIRDPARTY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../Thirdparty)
+
+##set(BLUR_PATH ${THIRDPARTY_PATH}/blur.artifacts/blur5.7.4)
+
+#Change to arm for constitution
+##set(BLUR_LIB_PATH ${BLUR_PATH}/lib/ar/bin/lin/armeabi-v7a)
+
+##set(BOOST_INCLUDEDIR /local/mnt/workspace/paragk/Boost_1_58/boost_1_58_0/install_dir/include)
+
+find_package(catkin REQUIRED COMPONENTS
+           image_transport
+           cv_bridge
+)
+find_package( OpenCV REQUIRED)
+
+catkin_package(
+INCLUDE_DIRS .
+CATKIN_DEPENDS roscpp ros_image_pub
+)
+
+set(CMAKE_C_COMPILER gcc-4.8)
+set(CMAKE_CXX_COMPILER g++-4.8)
+
+## Uncomment only the INCLUDEDIR for x86
+
+set(CMAKE_CXX_FLAGS  "-I${BOOST_INCLUDEDIR} -std=c++11")
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=gnu++11")
+
+SET( THIRDPARTY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../Thirdparty")
+
+SET(EAGLE_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/../Thirdparty/eagle")
+
+SET(EAGLE_CAMERA_INC ${EAGLE_DIRECTORY}/inc)
+# Make sure we include lib dir for Linux build
+link_directories(${EAGLE_DIRECTORY}/lib/armeabi-v7a)
+
+include_directories(${catkin_INCLUDE_DIRS} ${EAGLE_CAMERA_INC})
+
+add_library(fastcv STATIC IMPORTED)
+set_property(TARGET fastcv PROPERTY IMPORTED_LOCATION )
+
+add_executable(RosImagePubApp src/RosImagePubApp.cpp src/EagleCamera.cpp src/ros_image_pub.cpp)
+
+target_link_libraries(RosImagePubApp ${catkin_LIBRARIES} ${ros_image_pub_LIBRARIES} pthread dl)
+target_link_libraries(RosImagePubApp camera)
+target_link_libraries(RosImagePubApp camparams)
+# %EndTag(FULLTEXT)%
+

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/linaro/ros-less/src/MASTER-ROS-WRAPPER/devel/setup.sh
