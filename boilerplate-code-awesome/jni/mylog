@@ -1,0 +1,37 @@
+]0;haijunz@haijunz-HP-Z230-SFF-Workstation: /media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jnihaijunz@haijunz-HP-Z230-SFF-Workstation:/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jni$ javac JNIDemo.java^C
+]0;haijunz@haijunz-HP-Z230-SFF-Workstation: /media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jnihaijunz@haijunz-HP-Z230-SFF-Workstation:/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jni$ ls
+JNIDemo.c  JNIDemo.java  mylog  Working with JNI- Java Native Interface in Ubuntu.pdf
+]0;haijunz@haijunz-HP-Z230-SFF-Workstation: /media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jnihaijunz@haijunz-HP-Z230-SFF-Workstation:/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jni$ javac JNIDemo.java
+]0;haijunz@haijunz-HP-Z230-SFF-Workstation: /media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jnihaijunz@haijunz-HP-Z230-SFF-Workstation:/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jni$ javah [K[K[K[K[K[Kls -l
+总用量 356
+-rw-rw-r-- 1 haijunz haijunz    380  3月 22 15:21 JNIDemo.c
+-rw-rw-r-- 1 haijunz haijunz    831  3月 22 15:24 JNIDemo.class
+-rw-rw-r-- 1 haijunz haijunz    274  3月 22 15:17 JNIDemo.java
+-rw-rw-r-- 1 haijunz haijunz   4096  3月 22 15:24 mylog
+-rw-rw-r-- 1 haijunz haijunz 344950  3月 22 15:22 Working with JNI- Java Native Interface in Ubuntu.pdf
+]0;haijunz@haijunz-HP-Z230-SFF-Workstation: /media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jnihaijunz@haijunz-HP-Z230-SFF-Workstation:/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jni$ ls -l[K[Kjavac JNIDemo.java[K[K[K[K[K[K[K[K[K[K[K[K[K[Kh JNIDemo
+]0;haijunz@haijunz-HP-Z230-SFF-Workstation: /media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jnihaijunz@haijunz-HP-Z230-SFF-Workstation:/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jni$ ls -l
+总用量 360
+-rw-rw-r-- 1 haijunz haijunz    380  3月 22 15:21 JNIDemo.c
+-rw-rw-r-- 1 haijunz haijunz    831  3月 22 15:24 JNIDemo.class
+-rw-rw-r-- 1 haijunz haijunz    366  3月 22 15:25 JNIDemo.h
+-rw-rw-r-- 1 haijunz haijunz    274  3月 22 15:17 JNIDemo.java
+-rw-rw-r-- 1 haijunz haijunz   4096  3月 22 15:24 mylog
+-rw-rw-r-- 1 haijunz haijunz 344950  3月 22 15:22 Working with JNI- Java Native Interface in Ubuntu.pdf
+]0;haijunz@haijunz-HP-Z230-SFF-Workstation: /media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jnihaijunz@haijunz-HP-Z230-SFF-Workstation:/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jni$ cc -o libJNIDemo.so -shared -fPIC -I/home/haijunz/QC_SW/jdk1. 8.0_144/include -I/home/haijunz/QC_SW/jdk1.8.0_144/include/linux JNIDemo.c
+]0;haijunz@haijunz-HP-Z230-SFF-Workstation: /media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jnihaijunz@haijunz-HP-Z230-SFF-Workstation:/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jni$ ls -l
+总用量 372
+-rw-rw-r-- 1 haijunz haijunz    380  3月 22 15:21 JNIDemo.c
+-rw-rw-r-- 1 haijunz haijunz    831  3月 22 15:24 JNIDemo.class
+-rw-rw-r-- 1 haijunz haijunz    366  3月 22 15:25 JNIDemo.h
+-rw-rw-r-- 1 haijunz haijunz    274  3月 22 15:17 JNIDemo.java
+-rwxrwxr-x 1 haijunz haijunz   8219  3月 22 15:25 [0m[01;32mlibJNIDemo.so[0m
+-rw-rw-r-- 1 haijunz haijunz   4096  3月 22 15:24 mylog
+-rw-rw-r-- 1 haijunz haijunz 344950  3月 22 15:22 Working with JNI- Java Native Interface in Ubuntu.pdf
+]0;haijunz@haijunz-HP-Z230-SFF-Workstation: /media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jnihaijunz@haijunz-HP-Z230-SFF-Workstation:/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jni$ java JNIDemo
+What is your name?
+zhj88888     ==========
+Hello zhj==========, you are running JNIDemo
+]0;haijunz@haijunz-HP-Z230-SFF-Workstation: /media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jnihaijunz@haijunz-HP-Z230-SFF-Workstation:/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/13301338176_ml/boilerplate-code-awesome/jni$ exit
+
+脚本完成，于 2018年03月22日 星期四 15时25分44秒

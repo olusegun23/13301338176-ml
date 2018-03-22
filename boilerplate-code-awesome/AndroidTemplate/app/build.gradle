@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+    signingConfigs {
+        release {
+            keyAlias 'mykeyalias'
+            keyPassword 'mykeypassword'
+            storeFile file('../keystore.jks')
+            storePassword 'mykeystorepassword'
+        }
+    }
+    defaultConfig {
+        applicationId "com.tailoredapps.template"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0.0"
+        vectorDrawables.useSupportLibrary = true
+        setProperty("archivesBaseName", "TAAppTemplate-v$versionName-b$versionCode")
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "backend"
+    productFlavors {
+        devBackend {
+            applicationIdSuffix ".dev"
+            resValue "string", "app_name", "TA Template App Dev"
+            buildConfigField "String", "BASE_URL", "\"https://restcountries.eu/\""
+            dimension "backend"
+        }
+        productionBackend {
+            resValue "string", "app_name", "TA Template App"
+            buildConfigField "String", "BASE_URL", "\"https://restcountries.eu/\""
+            dimension "backend"
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    lintOptions {
+        abortOnError false
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+    packagingOptions {
+        // Remove unneeded Realm native libs (nearly no devices use these)
+        exclude 'lib/mips/librealm-jni.so'
+        exclude 'lib/x86/librealm-jni.so'
+        exclude 'lib/x86_64/librealm-jni.so'
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+apply from: "dependencies.gradle"

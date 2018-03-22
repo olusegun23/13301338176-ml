@@ -1,0 +1,152 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+apply from: '../config/quality/quality.gradle'
+
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "24.0.3"
+    defaultConfig {
+        applicationId "com.abed.assignment"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    sourceSets {
+        String sharedTestDir = 'src/sharedTest/java'
+        test {
+            java.srcDir sharedTestDir
+        }
+        androidTest {
+            java.srcDir sharedTestDir
+        }
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "FLICKR_API_KEY", "\"b48131cc891e4b264b368ba3b708c43f\""
+            buildConfigField "String", "FLICKR_API_URL", "\"https://api.flickr.com/\""
+            buildConfigField "String", "GOOGLE_ANALYTICS_TRACKING_ID", "\"UA-87508523-1\""
+            buildConfigField "Integer", "FLICKR_PAGE_LOADING_SIZE", "33"
+        }
+        release {
+            buildConfigField "String", "FLICKR_API_KEY", "\"b48131cc891e4b264b368ba3b708c43f\""
+            // to be changed to the release key
+            buildConfigField "String", "FLICKR_API_URL", "\"https://api.flickr.com/\""
+            buildConfigField "String", "GOOGLE_ANALYTICS_TRACKING_ID", "\"UA-87508523-1\""
+            // to be changed to the release key
+            buildConfigField "Integer", "FLICKR_PAGE_LOADING_SIZE", "33"
+
+//            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            debuggable true
+            multiDexEnabled false
+
+            proguardFile '../proguard/proguard-androidannotations.pro'
+            proguardFile '../proguard/proguard-rx-java.pro'
+            proguardFile '../proguard/proguard-square-dagger.pro'
+            proguardFile '../proguard/proguard-google-analytics.pro'
+            proguardFile '../proguard/proguard-crashlytics-2.pro'
+            proguardFile '../proguard/proguard-facebook-stetho.pro'
+            proguardFile '../proguard/proguard-facebook.pro'
+            proguardFile '../proguard/proguard-glide.pro'
+            proguardFile '../proguard/proguard-google-play-services.pro'
+            proguardFile '../proguard/proguard-gson.pro'
+            proguardFile '../proguard/proguard-jackson-2.pro'
+            proguardFile '../proguard/proguard-lock.pro'
+            proguardFile '../proguard/proguard-retrolambda.pro'
+            proguardFile '../proguard/proguard-dbflow.pro'
+            proguardFile '../proguard/proguard-square-okhttp3.pro'
+            proguardFile '../proguard/proguard-square-otto.pro'
+            proguardFile '../proguard/proguard-square-retrofit2.pro'
+            proguardFile '../proguard/proguard-support-design.pro'
+            proguardFile '../proguard/proguard-support-v7-appcompat.pro'
+            proguardFile '../proguard/proguard-support-v7-cardview.pro'
+            proguardFile '../proguard/proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    final DAGGER_VERSION = '2.2'
+    final SUPPORT_LIBRARY_VERSION = '25.0.1'
+    final RETROFIT_VERSION = '2.1.0'
+    final PLAY_SERVICES_VERSION = '10.0.0'
+    final DBFLOW_VERSION = '3.1.1'
+    final STETHO_VERSION = '1.4.1'
+
+
+    def daggerCompiler = "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+
+    // APT dependencies
+    apt 'com.squareup:javapoet:1.7.0'
+    apt daggerCompiler
+    apt "com.github.Raizlabs.DBFlow:dbflow-processor:$DBFLOW_VERSION"
+    androidTestApt daggerCompiler
+    testApt daggerCompiler
+
+    debugCompile "com.facebook.stetho:stetho:$STETHO_VERSION"
+    debugCompile "com.facebook.stetho:stetho-okhttp3:$STETHO_VERSION"
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:$DBFLOW_VERSION"
+    compile "com.github.Raizlabs.DBFlow:dbflow:$DBFLOW_VERSION"
+    compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    compile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.4'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.jakewharton.timber:timber:4.3.1'
+    compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
+    compile "com.google.android.gms:play-services-analytics:$PLAY_SERVICES_VERSION"
+    compile 'io.reactivex:rxjava:1.1.4'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.android.support.test:runner:0.5'
+    testCompile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
+    testCompile "org.robolectric:robolectric:3.1.4"
+    testCompile 'com.squareup.assertj:assertj-android:1.1.1'
+
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
+    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2.2') {
+        // Necessary to avoid version conflicts
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+    }
+
+
+}
+
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.neenbedankt.android-apt'
