@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /poptarts/pop-tarts-crazy-good-jefr.jpg
+Disallow: /poptarts/pop-tarts-lhgt.jpg
+Disallow: /Snarf/snarf-fgaj.gif
+Disallow: /Snarf/snarfy-pqnr.gif
+Disallow: /books/abrashkin-williams-1958-kngt.jpg
+Disallow: /MyLife

@@ -1,0 +1,7 @@
+ clang-3.5    -std=gnu++14      -S -emit-llvm main.cpp -o -     -I../include         | opt -analyze -dot-callgraph
+
+dot -Tpng -ocallgraph.png callgraph.dot
+
+
+doxywizard
+
