@@ -1,0 +1,73 @@
+/*! \mainpage Haijunz
+ *
+ * \section Section1
+ *
+ *This is the introduction.
+ *
+ * \section   Section2
+ *
+ * \subsection Subsection1
+ *
+ *etc...
+
+
+
+
+The distance between \f$(x_1,y_1)\f$ and \f$(x_2,y_2)\f$ is   
+ \f$\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\f$.  
+
+
+
+\f[  
+  |I_2|=\left| \int_{0}^T \psi(t)   
+           \left\{   
+              u(a,t)-  
+              \int_{\gamma(t)}^a   
+              \frac{d\theta}{k(\theta,t)}  
+              \int_{a}^\theta c(\xi)u_t(\xi,t)\,d\xi  
+           \right\} dt  
+        \right|  
+\f]  
+
+
+
+
+# 一markdown 级标题
+## 二级标题
+### 三级标题
+##### 四级标题
+###### 五级标题
+###### 六级标题
+- Red
+- Green
+- Blue
+
+* Red
+* Green
+* Blue
+
++ Red
++ Green
++ Blue
+**加粗文本** 或者 __加粗文本__
+
+*斜体文本*  或者_斜体文本_
+
+~~删除文本~~
+
+
+|标题|标题|标题|
+|:---|:---:|---:|
+|居左测试文本|居中测试文本|居右测试文本|
+|居左测试文本1|居中测试文本2|居右测试文本3|
+|居左测试文本11|居中测试文本22|居右测试文本33|
+|居左测试文本111|居中测试文本222|居右测试文本333|
+
+
+
+
+
+
+ *this is last txt
+ */
+

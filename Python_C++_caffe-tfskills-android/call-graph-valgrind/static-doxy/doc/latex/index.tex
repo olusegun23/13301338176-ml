@@ -1,0 +1,193 @@
+{\tt http\-://www.\-stack.\-nl/$\sim$dimitri/doxygen/manual/markdown.\-html}
+
+{\tt https\-://segmentfault.\-com/markdown}
+
+
+\begin{DoxyEnumerate}
+\item 列出所有元素：
+\begin{DoxyItemize}
+\item 无序列表元素 \doxyref{A}{p.}{class_a}
+\begin{DoxyEnumerate}
+\item 元素 \doxyref{A}{p.}{class_a} 的有序子列表
+\end{DoxyEnumerate}
+\item 前面加四个空格
+\end{DoxyItemize}
+\item 列表里的多段换行： 前面必须加四个空格， 这样换行，整体的格式不会乱
+\item 列表里引用：
+
+$>$ 前面空一行 $>$ 仍然需要在 $>$ 前面加四个空格
+\item 列表里代码段：
+
+{\ttfamily  前面四个空格，之后按代码语法} 书写 ``` \begin{DoxyVerb}或者直接空八个，引入代码块
+\end{DoxyVerb}
+
+\end{DoxyEnumerate}
+
+公式 当你需要在编辑器中插入数学公式时，可以使用两个美元符 \$\$ 包裹 Te\-X 或 La\-Te\-X 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。如：
+
+\$\$ x = \{-\/b  \{b$^\wedge$2-\/4ac\}  2a\}. \$\$
+
+\$\$ x \{why-\/equal.\-html\}\{=\} y$^\wedge$2 + 1 \$\$
+
+同时也支持 H\-T\-M\-L 属性，如：
+
+{\tt https\-://www.\-jianshu.\-com/p/888c5eaebabd}
+
+方法三：使用\-Math\-Jax引擎 大家都看过\-Stackoverflow上的公式吧，漂亮，其生成的不是图片。这就要用到\-Math\-Jax引擎，在\-Markdown中添加\-Math\-Jax引擎也很简单，
+
+\$\$x=\{-\/b\{b$^\wedge$2-\/4ac\}\}\{2a\}\$\$\textbackslash{}(x=\{-\/b\{b$^\wedge$2-\/4ac\}\}\{2a\}\textbackslash{})
+
+然后，再使用\-Tex写公式。\$\$公式\$\$ 表示行间公式，本来\-Tex中使用(公式) 表示行内公式，但因为\-Markdown中 是转义字符，所以在\-Markdown中输入行内公式使用(公式) ，如下代码：
+
+\$\$x=\{-\/b\{b$^\wedge$2-\/4ac\}\}\{2a\}\$\$\textbackslash{}(x=\{-\/b\{b$^\wedge$2-\/4ac\}\}\{2a\}\textbackslash{})
+
+dd
+
+\begin{TabularC}{2}
+\hline
+\rowcolor{lightgray}{\bf First Header }&{\bf Second Header  }\\\cline{1-2}
+Content Cell &Content Cell \\\cline{1-2}
+Content Cell &Content Cell \\\cline{1-2}
+\end{TabularC}
+block-\/level H\-T\-M\-L elements — e.\-g. , \begin{TabularC}{0}
+\hline
+\end{TabularC}
+
+\begin{DoxyPre}, \end{DoxyPre}
+
+
+
+\begin{DoxyPre}, etc. — must be separated from surrounding content by blank lines, and the start and end tags of the block should not be indented with tabs or spaces.\end{DoxyPre}
+
+
+
+\begin{DoxyPre}Here is text for one paragraph.\end{DoxyPre}
+
+
+
+\begin{DoxyPre}We continue with more text in another paragraph.\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\section*{This is a level 1 header
+}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\subsection*{This is a level 2 header
+}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\section*{This is a level 1 header}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\subsubsection*{This is level 3 header}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\begin{quotation}
+This is a block quote
+spanning multiple lines
+
+\end{quotation}
+\end{DoxyPre}
+
+
+
+\begin{DoxyPre}0  if OK\par
+>1 if NOK\end{DoxyPre}
+
+
+
+\begin{DoxyPre}
+\begin{DoxyItemize}
+\item Item 1
+
+More text for this item.
+\end{DoxyItemize}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}
+\begin{DoxyItemize}
+\item Item 2
+  + nested list item.
+  + another nested item.
+\item Item 3
+\end{DoxyItemize}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}{\tt The link text}
+{\tt The link text}
+{\tt The link text} 
+{\tt The link text}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\begin{TabularC}{3}
+\hline
+\rowcolor{lightgray}\PBS\raggedleft {\bf Right }&\PBS\centering {\bf Center }&{\bf Left  
+
+}\\\cline{1-3}
+\PBS\raggedleft 10    &\PBS\centering 10     &10    
+\\\cline{1-3}
+\PBS\raggedleft 1000  &\PBS\centering 1000   &1000  
+\\\cline{1-3}
+\end{TabularC}
+\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\begin{TabularC}{3}
+\hline
+\rowcolor{lightgray}\PBS\raggedleft {\bf Right }&\PBS\centering {\bf Center }&{\bf Left  
+
+}\\\cline{1-3}
+\PBS\raggedleft 10    &\PBS\centering 10     &10    
+\\\cline{1-3}
+\PBS\raggedleft 1000  &\PBS\centering \\\cline{1-3}
+\end{TabularC}
+\end{DoxyPre}
+\section{Header 1                }\label{index_labelid}
+
+\begin{DoxyPre}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}\end{DoxyPre}
+\subsection{Header 2}\label{index_labelid2}
+
+\begin{DoxyPre}
+text\end{DoxyPre}
+
+
+
+\begin{DoxyPre} text\end{DoxyPre}
+
+
+
+\begin{DoxyPre}  text\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   code
+\end{DoxyPre}
