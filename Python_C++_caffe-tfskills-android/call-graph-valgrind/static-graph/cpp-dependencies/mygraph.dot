@@ -1,0 +1,18 @@
+digraph dependencies {
+  "src" [shape=oval];
+  "test" [shape=oval];
+  "test" -> "src" [color=lightblue];
+  "example.System" [shape=oval];
+  "example.Framework" [shape=oval];
+  "example.UI" [shape=oval];
+  "example.UI" -> "example.Engine" [color=orange];
+  "example.UI" -> "example.Framework" [color=blue];
+  "example.DataAccess" [shape=oval];
+  "example.DataAccess" -> "example.Framework" [color=blue];
+  "example.Engine" [shape=oval];
+  "example.Engine" -> "example.DataAccess" [color=lightblue];
+  "example.Engine" -> "example.Framework" [color=blue];
+  "example.Engine" -> "example.UI" [color=orange];
+  "example.main" [shape=oval];
+  "example.main" -> "example.UI" [color=lightblue];
+}

@@ -1,0 +1,4 @@
+digraph dependencies {
+  "gmath" [shape=oval];
+  "gperf" [shape=oval];
+}
