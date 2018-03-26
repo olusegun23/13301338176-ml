@@ -1,0 +1,7 @@
+*.iml
+.gradle
+local.properties
+.idea
+.DS_Store
+build
+shared/src/main/res/raw/credentials.json
