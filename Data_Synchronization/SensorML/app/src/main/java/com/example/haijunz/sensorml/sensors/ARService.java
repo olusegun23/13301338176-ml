@@ -53,7 +53,7 @@ public class ARService extends Service {
      */
     private void startSensors() {
         mSensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
-        mSensorMgr.registerListener(DataHandler.getHandler(),
+        mSensorMgr.registerListener(ARHandler.getHandler(),
                 mSensorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
                 SensorManager.SENSOR_DELAY_NORMAL);
 
@@ -61,7 +61,7 @@ public class ARService extends Service {
         mLocationMgr.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
                 LOCATION_MIN_TIME_CHANGE_UPDATE,
                 LOCATION_MIN_DISTANCE_CHANGE_UPDATE,
-                DataHandler.getHandler());
+                ARHandler.getHandler());
 
         sHandlerRegistered = true;
     }
@@ -72,7 +72,7 @@ public class ARService extends Service {
     private void stopSensors() {
         if (sHandlerRegistered) {
             mSensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
-            mSensorMgr.unregisterListener(DataHandler.getHandler());
+            mSensorMgr.unregisterListener(ARHandler.getHandler());
         }
     }
 
@@ -90,12 +90,12 @@ public class ARService extends Service {
                 "binding to sensor user-info service", Toast.LENGTH_SHORT)
                 .show();
 
-        DataHandler.getHandler().setService(this);
+        ARHandler.getHandler().setService(this);
         boolean state = isOnline();
         // Toast.makeText(getApplicationContext(), "deviceOnline?" + state,
         // Toast.LENGTH_SHORT).show();
 
-        DataHandler.getHandler().setDeviceConnectivity(state);
+        ARHandler.getHandler().setDeviceConnectivity(state);
         startSensors();
         return mMessenger.getBinder();
     }
@@ -112,8 +112,8 @@ public class ARService extends Service {
                 .show();
 
         stopSensors();
-        DataHandler.getHandler().setService(null);
-        DataHandler.clearHandler();
+        ARHandler.getHandler().setService(null);
+        ARHandler.clearHandler();
         return false;
     }
 

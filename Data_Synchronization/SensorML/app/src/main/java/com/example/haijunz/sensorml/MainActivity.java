@@ -14,6 +14,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.haijunz.sensorml.Env.EnvService;
 import com.example.haijunz.sensorml.sensors.ARService;
 
 import static java.lang.Thread.sleep;
@@ -21,9 +22,9 @@ import static java.lang.Thread.sleep;
 public class MainActivity extends AppCompatActivity implements
         ServiceConnection  {
 
-    public boolean isRunning = false;
+    public boolean isRunning = true;
     private Binder  mBinder;
-    TextView mText;
+    TextView mText,mText1;
     private Handler handlerRefresh;
 
     @Override
@@ -31,16 +32,16 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mText = (TextView) findViewById(R.id.mText);
+        mText1 = (TextView) findViewById(R.id.mText1);
         handlerRefresh = new Handler() {
             public void handleMessage(Message msg) {
                 Log.v("====", "receive  from handle");
-                mText.setText(mGlobal.info1);
-
+                mText.setText(mGlobal.info);
+                mText1.setText(mGlobal.info1);
                 super.handleMessage(msg);
             }
         };
-
-        mText = (TextView) findViewById(R.id.mText);
 
 
         //  update UI
@@ -84,6 +85,11 @@ public class MainActivity extends AppCompatActivity implements
 
         Intent intent = new Intent(this, ARService.class);
         bindService(intent, this, Context.BIND_AUTO_CREATE);
+        Intent intent1 = new Intent(this, EnvService.class);
+        bindService(intent1, this, Context.BIND_AUTO_CREATE);
+
+
+
 
     }
 

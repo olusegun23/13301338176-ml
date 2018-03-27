@@ -196,11 +196,11 @@ public class ARClassifier {
                 ARFeatures.Name.ACTIVITY_STAND, avg, stdDev,
                 peekToPeek);
 
-        System.out.println ("TweetSensor" + "walk:" + distWalk + "stand:" + distStand + "run:" + distRun);
+        System.out.println ("Sensor" + "walk:" + distWalk + "stand:" + distStand + "run:" + distRun);
         // Compute global distance and classify
         String text = "avg: " + avg + ", stdDev: " + stdDev + ", peek: "
                 + peekToPeek;
-        //DataHandler.appendLog(text, "acc");
+        //ARHandler.appendLog(text, "acc");
         act = ARClassifier.kNNClassifyVoting(distStand, distWalk,
                 distRun);
 

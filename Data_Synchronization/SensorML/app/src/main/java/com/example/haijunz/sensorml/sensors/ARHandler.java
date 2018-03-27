@@ -39,12 +39,13 @@ import java.util.List;
  * @version 0.0.1
  *
  */
-public class DataHandler implements SensorEventListener, LocationListener {
+public class ARHandler implements SensorEventListener, LocationListener {
 
     private boolean internetConnectivity = false;
     private int mSampleNo = 0;
     private static int logCounter = 0;
     private static final int TOTAL_SAMPLES = 64;
+
     private static final double DURATION_OF_ONE_SAMPLE = 64.0;
     private double mLongitude, mLatitude;
     private long mStartTime = System.currentTimeMillis();
@@ -56,7 +57,7 @@ public class DataHandler implements SensorEventListener, LocationListener {
 
     // FIXME check if static is required
     public static String userInfoStr;
-    private static DataHandler sHandler;
+    private static ARHandler sHandler;
 
     /*
      * Acceleration from x, y, z accelerometer values
@@ -114,11 +115,11 @@ public class DataHandler implements SensorEventListener, LocationListener {
     /**
      * Singleton class implementation, Can create only one object
      *
-     * @return DataHandler returns instance of DataHandler
+     * @return ARHandler returns instance of ARHandler
      */
-    public static DataHandler getHandler() {
+    public static ARHandler getHandler() {
         if (sHandler == null) {
-            sHandler = new DataHandler();
+            sHandler = new ARHandler();
         }
 
         return sHandler;
@@ -219,8 +220,8 @@ public class DataHandler implements SensorEventListener, LocationListener {
             smoothed_data = Utils.smoothenData(linear_data);
             userAct = ARClassifier
                     .kNNClassifyActivity(smoothed_data);
-            userAct = "Activity: " + userAct;
-            mGlobal.info1=userAct;
+            userAct = " Activity:      " + userAct;
+            mGlobal.info=userAct;
 
 
             if (internetConnectivity) {
@@ -328,7 +329,7 @@ public class DataHandler implements SensorEventListener, LocationListener {
     }
 
     public static void appendLog(String text, String nameAppend) {
-        int no = DataHandler.logCounter;
+        int no = ARHandler.logCounter;
         String fileName = "sdcard/sensorAudioLog_" + nameAppend;
         File logFile = new File(fileName + no + "_.file");
         if (!logFile.exists()) {
