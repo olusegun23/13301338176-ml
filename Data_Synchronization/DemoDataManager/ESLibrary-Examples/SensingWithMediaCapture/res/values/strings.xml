@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Example.UploadMedia</string>
+    <string name="switchSensing">Toggle Sensing</string>
+    <string name="notSensing">Status: Not Sensing</string>
+    <string name="sensing">Status: Sensing</string>
+
+</resources>

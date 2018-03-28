@@ -1,0 +1,17 @@
+.navbar {
+	background-color: #FA8500 !important;
+	font-size: 20px !important;
+}
+.navbar-default, .navbar-brand{
+	color: #FFFFFF !important;
+	margin-bottom: 0 !important;
+	font-size: 20px !important;
+}
+
+.navbar-default, .navbar-nav > li > a {
+	color: #FFFFFF !important;
+}
+
+.underline:hover {
+	text-decoration: underline;
+}

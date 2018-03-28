@@ -1,0 +1,22 @@
+.orange {
+	color: #FA8500 !important;
+}
+
+.italic{
+	font-style: italic;
+}
+
+.lead{
+    text-align: justify;
+    text-justify: inter-word
+}
+
+.btn-warning {
+    background-color:#FA8500 !important;
+    color: white !important;
+}
+
+.margin_top_down {
+    margin-top:20px;
+    margin-bottom:20px;
+}

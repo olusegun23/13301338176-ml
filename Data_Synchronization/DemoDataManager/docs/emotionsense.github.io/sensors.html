@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ES Library Documentation by emotionsense</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ES Libraries Documentation</h1>
+        <p>Online documentation:
+	<br /><a href="index.html">Home</a>
+	<br /><a href="sensors.html">What Sensor Data?</a>
+        <br /><a href="android.html">Collecting Sensor Data</a>
+        <br /><a href="format.html">Formatting Sensor Data</a>
+        <br /><a href="data.html">Store/Transfer Data</a>
+	<br /><a href="research.html">Research</a>
+        <br /><a href="contributing.html">Contributing</a>
+	<br /><a href="https://github.com/emotionsense">Project Github Page</a></p>
+
+      </header>
+      <section>
+<h1>Sensor Data</h1>
+<p>We adopt a very broad definition of “sensor,” taking it to mean <i>any signal that can be unobtrusively captured from the smartphone device</i>. The full list of the sensors we currently support are (all of the JSON examples were created with the <a href="https://github.com/emotionsense/DemoDataManager">Demo Data Manager</a> app):</p>
+
+<h3>Pull Sensors</h3>
+<p>All sensors that the Android OS does not capture data from until requested to do so by an application. They currently include the accelerometer, location (both coarse, from the nearest cell-tower, and fine, from the GPS), and microphone amplitude levels. They further support querying for Wi-Fi, Bluetooth, and active application scan results, as well as querying the SMS and call logs.</p>
+<ul>
+	<li><a href="data/accelerometer.html">Accelerometer</a>
+	<li><a href="data/bluetooth.html">Bluetooth</a>
+	<li><a href="data/applications.html">Application Log</a>
+	<li><a href="data/calllog.html">Call Log</a>
+	<li><a href="data/gyroscope.html">Gyroscope</a>
+	<li><a href="data/location.html">Location</a>
+	<li><a href="data/magneticfield.html">Magnetic Field</a>
+	<li><a href="data/microphone.html">Microphone</a>
+	<li><a href="data/phoneradio.html">Phone Radio</a>
+	<li><a href="data/smslog.html">SMS Log</a>
+        <li><a href="data/stepcounter.html">Step Counter</a>
+	<li><a href="data/wifi.html">Wi-Fi Scan</a>
+</ul>
+
+<h3>Push Sensors</h3>
+<p>The Android OS publishes data about particular events that applications can receive: this set of sensors receives this information on behalf of an application, and includes: the battery (energy levels), connection state (whether the phone is connected to a Wi-Fi or mobile network and if it is in roaming mode), the proximity sensor (near/far events), screen on/off events, phone calls starting/ending, and SMS sent/received events.</p>
+<ul>
+	<li><a href="data/battery.html">Battery</a>
+	<li><a href="data/connectionstate.html">Connection State</a>
+	<li><a href="data/connectionstrength.html">Connection Strength</a>
+	<li><a href="data/location.html">Passive Location</a>
+	<li><a href="data/phonestate.html">Phone State</a>
+	<li><a href="data/proximity.html">Proximity</a>
+	<li><a href="data/screen.html">Screen Event</a>
+	<li><a href="data/smsevent.html">SMS Event</a>
+</ul>
+
+
+<h3>Environment Sensors</h3>
+<ul>
+	<li><a href="data/temperature.html">Temperature</a>
+	<li><a href="data/humidity.html">Humidity</a>
+	<li><a href="data/light.html">Light</a>
+</ul>
+
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages <br>Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

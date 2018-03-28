@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ES Library Documentation by emotionsense</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ES Libraries Documentation</h1>
+        <p>Online documentation:
+	<br /><a href="../index.html">Home</a>
+	<br /><a href="../sensors.html">What Sensor Data?</a>
+        <br /><a href="../android.html">Collecting Sensor Data</a>
+        <br /><a href="../format.html">Formatting Sensor Data</a>
+        <br /><a href="../data.html">Store/Transfer Data</a>
+	<br /><a href="../research.html">Research</a>
+        <br /><a href="../contributing.html">Contributing</a>
+	<br /><a href="https://github.com/emotionsense">Project Github Page</a></p>
+
+      </header>
+      <section>
+<h1>Location</h1>
+<p>The location sensor finds the latitude/longitude of the device. There are two sensors in the library for this: the pull <a href="https://github.com/emotionsense/SensorManager/blob/master/src/com/ubhave/sensormanager/sensors/pull/LocationSensor.java">Location</a> sensor and the push <a href="https://github.com/emotionsense/SensorManager/blob/master/src/com/ubhave/sensormanager/sensors/push/PassiveLocationSensor.java">Passive Location</a> sensor.</p>
+
+<p>This sensor requires either the 'access coarse location' or 'access fine location' permission. The JSON format for a sample from these sensors are:</p>
+
+<pre><code>{
+	"userid":"user-id",
+	"deviceid":"device-id",
+	"senseStartTime":"14:04:14:087 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435669454087,
+	"dataType":"Location",
+	"locations":
+	[
+		{
+			"latitude":0,
+			"longitude":0,
+			"accuracy":30.45199966430664,
+			"speed":0,
+			"bearing":0,
+			"provider":"network",
+			"time":1435669478189,
+			"local_time":"14:04:38:189 30 06 2015 +0100 GMT+01:00"
+		}
+	],
+	"configAccuracy":"LOCATION_ACCURACY_COARSE"
+}</pre></code>
+
+<pre><code>{
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"16:25:04:729 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435677904729,
+	"dataType":"PassiveLocation",
+	"latitude":0,
+	"longitude":0,
+	"accuracy":36.00299835205078,
+	"speed":0,
+	"bearing":0,
+	"provider":"network",
+	"time":1435677904453
+}</pre></code>
+
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages <br>Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

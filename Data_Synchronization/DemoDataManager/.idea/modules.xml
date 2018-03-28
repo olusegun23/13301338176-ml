@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DemoDataManager.iml" filepath="$PROJECT_DIR$/DemoDataManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demoDataManager/demoDataManager.iml" filepath="$PROJECT_DIR$/demoDataManager/demoDataManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sensorDataManager/sensorDataManager.iml" filepath="$PROJECT_DIR$/sensorDataManager/sensorDataManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sensorManager/sensorManager.iml" filepath="$PROJECT_DIR$/sensorManager/sensorManager.iml" />
+    </modules>
+  </component>
+</project>

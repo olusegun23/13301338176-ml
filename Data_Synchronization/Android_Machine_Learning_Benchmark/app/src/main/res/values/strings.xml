@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MC_Project</string>
+    <string name="ml_algo_prompt">Choose an ML algorithm</string>
+
+    <string-array name="ml_alogs_arrays">
+        <item>SVM</item>
+        <item>NBC</item>
+        <item>LR</item>
+        <item>KNN</item>
+    </string-array>
+</resources>

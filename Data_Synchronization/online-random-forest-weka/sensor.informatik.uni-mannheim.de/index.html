@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="./images/favicon.ico">
+      <title>Human Activity Recognition</title>
+      <!-- Bootstrap core CSS -->
+      <link href="./lib/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+      <link href="./lib/bootstrap-3.3.5/css/bs-callout.css" rel="stylesheet">
+      <!-- Custom styles for this template -->
+      <link href="lib/bootstrap-3.3.5/css/offcanvas.css" rel="stylesheet">
+      <link href="lib/ekko-lightbox-3.3.0/ekko-lightbox.min.css" rel="stylesheet">
+      <link href="lib/main.css" rel="stylesheet">
+   </head>
+   <body>
+      <nav class="navbar navbar-fixed-top navbar-inverse">
+         <div class="container">
+            <div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="">Activity Recognition</a></div>
+            <div id="navbar" class="collapse navbar-collapse">
+               <ul class="nav navbar-nav">
+                  <li id="menu_home" class="active"><a href="index.html">Home</a></li>
+                  <li id="menu_applications"><a href="#applications">Applications</a></li>
+                  <li id="menu_dataset" class="proband_highlight"><a href="#dataset">DataSets</a></li>
+                  <li id="menu_frameworks"><a href="#frameworks">Frameworks</a></li>
+                  <li id="menu_results"><a href="#results">Results</a></li>
+                  <li id="menu_publications"><a href="#publications">Publications</a></li>
+               </ul>
+               <div class="dimmed" style="display:none"></div>
+            </div>
+            <!-- /.nav-collapse -->
+         </div>
+         <!-- /.container -->
+      </nav>
+      <!-- /.navbar -->
+      <div class="container">
+         <div class="row row-offcanvas row-offcanvas-right">
+            <div id="mainbody" class="col-xs-12 col-sm-9 body-content">
+               <p class="pull-right visible-xs"><button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button></p>
+               <div class="jumbotron">
+                  <h1>Human Activity Recognition</h1>
+                  <p class="text-justify">This page provides tools, data sets, and results which deal with the automatic detection of human activity recognition (e.g., walking) as well as activities of daily living (e.g., watering plants).</p>
+               </div>
+               <div id='noscript' style="margin: auto; width: 90%; border:3px solid #990000; padding: 10px; font-size: 17px; font-weight: bold; text-align: center; color: red;">This page requires Javascript! Javascript is disabled (maybe due to a Browser plugin). Please enable Javascript. This page was optimized for Chrome and Firefox.</div>
+               <br/>
+               <div style="margin: auto; width: 90%; border:3px solid #0404B4; padding: 10px; font-size: 17px; font-weight: bold; text-align: center;">Please refer to our <a href="#publications">publications</a> if you use our datasets, tools, results, etc.</div>
+               <br/>
+               <div style="margin: auto; width: 90%; border:3px solid #990000; padding: 10px; font-size: 17px; font-weight: bold; text-align: center;">Please do not hesitate to <a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/timo-sztyler/">contact</a> me if something is missing or not working!</div>
+               <div class="row">
+                  <div class="col-xs-6 col-lg-4">
+                     <h2>Applications</h2>
+                     <p class="text-justify">Our aim is to develop robust activity recognition methods based on mobile device sensors that generate high quality results in a real world setting. This section provides our developed apps including source code, and docs. We provide a comprehensive data collector app and develop currently a HAR app for everday life.</p>
+                     <div class="center padding-top50"><a href="#applications"><img alt="Get it on Google Play" src="images/googleplay.png" /></a></div>
+                  </div>
+                  <!--/.col-xs-6.col-lg-4-->
+                  <div class="col-xs-6 col-lg-4">
+                     <h2>Data Sets</h2>
+                     <p class="text-justify">The data set covers the acceleration, GPS, gyroscope, light, magnetic field, and sound level data of the activities climbing stairs down and up, jumping, lying, standing, sitting, running/jogging, and walking of fifteen subjects. For each activity, the on-body positions chest, forearm, head, shin, thigh, upper arm, and waist were simultaneously recorded.</p>
+                     <div class="center padding-top50"><a class="proband_highlight" href="#dataset"><img alt="Our Data Set" src="images/dataset.png" /></a></div>
+                  </div>
+                  <!--/.col-xs-6.col-lg-4-->
+                  <div class="col-xs-6 col-lg-4">
+                     <h2>Frameworks</h2>
+                     <p class="text-justify">For processing the recorded sensor data, we developed useful frameworks. Our frameworks are available, free for use, and can be modified or enhanced without further requests. Currently, we focus on derving useful information from accelormeter data, i.e, segmenting the data stream and compute meaningful features.</p>
+                     <div class="center padding-top50"><a href="#frameworks"><img alt="Get it on Github" src="images/github.png" /></a></div>
+                  </div>
+                  <!--/.col-xs-6.col-lg-4-->
+               </div>
+               <!--/row-->
+            </div>
+            <!--/.col-xs-12.col-sm-9-->
+            <div id="probandbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="jumbotron" style="padding: 10px;">
+                  <div class="row">
+                     <div class="col-xs-3 col-lg-3"><a href="#" class="thumbnail thumbnail-large" data-toggle="lightbox"><img id="proband_image_overview" src="#" alt="" width="140"></a></div>
+                     <div class="col-xs-5 col-lg-5">
+                        <div>
+                           <h2 id="proband_headline" class="headline-space" style="display: inline; vertical-align: middle;">Subject</h2>
+                           <h4 style="display: inline; margin-left: 40px;"><button id="proband_report" type="button" class="btn btn-success red-tooltip" style="display: inline; padding: 2px 20px 2px 20px;" data-toggle="tooltip" data-placement="bottom" data-html="yes" data-title="">Show report</button></h4>
+                        </div>
+                        <ul>
+                           <li class="list-group-item list-group-item-label">
+                              <h5><span class="label label-primary list-group-item-entry">Gender</span><strong id="proband_gender">?</strong></h5>
+                           </li>
+                           <li class="list-group-item list-group-item-label">
+                              <h5><span class="label label-primary list-group-item-entry">Age</span><strong id="proband_age">?</strong></h5>
+                           </li>
+                           <li class="list-group-item list-group-item-label">
+                              <h5><span class="label label-primary list-group-item-entry">Height</span><strong id="proband_height">?</strong></h5>
+                           </li>
+                           <li class="list-group-item list-group-item-label">
+                              <h5><span class="label label-primary list-group-item-entry">Weight</span><strong id="proband_weight">?</strong></h5>
+                           </li>
+                           <li class="list-group-item list-group-item-label">
+                              <div class="row">
+                                 <div class="col-xs-5 col-lg-5">
+                                    <h5 style="margin-top: 0px;"><span class="label label-primary list-group-item-entry">Occupation</span></h5>
+                                 </div>
+                                 <div class="col-xs-7 col-lg-7" style="padding-left: 4px;">
+                                    <h5 style="margin-top: 0px;"><strong id="proband_occupation">?</strong></h5>
+                                 </div>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="col-xs-4 col-lg-4">
+                        <div class="row">
+                           <div class="col-xs-6 col-lg-6"><a href="#" class="thumbnail thumbnail-small" data-toggle="lightbox"><img id="proband_image_head" src="#" alt="head" height="50" width="50" /></a></div>
+                           <div class="col-xs-6 col-lg-6"><a href="#" class="thumbnail thumbnail-small" data-toggle="lightbox"><img id="proband_image_forearm" src="#" alt="forearm" height="50" width="50" /></a></div>
+                           <div class="col-xs-6 col-lg-6"><a href="#" class="thumbnail thumbnail-small" data-toggle="lightbox"><img id="proband_image_chest" src="#" alt="chest" height="50" width="50" /></a></div>
+                           <div class="col-xs-6 col-lg-6"><a href="#" class="thumbnail thumbnail-small" data-toggle="lightbox"><img id="proband_image_shin" src="#" alt="shin" height="50" width="50" /></a></div>
+                           <div class="col-xs-6 col-lg-6"><a href="#" class="thumbnail thumbnail-small" data-toggle="lightbox"><img id="proband_image_thigh" src="#" alt="thigh" height="50" width="50" /></a></div>
+                           <div class="col-xs-6 col-lg-6"><a href="#" class="thumbnail thumbnail-small" data-toggle="lightbox"><img id="proband_image_upperarm" src="#" alt="upperarm" height="50" width="50" /></a></div>
+                           <div class="col-xs-6 col-lg-6"><a href="#" class="thumbnail thumbnail-small" data-toggle="lightbox"><img id="proband_image_waist" src="#" alt="waist" height="50" width="50" /></a></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div id="posture_entries" class="row"></div>
+            </div>
+            <div id="dataset-dailylog-subject-body" class="col-xs-12 col-sm-9 body-content">
+               <div class="col-xs-6 col-lg-6">
+                  <div class="row">
+                     <div class="panel panel-default">
+                        <div class="panel-heading" style="background-color: #7a7a7a; color: white;">
+                           <h3 id="subject-headline" class="headline-space" style="display: inline; vertical-align: middle;">Subject</h3>
+                        </div>
+                        <div class="panel-body" style="padding-right: 0px;">
+                           <div class="col-xs-8 col-lg-8">
+                              <ul style="padding-left: 0px;">
+                                 <li class="list-group-item list-group-item-label" style="background: #FFFFFF;">
+                                    <h5><span class="label label-default list-group-item-entry">Gender</span><strong id="subject-gender">?</strong></h5>
+                                 </li>
+                                 <li class="list-group-item list-group-item-label" style="background: #FFFFFF;">
+                                    <h5><span class="label label-default list-group-item-entry">Age</span><strong id="subject-age">?</strong></h5>
+                                 </li>
+                                 <li class="list-group-item list-group-item-label" style="background: #FFFFFF;">
+                                    <h5><span class="label label-default list-group-item-entry">Height</span><strong id="subject-height">?</strong></h5>
+                                 </li>
+                                 <li class="list-group-item list-group-item-label" style="background: #FFFFFF;">
+                                    <h5><span class="label label-default list-group-item-entry">Weight</span><strong id="subject-weight">?</strong></h5>
+                                 </li>
+                              </ul>
+                           </div>
+                           <div class="col-xs-4 col-lg-4"><a href="#"><img class="thumbnail" id="subject-image-overview" src="#" alt="" style="margin-top: 10px;"></a></div>
+                           <div class="col-xs-12 col-lg-12">
+                              <ul style="padding-left: 0px; padding-top: 0px;">
+                                 <li class="list-group-item list-group-item-label" style="background: #FFFFFF;">
+                                    <h5 style="margin-top: 0px;"><span class="label label-default list-group-item-entry">Occupation</span><strong id="subject-occupation">?</strong></h5>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="panel panel-primary">
+                        <div class="panel-heading">
+                           <h4 style="margin: 0px;">DailyLog</h4>
+                        </div>
+                        <div class="panel-body">
+                           <div class="col-xs-8 col-lg-8">
+                              <div><span class="label label-default label-sensor" data-toggle="tooltip" data-placement="left" title="SensorDesc and Settings" style="width: 120px;">Activity Log</span><span class="label label-success"><a id="activity-dl-csv" class="font-white" href="#">csv</a></span><span class="label label-success"><a id="activity-dl-xes" class="font-white" href="#">xes</a></span></div>
+                              <div><span class="label label-default label-sensor" data-toggle="tooltip" data-placement="left" title="SensorDesc and Settings" style="width: 120px;">Environment Log</span><span class="label label-success"><a id="environment-dl-csv" class="font-white" href="#">csv</a></span></div>
+                              <div><span class="label label-default label-sensor" data-toggle="tooltip" data-placement="left" title="SensorDesc and Settings" style="width: 120px;">Posture Log</span><span class="label label-success"><a id="posture-dl-csv" class="font-white" href="#">csv</a></span></div>
+                              <div><span class="label label-default label-sensor" data-toggle="tooltip" data-placement="left" title="SensorDesc and Settings" style="width: 120px;">Acceleration Sensor</span><span class="label label-success"><a id="acceleration-dl-csv" class="font-white" href="#">csv</a></span></div>
+                              <div><span class="label label-default label-sensor" data-toggle="tooltip" data-placement="left" title="SensorDesc and Settings" style="width: 120px;">Orientation Sensor</span><span class="label label-success"><a id="orientation-dl-csv" class="font-white" href="#">csv</a></span></div>
+                              <div><span class="label label-default label-sensor" data-toggle="tooltip" data-placement="left" title="SensorDesc and Settings" style="width: 120px;">GPS Sensor</span><span class="label label-success"><a id="gps-dl-csv" class="font-white" href="#">csv</a></span></div>
+                           </div>
+                           <div class="col-xs-4 col-lg-4 vertical-line center" style="height: 150px;;">
+                              <div id="subject-duration" style="font-size: 40px; padding-left: 5px; padding-top: 15px;">0</div>
+                              <div style="font-size: 40px; padding-left:5px;">days</div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xs-1 col-lg-1"></div>
+               <div class="col-xs-5 col-lg-5">
+                  <div class="row">
+                     <div class="bs-callout bs-callout-primary" style="margin-top: 0px;">
+                        <h4 style="color: #000000;">Daily Routine (Fuzzy Model)</h4>
+                        <div style="height: 400px; display: table-cell; vertical-align: middle;"><a href="#" class="thumbnail" data-toggle="lightbox" style="border: 0px;"><img id="subject-process" src="..." alt="daily routine (fuzzy model)" /></a></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div id="publicationsbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Publications</h1>
+               </div>
+               <div class="bs-callout bs-callout-info" style="font-weight: bold;">Please reference to the corresponding work if you use our dataset, results, tools, source code, etc.</div>
+               <div style="margin-bottom: 80px;">
+                  <h4>Journal Paper / Book Section</h4>
+                  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">Position-Aware Activity Recognition with Wearable Devices (2017)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Pervasive and Mobile Computing</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Timo Sztyler, Heiner Stuckenschmidt and Wolfgang Petrich)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="https://www.journals.elsevier.com/pervasive-and-mobile-computing">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/pmc_journal.png" /></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Pervasive and Mobile Computing<br/>(ISSN: 1574-1192)<br/>Elsevier, Journal</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/sztyler2017position.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png" /><br/>BibTex</div>
+                        </a>
+                        <a href="http://dx.doi.org/10.1016/j.pmcj.2017.01.008">
+                           <div class="col-md-1 pub-icon"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+                        </a>
+                        <div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="presentation" src="./images/publications/ppt.png" /><br/>Presentation</div>
+                        <a href="#results2016activity">
+                           <div class="col-md-1 pub-icon"><img alt="resources" src="./images/publications/online.png" /><br/>Resources</div>
+                        </a>
+                     </div>
+                  </div>
+                  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">Self-Tracking Reloaded: Applying Process Mining to Personalized Health Care from Labeled Sensor Data (2016)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Transactions on Petri Nets and Other Models of Concurrency</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Timo Sztyler, Josep Carmona, Johanna Völker and Heiner Stuckenschmidt)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://www.springer.com/series/8379">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/petri_book.png" /></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Transactions on Petri Nets and Other Models of Concurrency (ISSN: 1867-7193)<br/>Springer, Book</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/sztyler2016tracking.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png" /><br/>BibTex</div>
+                        </a>
+                        <a href="http://dx.doi.org/10.1007/978-3-662-53401-4">
+                           <div class="col-md-1 pub-icon"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+                        </a>
+                        <div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="presentation" src="./images/publications/ppt.png" /><br/>Presentation</div>
+                        <a href="#results2016tracking">
+                           <div class="col-md-1 pub-icon"><img alt="resources" src="./images/publications/online.png" /><br/>Resources</div>
+                        </a>
+                     </div>
+                  </div>
+                  <h4>Conference Paper</h4>                  
+                  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">Hips Do Lie! A Position-Aware Mobile Fall Detection System (2018)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Pervasive Computing and Communications</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Christian Krupitzer, Timo Sztyler, Janick Edinger, Martin Breitbach, Heiner Stuckenschmidt and Christian Becker)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://www.percom.org/">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/percom2018.png"/></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Pervasive Computing and Communications<br/>PerCom 2018<br/>IEEE Computer Society, Conference</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/krupitzer2018hips.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png"/><br/>BibTex</div>
+                        </a>
+                        <div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+						<a href="./publications/presentation/percom2018hips.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="presentation" src="./images/publications/ppt.png"/><br/>Presentation</div>
+                        </a>                        <a href="#results2018hips">
+                           <div class="col-md-1 pub-icon"><img alt="resources" src="./images/publications/online.png"/><br/>Resources</div>
+                        </a>
+                     </div>
+                  </div>                  
+                  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">NECTAR: Knowledge-based Collaborative Active Learning for Activity Recognition (2018)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Pervasive Computing and Communications</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Gabriele Civitarese, Claudio Bettini, Timo Sztyler, Daniele Riboni and Heiner Stuckenschmidt)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://www.percom.org/">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/percom2018.png"/></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Pervasive Computing and Communications<br/>PerCom 2018<br/>IEEE Computer Society, Conference</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/civitarese2018nectar.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png"/><br/>BibTex</div>
+                        </a>
+                        <div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+						<a href="./publications/presentation/percom2018nectar.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="presentation" src="./images/publications/ppt.png"/><br/>Presentation</div>
+                        </a>
+                        <div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="resources" src="./images/publications/online.png"/><br/>Resources</div>
+                     </div>
+                  </div>
+                  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">Recognizing Grabbing Actions from Inertial and Video Sensor Data in a Warehouse Scenario (2017)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Procedia Computer Science</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Alexander Diete, Timo Sztyler, Lydia Weiland and Heiner Stuckenschmidt)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://cs-conferences.acadiau.ca/mobispc-17/">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/mobispc2017.png"/></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Conference on Mobile Systems and Pervasive Computing (MobiSPC 2017)<br/>Procedia Computer Science, Conference</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/diete2017grabbing.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png"/><br/>BibTex</div>
+                        </a>
+                        <a href="http://dx.doi.org/10.1016/j.procs.2017.06.071">
+                           <div class="col-md-1 pub-icon"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+                        </a>
+                        <div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="presentation" src="./images/publications/ppt.png"/><br/>Presentation</div>
+                        <div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="resources" src="./images/publications/online.png"/><br/>Resources</div>
+                     </div>
+                  </div>
+                  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">Online Personalization of Cross-Subjects based Activity Recognition Models on Wearable Devices (2017)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Pervasive Computing and Communications</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Timo Sztyler and Heiner Stuckenschmidt)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://www.percom.org/Previous/ST2017/">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/percom2017.png"/></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Pervasive Computing and Communications<br/>(PerCom 2017)<br/>IEEE Computer Society, Conference</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/sztyler2017online.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png"/><br/>BibTex</div>
+                        </a>
+                        <a href="http://dx.doi.org/10.1109/PERCOM.2017.7917864">
+                           <div class="col-md-1 pub-icon"><img alt="pdf" src="./images/publications/pdf.png"/><br/>Publication</div>
+                        </a>
+                        <a href="./publications/presentation/percom2017.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="presentation" src="./images/publications/ppt.png"/><br/>Presentation</div>
+                        </a>
+                        <a href="#results2017online">
+                           <div class="col-md-1 pub-icon"><img alt="resources" src="./images/publications/online.png"/><br/>Resources</div>
+                        </a>
+                     </div>
+                  </div>
+                  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">Unsupervised Recognition of Interleaved Activities of Daily Living through Ontological and Probabilistic Reasoning</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Pervasive and Ubiquitous Computing</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Daniele Riboni, Timo Sztyler, Gabriele Civitarese and Heiner Stuckenschmidt)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://www.ubicomp.org/ubicomp2016/">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/ubicomp2016.png" /></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Pervasive and Ubiquitous Computing<br/>(UbiComp 2016)<br/>ACM International, Joint Conference</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/riboni2016unsupervised.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png" /><br/>BibTex</div>
+                        </a>
+                        <a href="http://dx.doi.org/10.1145/2971648.2971691">
+                           <div class="col-md-1 pub-icon"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+                        </a>
+                        <a href="./publications/presentation/ubicomp2016.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="presentation" src="./images/publications/ppt.png" /><br/>Presentation</div>
+                        </a>
+                        <a href="#results2016unsupervised">
+                           <div class="col-md-1 pub-icon"><img alt="resources" src="./images/publications/online.png" /><br/>Resources</div>
+                        </a>
+                     </div>
+                  </div>
+                  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">On-body Localization of Wearable Devices: An Investigation of Position-Aware Activity Recognition (2016)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Pervasive Computing and Communications</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Timo Sztyler and Heiner Stuckenschmidt)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://www.percom.org/Previous/ST2016/">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/percom2016.png" /></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Pervasive Computing and Communications<br/>(PerCom 2016)<br/>IEEE Computer Society, Conference</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/sztyler2016onbody.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png" /><br/>BibTex</div>
+                        </a>
+                        <a href="http://dx.doi.org/10.1109/PERCOM.2016.7456521">
+                           <div class="col-md-1 pub-icon"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+                        </a>
+                        <a href="./publications/presentation/percom2016.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="presentation" src="./images/publications/ppt.png" /><br/>Presentation</div>
+                        </a>
+                        <a href="#results2016onbody">
+                           <div class="col-md-1 pub-icon"><img alt="resources" src="./images/publications/online.png" /><br/>Resources</div>
+                        </a>
+                     </div>
+                  </div>
+                <h4>Workshop / Demo Paper</h4>                  
+                <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">Modeling and Reasoning with ProbLog: An Application in Recognizing Complex Activities (2018)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Pervasive Computing and Communication Workshops</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Timo Sztyler, Gabriele Civitarese and Heiner Stuckenschmidt)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://comorea.org/">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/comorea2018.png" /></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Pervasive Computing and Communication Workshops (CoMoRea@PerCom 2018)<br/>IEEE Computer Society, Workshop</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/sztyler2018modeling.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png" /><br/>BibTex</div>
+                        </a>
+						<div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+                        <a href="./publications/presentation/comorea2018problog.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="presentation" src="./images/publications/ppt.png" /><br/>Presentation</div>
+                        </a>
+                        <a href="#results2018modelling">
+                           <div class="col-md-1 pub-icon"><img alt="resources" src="./images/publications/online.png" /><br/>Resources</div>
+                        </a>
+                     </div>
+                  </div>
+                <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">Towards Systematic Benchmarking of Activity Recognition Algorithms (2018)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Pervasive Computing and Communication Workshops</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Timo Sztyler, Christian Meilicke and Heiner Stuckenschmidt)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://comorea.org/">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/comorea2018.png" /></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Pervasive Computing and Communication Workshops (CoMoRea@PerCom 2018)<br/>IEEE Computer Society, Workshop</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/sztyler2018towards.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png" /><br/>BibTex</div>
+                        </a>
+                        <div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+                        <a href="./publications/presentation/comorea2018benchmark.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="presentation" src="./images/publications/ppt.png" /><br/>Presentation</div>
+                        </a>
+                        <a href="http://web.informatik.uni-mannheim.de/arc/">
+                           <div class="col-md-1 pub-icon"><img alt="resources" src="./images/publications/online.png" /><br/>Resources</div>
+                        </a>
+						</div>
+                  </div>				  
+				  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">Improving Motion-based Activity Recognition with Ego-centric Vision (2018)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Pervasive Computing and Communication Workshops</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Alexander Diete, Timo Sztyler, Lydia Weiland and Heiner Stuckenschmidt)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://www.percom.org/node/14">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/percom2018wip2018.png" /></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Pervasive Computing and Communication Workshops (WiP@PerCom 2018)<br/>IEEE Computer Society, Workshop</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/diete2018improving.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png" /><br/>BibTex</div>
+                        </a>
+                        <div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+                        <a href="./publications/presentation/percom2018wip.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="presentation" src="./images/publications/ppt.png" /><br/>Presentation</div>
+                        </a>
+						<a href="./publications/resources/percom2018wip.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="resources" src="./images/publications/online.png" /><br/>Resources</div>
+                        </a>                     </div>
+                  </div>                  
+                  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">Towards Real World Activity Recognition from Wearable Devices (2017)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Pervasive Computing and Communication Workshops</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Timo Sztyler)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://www.percom.org/Previous/ST2017/node/16.html">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/percom2017phd.png" /></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Pervasive Computing and Communication Workshops (PhDForum@PerCom 2017)<br/>IEEE Computer Society, Workshop</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/sztyler2017towards.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png" /><br/>BibTex</div>
+                        </a>
+                        <a href="http://dx.doi.org/10.1109/PERCOMW.2017.7917535">
+                           <div class="col-md-1 pub-icon"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+                        </a>
+                        <a href="./publications/presentation/percom2017phd.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="presentation" src="./images/publications/ppt.png" /><br/>Presentation</div>
+                        </a>
+                        <a href="./publications/resources/percom2017phd.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="resources" src="./images/publications/online.png" /><br/>Resources</div>
+                        </a>
+                     </div>
+                  </div>
+                  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">A Smart Data Annotation Tool for Multi-Sensor Activity Recognition (2017)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Pervasive Computing and Communication Workshops</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Alexander Diete, Timo Sztyler and Heiner Stuckenschmidt)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://www.irc-sphere.ac.uk/arduous-workshop">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/arduous2017.png" /></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Pervasive Computing and Communication Workshops (Arduous@PerCom 2017)<br/>IEEE Computer Society, Workshop</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/diete2017smart.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png" /><br/>BibTex</div>
+                        </a>
+                        <a href="http://dx.doi.org/10.1109/PERCOMW.2017.7917542">
+                           <div class="col-md-1 pub-icon"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+                        </a>
+                        <a href="./publications/presentation/arduous2017.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="presentation" src="./images/publications/ppt.png" /><br/>Presentation</div>
+                        </a>
+                        <div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="resources" src="./images/publications/online.png" /><br/>Resources</div>
+                     </div>
+                  </div>
+                  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">Exploring a Multi-Sensor Picking Process in the Future Warehouse (2016)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Pervasive and Ubiquitous Computing: Adjunct</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Alexander Diete, Timo Sztyler, Lydia Weiland and Heiner Stuckenschmidt)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="http://web.archive.org/web/20161002184923/http://eyewear.pro/">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/eyewear2016.png" /></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Pervasive and Ubiquitous Computing: Adjunct (Eyewear@UbiComp 2016)<br/>ACM International, Workshop</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/diete2016exploring.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png" /><br/>BibTex</div>
+                        </a>
+                        <a href="http://dx.doi.org/10.1145/2968219.2968270">
+                           <div class="col-md-1 pub-icon"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+                        </a>
+                        <a href="./publications/presentation/eyewear2016.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="presentation" src="./images/publications/ppt.png" /><br/>Presentation</div>
+                        </a>
+                        <div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="resources" src="./images/publications/online.png" /><br/>Resources</div>
+                     </div>
+                  </div>
+                  <div class="bs-callout bs-callout-default pub-box">
+                     <div class="pub-box-heading">
+                        <h5 style="font-weight: bold; color: #000077; margin-bottom: 0px;">Discovery of Personal Processes from Labeled Sensor Data (2015)</h5>
+                        <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>                            
+                        <div style="font-size: 8pt; color: #000077;">Published in: Algorithms & Theories for the Analysis of Event Data</div>
+                        <div style="font-size: 8pt; color: #000077; margin-bottom: 5px;">(Timo Sztyler, Johanna Völker, Josep Carmona, Oliver Meier and Heiner Stuckenschmidt)</div>
+                     </div>
+                     <div class="pub-box-body" style="display: none;">
+                        <a href="https://wiki.fernuni-hagen.de/art/index.php/Algorithms_%26_Theories_for_the_Analysis_of_Event_Data_(ATAED)_2015">
+                           <div class="col-md-5 pub-in">
+                              <div class="col-md-3 pub-in-img"><img alt="presentation" src="./images/publications/ataed2015.png" /></div>
+                              <div class="col-md-9 pub-in-text"><span style="font-weight: bold;">Published in</span><br/>Algorithms & Theories for the Analysis of Event Data (ATAED@Petri Nets 2015)<br/>CEUR, Workshop</div>
+                           </div>
+                        </a>
+                        <a href="./publications/bibtex/sztyler2015discovery.txt">
+                           <div class="col-md-1 pub-icon"><img alt="bibtex" src="./images/publications/bibtex.png" /><br/>BibTex</div>
+                        </a>
+                        <a href="http://ceur-ws.org/Vol-1371/">
+                           <div class="col-md-1 pub-icon"><img alt="pdf" src="./images/publications/pdf.png" /><br/>Publication</div>
+                        </a>
+                        <a href="./publications/presentation/ataed2015.pdf">
+                           <div class="col-md-1 pub-icon"><img alt="presentation" src="./images/publications/ppt.png" /><br/>Presentation</div>
+                        </a>
+                        <div class="col-md-1 pub-icon" style="opacity: 0.4; filter: alpha(opacity=40);"><img alt="resources" src="./images/publications/online.png" /><br/>Resources</div>
+                     </div>
+                  </div>
+               </div>
+               <h3>People</h3>
+               <div class="col-xs-3 col-lg-3">
+                  <div class="center"><img src="images/people/timo.png" alt="Timo Sztyler"></div>
+                  <div class="center"><a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/timo-sztyler/" target="_blank">Timo Sztyler</a><br>University of Mannheim</div>
+               </div>
+               <div class="col-xs-3 col-lg-3">
+                  <div class="center"><img src="images/people/heiner.png" alt="Heiner Stuckenschmidt"></div>
+                  <div class="center"><a href="http://dws.informatik.uni-mannheim.de/en/people/professors/profdrheinerstuckenschmidt/" target="_blank">Heiner Stuckenschmidt</a><br>University of Mannheim</div>
+               </div>
+               <div class="col-xs-3 col-lg-3"></div>
+               <div class="col-xs-3 col-lg-3"></div>
+            </div>
+            <div id="frameworksbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Frameworks</h1>
+               </div>
+               <div class="list-group media">
+                  <a id="submenu_features" href="#features" class="list-group-item" style="height: 130px;">
+                     <div class="media-left media-middle"><img class="media-object" src="images/frameworks/java.png" alt="supported plattforms" style="margin: 0px 15px 0px 15px;"></div>
+                     <div class="media-body">
+                        <h4 class="media-heading">Sensor Feature Factory</h4>
+                        For processing the recorded acceleration sensor data, we developed a framework which computes all necessary features such as the energy or entropy. The framework supports multi-threading and allows to specify several settings, e.g., concerning the windows. The framework is designed to operate as fast as possible and is also runnable on Android devices.
+                     </div>
+                  </a>
+               </div>
+               <div class="list-group media">
+                  <a id="submenu_onlineforest" href="#onlineforest" class="list-group-item" style="height: 130px;">
+                     <div class="media-left media-middle"><img class="media-object" src="images/frameworks/java.png" alt="supported plattforms" style="margin: 0px 15px 0px 15px;"></div>
+                     <div class="media-body">
+                        <h4 class="media-heading">Online Random Forest Classifier</h4>
+                        Java implementation of the online random forest classifier. Online machine learning enables to update an existing classification model continuously without keeping the processed data available or knowing all data a-priori. Supports threading and requires at least Java 1.7 (compatible with Android)
+                     </div>
+                  </a>
+               </div>
+            </div>
+            <div id="featurebody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Sensor Feature Factory</h1>
+               </div>
+               <div>This page provides an overview of the features that are supported by our <a href="https://github.com/sztyler/sensorfeatureextraction">Sensor Feature Factory</a> framework. In detail, it covers 10 different features which can be used in context of time- and frequency-domain values. Our Framework uses the <a href="https://sites.google.com/site/piotrwendykier/software/jtransforms">JTransforms</a> library to transform the recorded sensor data (time-domain) to the frequency-domain which enables to compute, e.g., the expended energy.</div>
+               <div class="bs-callout bs-callout-default" style="padding: 5px 5px;">
+                  <h4>Framework</h4>
+                  <div style="padding: 0px 0px 70px 5px;">
+                     <div class="col-xs-12 col-sm-12">
+                        <div class="col-xs-1 col-sm-1" style="padding-right: 0px;"><img src="images/frameworks/java.png" height="50" alt="Supported Platforms" /></div>
+                        <div class="col-xs-11 col-sm-11" style="padding-left: 0px;">
+                           <div class="col-xs-12 col-sm-12" style="padding-left: 0px;">
+                              <div class="col-xs-3 col-lg-3" style="font-weight: bold;">SourceCode:</div>
+                              <div class="col-xs-9 col-lg-9"><a href="https://github.com/sztyler/sensorfeatureextraction">available on GitHub</a></div>
+                           </div>
+                           <div class="col-xs-12 col-sm-12" style="padding-left: 0px;">
+                              <div class="col-xs-3 col-lg-3" style="font-weight: bold;">Binary:</div>
+                              <div class="col-xs-9 col-lg-9"><a href="https://github.com/sztyler/sensorfeatureextraction/releases">available on GitHub</a></div>
+                           </div>
+                           <div class="col-xs-12 col-sm-12" style="padding-left: 0px;">
+                              <div class="col-xs-3 col-lg-3" style="font-weight: bold;">Documentation:</div>
+                              <div class="col-xs-9 col-lg-9">coming soon</div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <h3>Implemented Features</h3>
+               <div style="padding-left: 50px;">
+                  <h4>Mean</h4>
+                  $$\bar x = \frac{1}{n}*\sum\limits_{i=1}^n x_i$$
+                  <h4>Variance</h4>
+                  $$var(x) = \frac{1}{n}*\sum\limits_{i=1}^n (\bar x - n_i)^2$$
+                  <h4>Standard Deviation</h4>
+                  $$\sigma_x = \sqrt{var(x)}$$
+                  <h4>Median</h4>
+                  $$\widetilde{a}=\begin{cases}x_{\frac{n+1}{2}}&\text{n odd}\\\frac{1}{2}*(x_{\frac{n}{2}}+x_{\frac{n}{2}+1})&\text{$n$ even}\end{cases}$$ $$\text{where}\ \forall x_i,x_j \in X\ x_i\le x_j\ \text{and}\ i\le j$$
+                  <h4>Interquartile Range (type R-5)</h4>
+                  $$iqr = Q_{0.75}-Q_{0.25}$$ $$Q_p = x_{\lfloor h \rfloor} + (h-\lfloor h \rfloor)(x_{\lfloor h \rfloor+1}-x_{\lfloor h \rfloor})$$ $$h = Np+\frac{1}{2}$$ $$\text{where}\ \forall x_i,x_j \in X\ x_i\le x_j\ \text{and}\ i\le j$$
+                  <h4>Mean absolute deviation</h4>
+                  $$mad = \frac{1}{n}*\sum\limits_{i=1}^n |x_i - \bar x|$$
+                  <h4>Kurtosis</h4>
+                  $$w = \frac{1}{n}\sum\limits_{i=1}^n (\frac{x_i - \bar x}{\sigma_x})^4$$
+                  <h4>Correlation Coefficient (Pearson)</h4>
+                  $$r_{xy} = \frac{\sum\limits_{i=1}^n (x_i - \bar x)(y_i - \bar y)}{\sqrt{\sum\limits_{i=1}^n (x_i - \bar x)^2}*\sqrt{\sum\limits_{i=1}^n (y_i - \bar y)^2}}$$
+                  <h4>Entropy (Shannon)</h4>
+                  $$IG(S,F) = E(S) - \sum\limits_{v \in Values(F)} \frac{|S_v|}{S}*E(S_v)$$ $$\text{where}\ S_v = \{s \in S | F(s)=v\}$$ $$E(S) = -\sum\limits_{i=1}^{|C|} P(i)*log_2(Pi)$$ $$\text{where}\ P(i)\ \text{ is the fraction of examples in $S$ which is assigned the label $c_i$}$$
+                  <h4>Energy (Fourier, Parseval)</h4>
+                  $$Energy(Y) = \frac{1}{n}*\sum\limits_{i=1}^{n} F_i^2$$ $$\text{where $F_i$ is the i-th component of the Fourier Transform of Y}$$
+               </div>
+            </div>
+            <div id="onlineforestbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Online Random Forest Classifier</h1>
+               </div>
+               <div>This is an implementation of an online random forest classifier in Java. The implementation details and architecture relies on the <a href="http://www.ymer.org/amir/software/online-random-forests/">implementation of Amir Saffari</a>. However, we enhanced the original implementation in several ways.</div>
+               <div class="bs-callout bs-callout-default" style="padding: 5px 5px;">
+                  <h4>ORF Classifer</h4>
+                  <div style="padding: 0px 0px 70px 5px;">
+                     <div class="col-xs-12 col-sm-12">
+                        <div class="col-xs-1 col-sm-1" style="padding-right: 0px;"><img src="images/frameworks/java.png" height="50" alt="Supported Platforms" /></div>
+                        <div class="col-xs-11 col-sm-11" style="padding-left: 0px;">
+                           <div class="col-xs-12 col-sm-12" style="padding-left: 0px;">
+                              <div class="col-xs-3 col-lg-3" style="font-weight: bold;">SourceCode:</div>
+                              <div class="col-xs-9 col-lg-9"><a href="https://github.com/sztyler/online-random-forest">available on GitHub</a></div>
+                           </div>
+                           <div class="col-xs-12 col-sm-12" style="padding-left: 0px;">
+                              <div class="col-xs-3 col-lg-3" style="font-weight: bold;">Binary:</div>
+                              <div class="col-xs-9 col-lg-9"><a href="https://github.com/sztyler/online-random-forest/releases">available on GitHub</a></div>
+                           </div>
+                           <div class="col-xs-12 col-sm-12" style="padding-left: 0px;">
+                              <div class="col-xs-3 col-lg-3" style="font-weight: bold;">Documentation:</div>
+                              <div class="col-xs-9 col-lg-9">coming soon</div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <h3>Supports</h3>
+               <div style="padding-left: 50px;">
+                  <dl class="dl-horizontal">
+                     <dt>Quality Measurements</dt>
+                     <dd style="padding-bottom: 10px;">Information Gain, Gini Index</dd>
+                     <dt>Feature Threshold</dt>
+                     <dd style="padding-bottom: 10px;">random, incremental</dd>
+                     <dt>Threading</dt>
+                     <dd style="padding-bottom: 10px;">Yes</dd>
+                     <dt>Export/Import</dt>
+                     <dd style="padding-bottom: 10px;">Coming soon</dd>
+                     <dt>Java</dt>
+                     <dd style="padding-bottom: 10px;">1.7 and newer (compatible with Android)</dd>
+                  </dl>
+               </div>
+               <h3>Usage</h3>
+               <div style="padding-left: 50px;">
+                  <dl class="dl-horizontal">
+                     <pre class="prettyprint">
+DataSet data = new ARFF();
+data.load("data.arff");
+RandomForest rf = new RandomForest(...)
+
+for (int nEpoch = 0; nEpoch < config.numEpochs; nEpoch++) { // train
+  data.randomize();
+  for (Sample sample : arffTrain.getSamples()) {
+    rf.update(sample);
+  }
+}
+
+for (Sample sample : arffTest.getSamples()) { // test
+  Result result = new Result(data.getNumOfClasses());
+  rf.eval(sample, result);
+  results.put(result, sample.getLabel());
+}                   </pre>   
+                  </dl>
+                  <b>More: </b><a href="https://github.com/sztyler/online-random-forest/blob/master/src/de/unima/classifiers/example/ExampleUsage.java">Runnable example</a>
+               </div>
+            </div>
+            <div id="resultbody" class="col-xs-12 col-sm-12 body-content">
+               <div class="page-header">
+                  <h1>Results</h1>
+               </div>
+               <div style="font-size: 17px; width: 500px; font-weight: bold; margin-bottom: 20px;">(Please select a publication)</div>
+               <div class="list-group">
+                  <a id="submenu_results2017polaris" href="#results2017polaris" class="list-group-item">
+                     <h4 class="list-group-item-heading">POLARIS: Probabilistic and Ontological Activity Recognition in Smart-homes (Under Review)</h4>
+                     <p class="list-group-item-text">Recognition of activities of daily living (ADLs) is an enabling technology for several ubiquitous computing applications. In this field, most activity recognition systems rely on supervised learning to extract activity models from labeled datasets. A problem with that approach is the acquisition of comprehensive activity datasets, which ...</p>
+                  </a>				  
+				  <a id="submenu_results2018modelling" href="#results2018modelling" class="list-group-item">
+                     <h4 class="list-group-item-heading">Modeling and Reasoning with ProbLog: An Application in Recognizing Complex Activities (2018)</h4>
+                     <p class="list-group-item-text">Smart-home activity recognition is an enabling tool for a wide range of ambient assisted living applications. The recognition of ADLs usually relies on supervised learning or knowledge-based reasoning techniques. In order to overcome the well-known limitations of those two approaches and, at the same time, to combine their strengths to ...</p>
+                  </a>				  
+                  <a id="submenu_results2018hips" href="#results2018hips" class="list-group-item">
+                     <h4 class="list-group-item-heading">Hips Do Lie! A Position-Aware Mobile Fall Detection System (2018)</h4>
+                     <p class="list-group-item-text">Ambient Assisted Living using mobile device sensors is an active area of research in pervasive computing. In our work, we aim to implement a self-adaptive pervasive fall detection approach that is suitable for real life situations. The paper focuses on the problem that the device’s on-body position but also the falling pattern of a person ...</p>
+                  </a>
+                  <a id="submenu_results2017online" href="#results2017online" class="list-group-item">
+                     <h4 class="list-group-item-heading">Online Personalization of Cross-Subjects based Activity Recognition Models on Wearable Devices (2017)</h4>
+                     <p class="list-group-item-text">Human activity recognition using wearable devices is an active area of research in pervasive computing. In our work, we target patients and elders which are unable to collect and label the required data for a subject-specific approach. For that purpose, we focus on the problem of cross-subjects based recognition models and introduce an ...</p>
+                  </a>
+                  <a id="submenu_results2016activity" href="#results2016activity" class="list-group-item">
+                     <h4 class="list-group-item-heading">Position-Aware Activity Recognition with Wearable Devices (2017)</h4>
+                     <p class="list-group-item-text">Reliable human activity recognition with wearable devices enables the development of human-centric pervasive applications. We aim to develop a robust wearable-based activity recognition system for real life situations. Consequently, in this work we focus on the problem of recognizing the on-body position of the wearable device ensued by ...</p>
+                  </a>
+                  <a id="submenu_results2016tracking" href="#results2016tracking" class="list-group-item">
+                     <h4 class="list-group-item-heading">Self-Tracking Reloaded: Applying Process Mining to Personalized Health Care from Labeled Sensor Data (2016)</h4>
+                     <p class="list-group-item-text">Currently, there is a trend to promote personalized health care in order to prevent diseases or to have a healthier life. Using current devices such as smart-phones and smart-watches, an individual can easily record detailed data from her daily life. Yet, this data has been mainly used for self-tracking in order to enable personalized ...</p>
+                  </a>
+                  <a id="submenu_results2016unsupervised" href="#results2016unsupervised" class="list-group-item">
+                     <h4 class="list-group-item-heading">Unsupervised Recognition of Interleaved Activities of Daily Living through Ontological and Probabilistic Reasoning (2016)</h4>
+                     <p class="list-group-item-text">Recognition of activities of daily living (ADLs) is an enabling technology for several ubiquitous computing applications. Most activity recognition systems rely on supervised learning methods to extract activity models from labeled datasets. An inherent problem of that approach consists in the acquisition of comprehensive activity datasets, ...</p>
+                  </a>
+                  <a id="submenu_results2016onbody" href="#results2016onbody" class="list-group-item">
+                     <h4 class="list-group-item-heading">On-body Localization of Wearable Devices: An Investigation of Position-Aware Activity Recognition (2016)</h4>
+                     <p class="list-group-item-text">Human activity recognition using mobile device sensors is an active area of research in pervasive computing. In our work, we aim at implementing activity recognition approaches that are suitable for real life situations. This paper focuses on the problem of recognizing the on-body position of the mobile device which in a real world setting ...</p>
+                  </a>
+               </div>
+            </div>
+            <div id="results2016onbodybody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Results</h1>
+               </div>
+               <div class="bs-callout bs-callout-default text-justify" style="padding: 10px; margin-bottom: 5px 15px;">
+                  <h4>Info</h4>
+                  This page provides the results of our experiments. Each result file contains the test results (F-Measure, Confusion Matrix, ...) for each individual subjects. However, the results are not aggregated, i.e., does not provide average values of all subjects. We applied 10-fold cross validation and performed 10 runs where each time the data set was randomized and the 10-folds were recreated. These results belong to the publication <b><a href="#publications" style="font-style: italic;">On-body Localization of Wearable Devices: An Investigation of Position-Aware Activity Recognition</a></b>.
+               </div>
+               <h4><b>Random Forest</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Position Detection (all activities)</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2016onbody/rf/WekaTestPositionAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Position Detection (only static activities)</td>
+                        <td>Table III</td>
+                        <td><a href="results/sztyler2016onbody/rf/WekaTestPositionOnlyLSSAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Position Detection (only static activities) incl. gravity feature</td>
+                        <td>Table IV</td>
+                        <td><a href="results/sztyler2016onbody/rf/WekaTestPositionOnlyLSSwithGravityAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>Position Detection (only dynamic activities)</td>
+                        <td>Table III</td>
+                        <td><a href="results/sztyler2016onbody/rf/WekaTestPositionWithoutLSSAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>Position Detection (activity-level dependend)</td>
+                        <td>Table VI</td>
+                        <td>see #3,#4</td>
+                     </tr>
+                     <tr>
+                        <td>#6</td>
+                        <td>Activity Recognition (single classifier, all activities)</td>
+                        <td>Table VII,VIII</td>
+                        <td><a href="results/sztyler2016onbody/rf/WekaTestPostureAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#7</td>
+                        <td>Activity Recognition (assumption: position is known for sure, all activities)</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2016onbody/rf/WekaTestPositionPostureAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#8</td>
+                        <td>Activity Recognition (based on the position detection result of RF, incl. all mistakes)</td>
+                        <td>Table IX,X</td>
+                        <td><a href="results/sztyler2016onbody/rf/WekaTestTotalFlow.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#9</td>
+                        <td>Distinction between static and dynamic activity (all activities)</td>
+                        <td>Table V</td>
+                        <td><a href="results/sztyler2016onbody/rf/WekaTestYesNoAll.result">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h4><b>Naive Bayes</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Position Detection (all activities)</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2016onbody/nb/WekaTestPositionAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Position Detection (only static activities)</td>
+                        <td>Table III</td>
+                        <td><a href="results/sztyler2016onbody/nb/WekaTestPositionOnlyLSSAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Position Detection (only static activities) incl. gravity feature</td>
+                        <td>Table IV</td>
+                        <td><a href="results/sztyler2016onbody/nb/WekaTestPositionOnlyLSSwithGravityAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>Position Detection (only dynamic activities)</td>
+                        <td>Table III</td>
+                        <td><a href="results/sztyler2016onbody/nb/WekaTestPositionWithoutLSSAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>Position Detection (activity-level dependend)</td>
+                        <td>Table VI</td>
+                        <td>see #3,#4</td>
+                     </tr>
+                     <tr>
+                        <td>#6</td>
+                        <td>Activity Recognition (single classifier, all activities)</td>
+                        <td>Table VII,VIII</td>
+                        <td><a href="results/sztyler2016onbody/nb/WekaTestPostureAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#7</td>
+                        <td>Activity Recognition (assumption: position is known for sure, all activities)</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2016onbody/nb/WekaTestPositionPostureAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#8</td>
+                        <td>Activity Recognition (based on the position detection result of RF, incl. all mistakes)</td>
+                        <td>Table IX,X</td>
+                        <td><a href="results/sztyler2016onbody/nb/WekaTestTotalFlow.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#9</td>
+                        <td>Distinction between static and dynamic activity (all activities)</td>
+                        <td>Table V</td>
+                        <td><a href="results/sztyler2016onbody/nb/WekaTestYesNoAll.result">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h4><b>Artificial Neural Network</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Position Detection (all activities)</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2016onbody/ann/WekaTestPositionAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Position Detection (only static activities)</td>
+                        <td>Table III</td>
+                        <td><a href="results/sztyler2016onbody/ann/WekaTestPositionOnlyLSSAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Position Detection (only static activities) incl. gravity feature</td>
+                        <td>Table IV</td>
+                        <td><a href="results/sztyler2016onbody/ann/WekaTestPositionOnlyLSSwithGravityAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>Position Detection (only dynamic activities)</td>
+                        <td>Table III</td>
+                        <td><a href="results/sztyler2016onbody/ann/WekaTestPositionWithoutLSSAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>Position Detection (activity-level dependend)</td>
+                        <td>Table VI</td>
+                        <td>see #3,#4</td>
+                     </tr>
+                     <tr>
+                        <td>#6</td>
+                        <td>Activity Recognition (single classifier, all activities)</td>
+                        <td>Table VII,VIII</td>
+                        <td><a href="results/sztyler2016onbody/ann/WekaTestPostureAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#7</td>
+                        <td>Activity Recognition (assumption: position is known for sure, all activities)</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2016onbody/ann/WekaTestPositionPostureAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#8</td>
+                        <td>Activity Recognition (based on the position detection result of RF, incl. all mistakes)</td>
+                        <td>Table IX,X</td>
+                        <td><a href="results/sztyler2016onbody/ann/WekaTestTotalFlow.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#9</td>
+                        <td>Distinction between static and dynamic activity (all activities)</td>
+                        <td>Table V</td>
+                        <td><a href="results/sztyler2016onbody/ann/WekaTestYesNoAll.result">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h4><b>Decision Tree</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Position Detection (all activities)</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2016onbody/dt/WekaTestPositionAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Position Detection (only static activities)</td>
+                        <td>Table III</td>
+                        <td><a href="results/sztyler2016onbody/dt/WekaTestPositionOnlyLSSAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Position Detection (only static activities) incl. gravity feature</td>
+                        <td>Table IV</td>
+                        <td><a href="results/sztyler2016onbody/dt/WekaTestPositionOnlyLSSwithGravityAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>Position Detection (only dynamic activities)</td>
+                        <td>Table III</td>
+                        <td><a href="results/sztyler2016onbody/dt/WekaTestPositionWithoutLSSAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>Position Detection (activity-level dependend)</td>
+                        <td>Table VI</td>
+                        <td>see #3,#4</td>
+                     </tr>
+                     <tr>
+                        <td>#6</td>
+                        <td>Activity Recognition (single classifier, all activities)</td>
+                        <td>Table VII,VIII</td>
+                        <td><a href="results/sztyler2016onbody/dt/WekaTestPostureAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#7</td>
+                        <td>Activity Recognition (assumption: position is known for sure, all activities)</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2016onbody/dt/WekaTestPositionPostureAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#8</td>
+                        <td>Activity Recognition (based on the position detection result of RF, incl. all mistakes)</td>
+                        <td>Table IX,X</td>
+                        <td><a href="results/sztyler2016onbody/dt/WekaTestTotalFlow.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#9</td>
+                        <td>Distinction between static and dynamic activity (all activities)</td>
+                        <td>Table V</td>
+                        <td><a href="results/sztyler2016onbody/dt/WekaTestYesNoAll.result">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h4><b>k-Nearest-Neighbor</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Position Detection (all activities)</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2016onbody/knn/WekaTestPositionAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Position Detection (only static activities)</td>
+                        <td>Table III</td>
+                        <td><a href="results/sztyler2016onbody/knn/WekaTestPositionOnlyLSSAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Position Detection (only static activities) incl. gravity feature</td>
+                        <td>Table IV</td>
+                        <td><a href="results/sztyler2016onbody/knn/WekaTestPositionOnlyLSSwithGravityAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>Position Detection (only dynamic activities)</td>
+                        <td>Table III</td>
+                        <td><a href="results/sztyler2016onbody/knn/WekaTestPositionWithoutLSSAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>Position Detection (activity-level dependend)</td>
+                        <td>Table VI</td>
+                        <td>see #3,#4</td>
+                     </tr>
+                     <tr>
+                        <td>#6</td>
+                        <td>Activity Recognition (single classifier, all activities)</td>
+                        <td>Table VII,VIII</td>
+                        <td><a href="results/sztyler2016onbody/knn/WekaTestPostureAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#7</td>
+                        <td>Activity Recognition (assumption: position is known for sure, all activities)</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2016onbody/knn/WekaTestPositionPostureAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#8</td>
+                        <td>Activity Recognition (based on the position detection result of RF, incl. all mistakes)</td>
+                        <td>Table IX,X</td>
+                        <td><a href="results/sztyler2016onbody/knn/WekaTestTotalFlow.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#9</td>
+                        <td>Distinction between static and dynamic activity (all activities)</td>
+                        <td>Table V</td>
+                        <td><a href="results/sztyler2016onbody/knn/WekaTestYesNoAll.result">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h4><b>Support Vector Machine</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Position Detection (all activities)</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2016onbody/svm/WekaTestPositionAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Position Detection (only static activities)</td>
+                        <td>Table III</td>
+                        <td><a href="results/sztyler2016onbody/svm/WekaTestPositionOnlyLSSAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Position Detection (only static activities) incl. gravity feature</td>
+                        <td>Table IV</td>
+                        <td><a href="results/sztyler2016onbody/svm/WekaTestPositionOnlyLSSwithGravityAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>Position Detection (only dynamic activities)</td>
+                        <td>Table III</td>
+                        <td><a href="results/sztyler2016onbody/svm/WekaTestPositionWithoutLSSAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>Position Detection (activity-level dependend)</td>
+                        <td>Table VI</td>
+                        <td>see #3,#4</td>
+                     </tr>
+                     <tr>
+                        <td>#6</td>
+                        <td>Activity Recognition (single classifier, all activities)</td>
+                        <td>Table VII,VIII</td>
+                        <td><a href="results/sztyler2016onbody/svm/WekaTestPostureAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#7</td>
+                        <td>Activity Recognition (assumption: position is known for sure, all activities)</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2016onbody/svm/WekaTestPositionPostureAll.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#8</td>
+                        <td>Activity Recognition (based on the position detection result of RF, incl. all mistakes)</td>
+                        <td>Table IX,X</td>
+                        <td><a href="results/sztyler2016onbody/svm/WekaTestTotalFlow.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#9</td>
+                        <td>Distinction between static and dynamic activity (all activities)</td>
+                        <td>Table V</td>
+                        <td><a href="results/sztyler2016onbody/svm/WekaTestYesNoAll.result">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div id="results2016unsupervisedbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Results</h1>
+               </div>
+               <div class="bs-callout bs-callout-default text-justify" style="padding: 10px; margin-bottom: 5px 15px;">
+                  <h4>Info</h4>
+                  This page provides the results of our experiments. Each result file contains the test results for each individual patient/day, i.e., the individual and aggregated results represented by precision, recall, and F-measure. Further, we provide the sensor and instance-based results as well as the precomputet instance candidates. These results belong to the publication <b><a href="#publications" style="font-style: italic">Unsupervised Recognition of Interleaved Activities of Daily Living through Ontological and Probabilistic Reasoning</a></b>.
+               </div>
+               <br/>
+               <table style="font-size: 17px; width: 220px; font-weight: bold; border: 0; ">
+                  <tbody>
+                     <tr>
+                        <td>MLN<sub>NC</sub> solver:</td>
+                        <td><a href="http://executor.informatik.uni-mannheim.de/systems/n-rockit/">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>Ontology:</td>
+                        <td><a href="results/riboni2016unsupervised/ont/adlont.owl">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <br/>
+               <h4><b>WSU CASAS Dataset</b></h4>
+               <span style="font-size: 16px; margin-left: 40px; width: 780px; font-weight: bold;">MLN<sub>NC</sub> Model: <a href="results/riboni2016unsupervised/mln/casas.mln">show</a></span>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Probabilities derived from our ontology</td>
+                        <td>Table II,III</td>
+                        <td><a href="results/riboni2016unsupervised/casas_ontology.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Probabilities derived from the data set</td>
+                        <td>Table II,III</td>
+                        <td><a href="results/riboni2016unsupervised/casas_dataset.result">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h4><b>SmartFaber Dataset</b></h4>
+               <span style="font-size: 16px; margin-left: 40px; width: 780px; font-weight: bold;">MLN<sub>NC</sub> Model: <a href="results/riboni2016unsupervised/mln/smartfaber.mln">show</a></span>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Probabilities derived from our ontology</td>
+                        <td>Table IV,V</td>
+                        <td><a href="results/riboni2016unsupervised/faber_ontology.result">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Probabilities derived from the data set</td>
+                        <td>Table IV,V</td>
+                        <td><a href="results/riboni2016unsupervised/faber_dataset.result">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <br/><br/>
+               <div class="col-xs-3 col-lg-4 center"><a href="http://www.unimi.it/ENG/" target="_blank"><img src="images/uni-milan-medium.png" alt="University of Milano" /></a></div>
+               <div class="col-xs-3 col-lg-4 center"><a href="http://dws.informatik.uni-mannheim.de/en/" target="_blank"><img src="images/uni-mannheim-medium.png" alt="University of Mannheim" /></a></div>
+               <div class="col-xs-3 col-lg-4 center"><a href="http://www.unica.it/pub/english/" target="_blank"><img src="images/uni-cagliari-medium.png" alt="University of Cagliari" /></a></div>
+            </div>
+            <div id="results2016activitybody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Results</h1>
+               </div>
+               <div class="bs-callout bs-callout-default" style="padding: 10px; margin-bottom: 5px 15px;">
+                  <h4>Info</h4>
+                  This page provides the results of our experiments. Each result file contains the test results (F-Measure, Confusion Matrix, ...) for each individual subject. These results belong to the publication <b><a href="#results2016activity" style="font-style: italic">Position-Aware Activity Recognition with Wearable Devices</a></b>.
+               </div>
+               <div class="bs-callout bs-callout-info" style="padding: 10px; margin-bottom: 5px 40px;">
+                  <h4>Hint</h4>
+                  This work is an extension. Please consider the following page for detailed results that correspond to Section 5.1-5.3: <a href="#results2016onbody" style="font-style: italic">On-body Localization of Wearable Devices: An Investigation of Position-Aware Activity Recognition</a> <small>- (Numbers of tables have changed)</small>.
+               </div>
+               <h4><b>Subject-Specific Activity Recognition (Section 5.2)</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                        <th>Size [MB]</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Single Sensor</td>
+                        <td>Figure V</td>
+                        <td><a href="results/sztyler2016aware/subjectspecific_single_sensor.result">show</a></td>
+                        <td style="padding-left: 30px;">~20</td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Two-part setup (all combinations)</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2016aware/subjectspecific_two_sensors.result">show</a></td>
+                        <td style="padding-left: 30px;">~60</td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Three-part setup (all combinations)</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2016aware/subjectspecific_three_sensors.result">show</a></td>
+                        <td style="padding-left: 25px;">~100</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h4><b>Cross-Subjects Activity Recognition (Section 5.4)</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th style="width: 400px;">Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                        <th>Size [MB]</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Dynamic Activity Recognition (Randomly, One accelormeter)</td>
+                        <td>Table 10, 11</td>
+                        <td><a href="results/sztyler2016aware/activity_dynamic_randomly_single.result">show</a></td>
+                        <td style="padding-left: 35px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Dynamic Activity Recognition (L1O, One accelormeter)</td>
+                        <td>Table 10, 11</td>
+                        <td><a href="results/sztyler2016aware/activity_dynamic_L1O_single.result">show</a></td>
+                        <td style="padding-left: 35px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Dynamic Activity Recognition (Top-Pairs, One accelormeter)</td>
+                        <td>Table 10, 11</td>
+                        <td><a href="results/sztyler2016aware/activity_dynamic_toppairs_single.result">show</a></td>
+                        <td style="padding-left: 35px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>Dynamic Activity Recognition (Physical, One accelormeter)</td>
+                        <td>Table 10, 11</td>
+                        <td><a href="results/sztyler2016aware/activity_dynamic_physical_single.result">show</a></td>
+                        <td style="padding-left: 35px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>Activity Recognition (Physical, One accelormeter)</td>
+                        <td>Table 12</td>
+                        <td><a href="results/sztyler2016aware/activity_both_physical_single.result">show</a></td>
+                        <td style="padding-left: 35px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#6</td>
+                        <td>Activity Recognition (Physical, One accelormeter, including gravity feature for static activities)</td>
+                        <td>Table 12</td>
+                        <td><a href="results/sztyler2016aware/activity_both_physical_single_gravity.result">show</a></td>
+                        <td style="padding-left: 35px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#7</td>
+                        <td>Activity Recognition (Physical, Two accelormeter, Only waist combinations)</td>
+                        <td>Table 12, 13</td>
+                        <td><a href="results/sztyler2016aware/activity_both_physical_two.result">show</a></td>
+                        <td style="padding-left: 35px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#8</td>
+                        <td>Activity Recognition (Physical, Two accelormeter, Only waist combinations, including gravity feature for static activities)</td>
+                        <td>Table 12, 13</td>
+                        <td><a href="results/sztyler2016aware/activity_both_physical_two_gravity.result">show</a></td>
+                        <td style="padding-left: 35px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#9</td>
+                        <td>Position Recognition (Randomly, One accelormeter)</td>
+                        <td>Table 12, 13</td>
+                        <td><a href="results/sztyler2016aware/position_randomly_single.result">show</a></td>
+                        <td style="padding-left: 35px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#10</td>
+                        <td>Position Recognition (L1O, One accelormeter)</td>
+                        <td>Table 12, 13</td>
+                        <td><a href="results/sztyler2016aware/position_L1O_single.result">show</a></td>
+                        <td style="padding-left: 35px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#11</td>
+                        <td>Position Recognition (Top-Pairs, One accelormeter)</td>
+                        <td>Table 12, 13</td>
+                        <td><a href="results/sztyler2016aware/position_toppairs_single.result">show</a></td>
+                        <td style="padding-left: 35px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#12</td>
+                        <td>Position Recognition (Physical, One accelormeter)</td>
+                        <td>Table 12, 13</td>
+                        <td><a href="results/sztyler2016aware/position_physical_single.result">show</a></td>
+                        <td style="padding-left: 35px;">&lt;1</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div id="results2016trackingbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Results</h1>
+               </div>
+               <div class="bs-callout bs-callout-default" style="padding: 10px; margin-bottom: 5px 15px;">
+                  <h4>Info</h4>
+                  This page provides additional material of the publication <b><a href="#publications" style="font-style: italic">Self-Tracking Reloaded: Applying Process Mining to Personalized Health Care from Labeled Sensor Data</a></b>. In the following, we provide personal process maps and trace alignment clustering results of our experiments.
+               </div>
+               <div class="bs-callout bs-callout-info" style="padding: 10px; margin-bottom: 5px 40px;">
+                  <h4>Hint</h4>
+                  As mentioned in the paper, the XES files that are provided on this page were created from data sets that were created by other researchers. The original data set "Activity Log UCI" was created by <b><a href="http://dx.doi.org/10.3390/s130505460">Ord&#243;&#241;ez et al.</a></b> where hh102, hh104, and hh110 originate from <b><a href="http://dx.doi.org/10.1109/MC.2012.328">Cook et. al.</a></b>
+               </div>
+               <h4><b>Personal Processes (Fuzzy Model)</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Number</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Main personal activity for all users during the working days (frequency)</td>
+                        <td>6.2</td>
+                        <td><a href="results/sztyler2016tracking/personal_maps/DataLabour.pdf">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Main personal activity for all users during the weekend days (frequency)</td>
+                        <td>6.2</td>
+                        <td><a href="results/sztyler2016tracking/personal_maps/DataWeekends.pdf">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Main personal activity for all users during the working days (duration)</td>
+                        <td>6.2</td>
+                        <td><a href="results/sztyler2016tracking/personal_maps/DataLabourPerf.pdf">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>Main personal activity for all users during the weekend days (duration)</td>
+                        <td>6.2</td>
+                        <td><a href="results/sztyler2016tracking/personal_maps/DataWeekendsPerf.pdf">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h4><b>Personal Process Models (XES)</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Number</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Activity Log UCI Detailed (during the week)</td>
+                        <td>6.2</td>
+                        <td><a href="results/sztyler2016tracking/process_models/activitylog_uci_detailed_labour.xes.gz">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Activity Log UCI Detailed (Weekend)</td>
+                        <td>6.2</td>
+                        <td><a href="results/sztyler2016tracking/process_models/activitylog_uci_detailed_weekends.xes.gz">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>hh102 (during the week)</td>
+                        <td>6.2</td>
+                        <td><a href="results/sztyler2016tracking/process_models/edited_hh102_labour.xes.gz">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>hh102 (Weekend)</td>
+                        <td>6.2</td>
+                        <td><a href="results/sztyler2016tracking/process_models/edited_hh102_weekends.xes.gz">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>hh104 (during the week)</td>
+                        <td>6.2</td>
+                        <td><a href="results/sztyler2016tracking/process_models/edited_hh104_labour.xes.gz">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#6</td>
+                        <td>hh104 (Weekend)</td>
+                        <td>6.2</td>
+                        <td><a href="results/sztyler2016tracking/process_models/edited_hh104_weekends.xes.gz">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#7</td>
+                        <td>hh110 (during the week)</td>
+                        <td>6.2</td>
+                        <td><a href="results/sztyler2016tracking/process_models/edited_hh110_labour.xes.gz">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#8</td>
+                        <td>hh110 (Weekend)</td>
+                        <td>6.2</td>
+                        <td><a href="results/sztyler2016tracking/process_models/edited_hh110_weekends.xes.gz">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h4><b>Trace Alignment</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Number</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Clustered Traces, Subject 1 (based on our data set)</td>
+                        <td>7</td>
+                        <td><a href="results/sztyler2016tracking/trace_align/trace_align2.png0.png">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div id="results2017onlinebody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Results</h1>
+               </div>
+               <div class="bs-callout bs-callout-default text-justify" style="padding: 10px; margin-bottom: 5px 15px;">
+                  <h4>Info</h4>
+                  This page provides the results of our experiments. Each result file contains the test results (Precision, Recall, F-measure) for each individual subjects. However, the results are not aggregated, i.e., does not provide average values of all subjects, positions, or combinations. These results belong to the publication <b><a href="#results2017online" style="font-style: italic;">Online Personalization of Cross-Subjects based Activity Recognition Models on Wearable Devices</a></b>.
+               </div>
+               <div class="bs-callout bs-callout-info" style="padding: 10px; margin-bottom: 5px 40px;">
+                  <h4>Hint</h4>
+                  All experiments were performed using random forest as a classifier. We considered two different versions of this classifier: online and offline learning. The former was self/re-implemented (<a href="#onlineforest">source code</a>) based on the work of <a href="http://dx.doi.org/10.1109/ICCVW.2009.5457447" target="_blank">A. Saffari et al.</a> where the latter was developed by <a href="http://dx.doi.org/10.1145/1656274.1656278" target="_blank">M. Hall et al.</a>.
+               </div>
+               <h4><b>Preprocessed Accerleration Data (Windows)</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Data Set</th>
+                        <th>Short Description</th>
+                        <th>Download</th>
+                        <th>Size [MB]</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Single sensor setup, separated by position and subject</td>
+                        <td><a href="http://wifo5-14.informatik.uni-mannheim.de/sensor/results/sztyler2017online/byPositionOne.zip">Download</a></td>
+                        <td style="padding-left: 30px;">~120</td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Two-part setup, separated by combination and subject</td>
+                        <td><a href="http://wifo5-14.informatik.uni-mannheim.de/sensor/results/sztyler2017online/byPositionTwo.zip">Download</a></td>
+                        <td style="padding-left: 30px;">~690</td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Three-part setup, separated by combination and subject</td>
+                        <td><a href="http://wifo5-14.informatik.uni-mannheim.de/sensor/results/sztyler2017online/byPositionThree.zip">Download</a></td>
+                        <td style="padding-left: 30px;">~1600</td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>Four-part setup, separated by combination and subject</td>
+                        <td><a href="http://wifo5-14.informatik.uni-mannheim.de/sensor/results/sztyler2017online/byPositionFour.zip">Download</a></td>
+                        <td style="padding-left: 30px;">~2100</td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>Five-part setup, separated by combination and subject</td>
+                        <td><a href="http://wifo5-14.informatik.uni-mannheim.de/sensor/results/sztyler2017online/byPositionFive.zip">Download</a></td>
+                        <td style="padding-left: 30px;">~1600</td>
+                     </tr>
+                     <tr>
+                        <td>#6</td>
+                        <td>Six-part setup, separated by combination and subject</td>
+                        <td><a href="http://wifo5-14.informatik.uni-mannheim.de/sensor/results/sztyler2017online/byPositionSix.zip">Download</a></td>
+                        <td style="padding-left: 30px;">~640</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h4><b>Cross-Subjects Activity Recognition (Section VI, Part A)</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                        <th>Size [MB]</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Randomy, One Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_randomly_one.result">show</a></td>
+                        <td style="padding-left: 30px;">~1</td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Randomy, Two Accelerometer, Offline learning</td>
+                        <td>Table II/III/IV</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_randomly_two.result">show</a></td>
+                        <td style="padding-left: 30px;">~2</td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Randomy, Three Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_randomly_three.result">show</a></td>
+                        <td style="padding-left: 30px;">~3</td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>Randomy, Four Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_randomly_four.result">show</a></td>
+                        <td style="padding-left: 30px;">~3</td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>Randomy, Five Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_randomly_five.result">show</a></td>
+                        <td style="padding-left: 30px;">~2</td>
+                     </tr>
+                     <tr>
+                        <td>#6</td>
+                        <td>Randomy, Six Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_randomly_six.result">show</a></td>
+                        <td style="padding-left: 30px;">~1</td>
+                     </tr>
+                     <tr>
+                        <td>#7</td>
+                        <td>L1O, One Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_L1O_one.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#8</td>
+                        <td>L1O, Two Accelerometer, Offline learning</td>
+                        <td>Table II/III/IV</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_L1O_two.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#9</td>
+                        <td>L1O, Three Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_L1O_three.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#10</td>
+                        <td>L1O, Four Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_L1O_four.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#11</td>
+                        <td>L1O, Five Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_L1O_five.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#12</td>
+                        <td>L1O, Six Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_L1O_six.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#13</td>
+                        <td>Our approach, One Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_ourapproach_one.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#14</td>
+                        <td>Our approach, Two Accelerometer, Offline learning</td>
+                        <td>Table II/III/IV</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_ourapproach_two.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#15</td>
+                        <td>Our approach, Three Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_ourapproach_three.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#16</td>
+                        <td>Our approach, Four Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_ourapproach_four.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#17</td>
+                        <td>Our approach, Five Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_ourapproach_five.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#18</td>
+                        <td>Our approach, Six Accelerometer, Offline learning</td>
+                        <td>Table II</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_offline_ourapproach_six.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#19</td>
+                        <td>Subject-Specific, One Accelerometer, Offline learning</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2017online/subjectspecific_offline_one.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#20</td>
+                        <td>Subject-Specific, Two Accelerometer, Offline learning</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2017online/subjectspecific_offline_two.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h4><b>Personalization: Online and Active Learning (Section VI, Part B)</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                        <th>Size [MB]</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Our approach, One Accelerometer, Online Learning</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_online_ourapproach_one_base.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Our approach + User-Feedback, One Accelerometer, Online Learning</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_online_ourapproach_one_userfeed.result">show</a></td>
+                        <td style="padding-left: 30px;">~1</td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Our approach + User-Feedback + Smoothing, One Accelerometer, Online Learning</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_online_ourapproach_one_both.result">show</a></td>
+                        <td style="padding-left: 30px;">~1</td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>Our approach, Two Accelerometer, Online Learning</td>
+                        <td>Table V/VI</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_online_ourapproach_two_base.result">show</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>Our approach + Smoothing, Two Accelerometer, Online Learning</td>
+                        <td>Table V/VI</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_online_ourapproach_two_smooth.result">show</a></td>
+                        <td style="padding-left: 30px;">~2</td>
+                     </tr>
+                     <tr>
+                        <td>#6</td>
+                        <td>Our approach + User-Feedback, Two Accelerometer, Online Learning</td>
+                        <td>Table V/VI</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_online_ourapproach_two_userfeed.result">show</a></td>
+                        <td style="padding-left: 30px;">~2</td>
+                     </tr>
+                     <tr>
+                        <td>#7</td>
+                        <td>Our approach + User-Feedback + Smoothing, Two Accelerometer, Online Learning</td>
+                        <td>Table V/VI/VII/VIII, Figure 4</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_online_ourapproach_two_both.result">show</a></td>
+                        <td style="padding-left: 30px;">~2</td>
+                     </tr>
+                     <tr>
+                        <td>#8</td>
+                        <td>Our approach + User-Feedback + Smoothing (varying confidence threshold), Two Accelerometer, Online Learning</td>
+                        <td>Figure 5</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_online_ourapproach_two_both_varconf.result">show</a></td>
+                        <td style="padding-left: 30px;">~23</td>
+                     </tr>
+                     <tr>
+                        <td>#9</td>
+                        <td>Our approach + User-Feedback + Smoothing (varying number of trees), Two Accelerometer, Online Learning</td>
+                        <td>Figure 6</td>
+                        <td><a href="results/sztyler2017online/crosssubjects_online_ourapproach_two_both_vartree.result">show</a></td>
+                        <td style="padding-left: 30px;">~27</td>
+                     </tr>
+                     <tr>
+                        <td>#10</td>
+                        <td>Subject-Specific, One Accelerometer, Online Learning</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2017online/subjectspecific_online_one.result">show</a></td>
+                        <td style="padding-left: 30px;">~1</td>
+                     </tr>
+                     <tr>
+                        <td>#11</td>
+                        <td>Subject-Specific, Two Accelerometer, Online Learning</td>
+                        <td>-</td>
+                        <td><a href="results/sztyler2017online/subjectspecific_online_two.result">show</a></td>
+                        <td style="padding-left: 30px;">~2</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div id="results2017polarisbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Results</h1>
+				   <div class="bs-callout bs-callout-default" style="padding: 10px; margin-bottom: 5px 15px;">
+					  <h4>Info</h4>
+					  This page provides the results of our experiments. Each result file contains the test results for each individual patient/day, i.e., the individual and aggregated results represented by precision, recall, and F-measure. These results belong to the publication <b><a href="#results2017polaris" style="font-style: italic">POLARIS: Probabilistic and Ontological Activity Recognition in Smart-homes</a></b>.
+				   </div>
+				   <div class="bs-callout bs-callout-info" style="padding: 10px; margin-bottom: 5px 40px;">
+					  <h4>Hint</h4>
+					  This work is an extension. Please consider the following page for detailed results concerning <b>Offline POLARIS</b>: <a href="#results2016unsupervised" style="font-style: italic">Unsupervised Recognition of Interleaved Activities of Daily Living through Ontological and Probabilistic Reasoning</a>.
+				   </div>
+               </div>
+			      <table style="font-size: 17px; width: 620px; font-weight: bold; border: 0; ">
+                  <tbody>
+                     <tr>
+                        <td>MLN<sub>NC</sub> solver:</td>
+                        <td><a href="http://executor.informatik.uni-mannheim.de/systems/n-rockit/">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>Ontology:</td>
+                        <td><a href="results/riboni2016unsupervised/ont/adlont.owl">show</a><small> (unchanged compared to <a href="#results2016unsupervised">D. Riboni et al. 2016</a>)</small></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <br/>
+               <h4><b>WSU CASAS Dataset</b> <small>(<a href="http://dx.doi.org/10.1109/MC.2012.328">Publication</a>)</small></h4>
+               <span style="font-size: 16px; margin-left: 40px; width: 780px; font-weight: bold;">MLN<sub>NC</sub> Model: <a href="results/riboni2016unsupervised/mln/casas.mln">show</a><small> (also unchanged)</small></span>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><a href="results/civitarese2017polaris/dump.result">coming soon</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h4><b>SmartFaber Dataset</b> <small>(<a href="http://dx.doi.org/10.1109/PERCOMW.2015.7134060">Publication</a>)</small></h4>
+               <span style="font-size: 16px; margin-left: 40px; width: 780px; font-weight: bold;">MLN<sub>NC</sub> Model: <a href="results/riboni2016unsupervised/mln/smartfaber.mln">show</a><small> (also unchanged)</small></span>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><a href="results/civitarese2017polaris/dump.result">coming soon</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <br/><br/>
+               <div class="col-xs-3 col-lg-4 center"><a href="http://www.unimi.it/ENG/" target="_blank"><img src="images/uni-milan-medium.png" alt="University of Milano" /></a></div>
+               <div class="col-xs-3 col-lg-4 center"><a href="http://dws.informatik.uni-mannheim.de/en/" target="_blank"><img src="images/uni-mannheim-medium.png" alt="University of Mannheim" /></a></div>
+               <div class="col-xs-3 col-lg-4 center"><a href="http://www.unica.it/pub/english/" target="_blank"><img src="images/uni-cagliari-medium.png" alt="University of Cagliari" /></a></div>
+            </div>		
+			<br/><br/>
+			<div id="results2018modellingbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Results</h1>
+               </div>			   
+			   <div class="bs-callout bs-callout-default text-justify" style="padding: 10px; margin-bottom: 5px 15px;">
+                  <h4>Info</h4>
+                  This page provides additional material. Those belong to the publication <b><a href="#results2018modelling" style="font-style: italic;">Modeling and Reasoning with ProbLog: An Application in Recognizing Complex Activities</a></b>.
+               </div>
+			   <br/>
+			   <table style="font-size: 17px; width: 320px; font-weight: bold; border: 0; ">
+                  <tbody>
+                     <tr>
+                        <td>ProbLog Online Editor:</td>
+                        <td><a href="https://dtai.cs.kuleuven.be/problog/editor.html">show</a></td>
+                     </tr>
+                  </tbody>
+               </table>
+			   <br/>
+			   <h4><b>ProbLog Models</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Model</th>
+                        <th>Short Description</th>
+                        <th>Download</th>
+                        <th>Size [MB]</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Minimal ProbLog Model (Figure 1)</td>
+                        <td><a href="./results/sztyler2018modelling/problog_example.txt">Download</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Final ProbLog Model (Running Example)</td>
+                        <td><a href="./results/sztyler2018modelling/problog_final.txt">Download</a></td>
+                        <td style="padding-left: 30px;">&lt;1</td>
+                     </tr>                   
+                  </tbody>
+               </table>
+			   <br/>
+				<div class="panel panel-primary" style="text-align: center; border-width: 2px; padding: 5px; height: 175px;">
+					<div class="col-xs-4 col-sm-3" style="line-height: 175px;">
+						<img alt="cooperation" src="images/cooperation.png" height="100" />
+					</div>
+					<div class="col-xs-4 col-sm-6">
+						<div>This work was a cooperation between the</div>
+						<div style="font-weight: bold; line-height: 50px; font-size: large;"><a href="http://www.unimi.it/ENG/">University of Milano</a></div>
+						<div>and the</div>
+						<div style="font-weight: bold; line-height: 50px; font-size: large;"><a href="http://dws.informatik.uni-mannheim.de/">University of Mannheim</a></div>
+					</div>
+					<div class="col-xs-4 col-sm-3" style="line-height: 175px;">
+						<img alt="cooperation" src="images/cooperation.png" height="100" />
+					</div>
+				</div>
+			
+				<div class="col-xs-1 col-lg-1 center"></div>
+				<div class="col-xs-5 col-lg-5 center"><a href="http://www.unimi.it/ENG/" target="_blank"><img src="images/uni-milan-medium.png" alt="University of Milano" /></a></div>
+				<div class="col-xs-5 col-lg-5 center"><a href="http://dws.informatik.uni-mannheim.de/en/" target="_blank"><img src="images/uni-mannheim-medium.png" alt="University of Mannheim" /></a></div>
+				<div class="col-xs-1 col-lg-1 center"></div>
+			</div>
+			
+            <div id="results2018hipsbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Results</h1>
+               </div>
+               <div class="bs-callout bs-callout-default text-justify" style="padding: 10px; margin-bottom: 5px 15px;">
+                  <h4>Info</h4>
+                  This page provides the results of our experiments. Each result file contains the individual results, i.e., not aggregated. The results were analyzed with pivot tables in Excel. These results belong to the publication <b><a href="#results2018hips" style="font-style: italic;">Hips Do Lie! A Position-Aware Mobile Fall Detection System</a></b>.
+               </div>
+                <div class="bs-callout bs-callout-default text-justify" style="padding: 10px; margin-bottom: 5px 15px;">
+                   <h4>Datasets</h4>
+                   <div>Following, the datasets which we considered in our experiments can be found. <b>Source</b> provides a link to the original dataset, <b>Publication</b> provides a link to the related publication, and <b>Download</b> provides our preprocessed version of the original dataset. Further information can be found <a href="results/krupitzer2018hips/readme_raw_data.txt">here (DataSets)</a> and <a href="results/krupitzer2018hips/traces/readme_traces.txt">here (Traces)</a>.</div><br/>
+                   
+                   <div style="display: inline-block;">
+                    <div class="col-xs-3 col-sm-3" style="text-align: center;">
+                        <div class="panel panel-primary proband-entry" data-value="">
+                            <div class="panel-heading" style="padding: 2px 2px; text-align: center;">
+                                <h3 class="panel-title" style>MMSys</h3>
+                            </div>
+                        <div class="panel-body" style="height: 80px; padding: 10px;"><img style="height: 60px;" alt="mmsys" src="./images/dataset.png" /></div>
+                        <a style="font-weight: bold;" href="http://traces.cs.umass.edu/index.php/Mmsys/Mmsys">Source</a><span> | </span>
+                        <a style="font-weight: bold;" href="http://doi.org/10.1145/2713168.2713198">Publication</a>
+                        <a style="font-weight: bold;" href="results/krupitzer2018hips/traces/traces_mmsys.zip">Traces</a><span> | </span>
+                        <a style="font-weight: bold;" href="results/krupitzer2018hips/mmsys220917.zip">Download</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-3 col-sm-3" style="text-align: center;">
+                        <div class="panel panel-primary proband-entry" data-value="">
+                            <div class="panel-heading" style="padding: 2px 2px; text-align: center;">
+                                <h3 class="panel-title" style>UMA</h3>
+                            </div>
+                        <div class="panel-body" style="height: 80px; padding: 10px;"><img style="height: 60px;" alt="uma" src="./images/dataset.png" /></div>
+                        <a style="font-weight: bold;" href="https://figshare.com/articles/UMA_ADL_FALL_Dataset_zip/4214283">Source</a><span> | </span>
+                        <a style="font-weight: bold;" href="http://doi.org/10.1371/journal.pone.0168069">Publication</a>
+                        <a style="font-weight: bold;" href="results/krupitzer2018hips/traces/traces_uma.zip">Traces</a><span> | </span>
+                        <a style="font-weight: bold;" href="results/krupitzer2018hips/uma220917.zip">Download</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-3 col-sm-3" style="text-align: center;">
+                        <div class="panel panel-primary proband-entry" data-value="">
+                            <div class="panel-heading" style="padding: 2px 2px; text-align: center;">
+                                <h3 class="panel-title" style>MiBShar</h3>
+                            </div>
+                        <div class="panel-body" style="height: 80px; padding: 10px;"><img style="height: 60px;" alt="mibshar" src="./images/dataset.png" /></div>
+                        <a style="font-weight: bold;" href="http://www.sal.disco.unimib.it/technologies/unimib-shar/">Source</a><span> | </span>
+                        <a style="font-weight: bold;" href="http://arxiv.org/pdf/1611.07688.pdf">Publication</a>
+                        <a style="font-weight: bold;" href="results/krupitzer2018hips/mibshar220917.zip">Download</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-3 col-sm-3" style="text-align: center;">
+                        <div class="panel panel-primary proband-entry" data-value="">
+                            <div class="panel-heading" style="padding: 2px 2px; text-align: center;">
+                                <h3 class="panel-title" style>SisFall</h3>
+                            </div>
+                        <div class="panel-body" style="height: 80px; padding: 10px;"><img style="height: 60px;" alt="sisfall" src="./images/dataset.png" /></div>
+                        <a style="font-weight: bold;" href="http://sistemic.udea.edu.co/en/investigacion/proyectos/english-falls/">Source</a><span> | </span>
+                        <a style="font-weight: bold;" href="http://doi.org/10.3390/s17010198">Publication</a>
+                        <a style="font-weight: bold;" href="results/krupitzer2018hips/sisfall220917.zip">Download</a>
+                        </div>
+                    </div>
+                   </div>
+                </div>
+                
+               <h4><b>Results</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Detailed Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>Fall Detection</td>
+                        <td><a href="results/krupitzer2018hips/falldetection/readme_falldetection.txt">ReadMe</a></td>
+                        <td>Table III-VI</td>
+                        <td><a href="results/krupitzer2018hips/falldetection/falldetection.csv">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>Positioning</td>
+                        <td><a href="results/krupitzer2018hips/positioning/readme_positioning.txt">ReadMe</a></td>
+                        <td>Table VII</td>
+                        <td><a href="results/krupitzer2018hips/positioning/positioning.csv">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>Fullstack (FallDetection)</td>
+                        <td><a href="results/krupitzer2018hips/fullstack_falldetection/readme_fullstack_falldetection.txt">ReadMe</a></td>
+                        <td>Table VIII</td>
+                        <td><a href="results/krupitzer2018hips/fullstack_falldetection/fullstack_falldetection.csv">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>Fullstack (Positioning)</td>
+                        <td><a href="results/krupitzer2018hips/fullstack_positioning/readme_fullstack_positioning.txt">ReadMe</a></td>
+                        <td>Table IX</td>
+                        <td><a href="results/krupitzer2018hips/fullstack_positioning/fullstack_positioning.csv">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>Clustering</td>
+                        <td><a href="results/krupitzer2018hips/clustering/readme_clustering.txt">ReadMe</a></td>
+                        <td>-</td>
+                        <td><a href="results/krupitzer2018hips/clustering/clustering.csv">show</a></td>
+                     </tr>
+                    </tbody>
+                </table>
+                
+               <h4><b>Additional Results (F-measure)</b></h4>
+               <table class="table" style="font-size: 14px; margin-left: 40px; width: 780px;">
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Short Description</th>
+                        <th>Related To</th>
+                        <th>Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>#1</td>
+                        <td>F<sub>0.5</sub>, F<sub>1</sub>, and F<sub>2</sub></td>
+                        <td>Table IV</td>
+                        <td><a href="results/krupitzer2018hips/fmeasure_alternativ/fmeasure_table4.csv">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#2</td>
+                        <td>F<sub>0.5</sub>, F<sub>1</sub>, and F<sub>2</sub></td>
+                        <td>Table V</td>
+                        <td><a href="results/krupitzer2018hips/fmeasure_alternativ/fmeasure_table5.csv">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#3</td>
+                        <td>F<sub>0.5</sub>, F<sub>1</sub>, and F<sub>2</sub></td>
+                        <td>Table VII</td>
+                        <td><a href="results/krupitzer2018hips/fmeasure_alternativ/fmeasure_table7.csv">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#4</td>
+                        <td>F<sub>0.5</sub>, F<sub>1</sub>, and F<sub>2</sub></td>
+                        <td>Table VIII</td>
+                        <td><a href="results/krupitzer2018hips/fmeasure_alternativ/fmeasure_table8.csv">show</a></td>
+                     </tr>
+                     <tr>
+                        <td>#5</td>
+                        <td>F<sub>0.5</sub>, F<sub>1</sub>, and F<sub>2</sub></td>
+                        <td>Table IX</td>
+                        <td><a href="results/krupitzer2018hips/fmeasure_alternativ/fmeasure_table9.csv">show</a></td>
+                     </tr>
+                    </tbody>
+                </table>
+                
+                <div class="panel panel-primary" style="text-align: center; border-width: 2px; padding: 5px; height: 175px;">
+                    <div class="col-xs-4 col-sm-3" style="line-height: 175px;">
+                        <img alt="cooperation" src="images/cooperation.png" height="100" />
+                    </div>
+                    <div class="col-xs-4 col-sm-6">
+                        <div>This work was a cooperation between</div>
+                        <div style="font-weight: bold; line-height: 50px; font-size: large;"><a href="https://becker.bwl.uni-mannheim.de/home">Chair of Information Systems II</a></div>
+                        <div>and</div>
+                        <div style="font-weight: bold; line-height: 50px; font-size: large;"><a href="http://dws.informatik.uni-mannheim.de/en/research/artificial-intelligence-prof-stuckenschmidt/">Chair of Artificial Intelligence</a></div>
+                        of the University of Mannheim
+                    </div>
+                    <div class="col-xs-4 col-sm-3" style="line-height: 175px;">
+                        <img alt="cooperation" src="images/cooperation.png" height="100" />
+                    </div>
+                </div>
+            </div>            
+            <div id="applicationsbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Applications</h1>
+               </div>
+               <div class="row">
+                  <div class="col-xs-3 col-md-4 center">
+                     <div class="thumbnail" style="padding: 10px 0px 0px 0px;">
+                        <img style="height: 200px;" src="images/collector/app2.png" alt="Sensor Data Collector" />
+                        <div class="caption">
+                           <h3>Sensor Data Collector</h3>
+                           <p><a href="https://play.google.com/store/apps/details?id=de.unima.ar.collector&hl=en" target="_blank" class="btn btn-primary" role="button">PlayStore</a> <a href="https://github.com/sztyler/sensordatacollector" target="_blank" class="btn btn-primary" role="button">GitHub</a> <a id="submenu_collector" href="#collector" class="btn btn-success" role="button">More</a></p>
+                           <p class="thumbnail" style="margin: 0px;">This application provides the function to record all common build-in sensors of wearable devices. In addition, a labeling and visualization function is included.</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xs-3 col-md-4 center">
+                     <div class="thumbnail" style="padding: 10px 0px 0px 0px;">
+                        <img style="height: 200px;" src="images/activity/app1.png" alt="Physical Activity Recognition" />
+                        <div class="caption">
+                           <h3>HAR: Everyday Life</h3>
+                           <p><a href="#" class="btn btn-primary disabled" role="button">PlayStore</a> <a href="#" class="btn btn-primary disabled" role="button">GitHub</a> <a href="#" class="btn btn-success disabled" role="button">More</a></p>
+                           <p class="thumbnail" style="margin: 0px;">The application recognizes the performed activity, e.g., walking, running, and sitting. It considers and recognizes the on-body position of the wearable device.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div id="datacollectorbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h1>Sensor Data Collector</h1>
+               </div>
+               <div class="col-xs-6 col-lg-6 center height440"><img src="images/collector/app1.png" alt="Android Sensor Data Collector" /></div>
+               <div class="col-xs-6 col-lg-6 height440">
+                  <div class="text-justify" style="width: 300px; display: table; margin: 0 auto;">This application allows to record all common build-in sensors of wearable device. It is possible to specifiy the sampling rate and record several sensors simultaneously. In addition, it is possible to label the recorded data by specifying the current activity, posture, and location. The recorded data can be visualized as well as exported in several formats.<br>Combining the smart-phone with at least one smart-watch enables also to record the same sensor simultaneously for different on-body positions. Further, the smart-watch provides a nadditional interface which allows to control this application without taking the smart-phone in hand. Hence, the user can easily update the current location or activity which helps to create an accurate labeling of the data.</div>
+               </div>
+               <div class="col-xs-6 col-lg-6 height440">
+                  <h3>Features</h3>
+                  <ul style="font-size: 18px;">
+                     <li style="margin-left: 15px; margin-bottom: 15px; margin-top: 15px;">Recording of all build-in sensors (simultaneously)</li>
+                     <li style="margin-left: 15px; margin-bottom: 15px;">Labeling recorded data (Activity, Location, Posture)</li>
+                     <li style="margin-left: 15px; margin-bottom: 15px;">Visualize recorded data as well as live plotting</li>
+                     <li style="margin-left: 15px; margin-bottom: 15px;">Provides several export formats (sqlite, csv)</li>
+                     <li style="margin-left: 15px; margin-bottom: 15px;">Supports also smart-watches (sensor recording, additional interface)</li>
+                  </ul>
+               </div>
+               <div class="col-xs-6 col-lg-6 center height440"><img src="images/collector/app2.png" alt="Android Sensor Data Collector Wearable" /></div>
+               <div class="col-xs-12 col-lg-12 height80"></div>
+               <div class="col-xs-4 col-lg-4 center"><a href="images/collector/app3.png" class="thumbnail thumbnail-large" data-toggle="lightbox"><img src="images/collector/app3.png" alt="data sensor collector 3" width="140" /></a></div>
+               <div class="col-xs-4 col-lg-4 center"><a href="images/collector/app4.png" class="thumbnail thumbnail-large" data-toggle="lightbox"><img src="images/collector/app4.png" alt="data sensor collector 4" width="140" /></a></div>
+               <div class="col-xs-4 col-lg-4 center"><a href="images/collector/app5.png" class="thumbnail thumbnail-large" data-toggle="lightbox"><img src="images/collector/app5.png" alt="data sensor collector 5" width="140" /></a></div>
+               <div class="col-xs-12 col-lg-12 center"><a href="https://play.google.com/store/apps/details?id=de.unima.ar.collector" target="_blank"><img alt="Get it on Google Play" src="images/googleplay2.png" /></a><br/><a href="https://github.com/sztyler/sensordatacollector">(SourceCode on GitHub)</a></div>
+            </div>
+            <div id="dataset-overview-realworldbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h2>DataSet - RealWorld (HAR) <span class="pull-right">(2016)</span></h2>
+               </div>
+               <div class="bs-callout bs-callout-primary" style="padding: 10px 10px 10px 10px; font-weight: bold;">Please select a subject for more details or individual downloads. (<a id="dataset-realworld2016-dl" href="#">Download</a>, ~3.5GB)</div>
+               <div class="row center"></div>
+               <div class="text-justify bs-callout bs-callout-default">
+                  <h4>Description</h4>
+                  The data set covers acceleration, GPS, gyroscope, light, magnetic field, and sound level data of the activities climbing stairs down and up, jumping, lying, standing, sitting, running/jogging, and walking of fifteen subjects (age 31.9&#0177;12.4, height 173.1&#0177;6.9, weight 74.1&#0177;13.8, eight males and seven females). For each activity, we recorded simultaneously the acceleration of the body positions chest, forearm, head, shin, thigh, upper arm, and waist. Each subject performed each activity roughly 10 minutes except for jumping due to the physical exertion (~1.7 minutes). Concerning male and female, the amount of data is equally distributed. Each movement was recorded by a video camera to facilitate the usage.
+               </div>
+            </div>
+            <div id="dataset-overview-dailylogbody" class="col-xs-12 col-sm-9 body-content">
+               <div class="page-header">
+                  <h2>DataSet - Daily Log (ADL) <span class="pull-right">(2016)</span></h2>
+               </div>
+               <div class="bs-callout bs-callout-primary" style="padding: 10px 10px 10px 10px; font-weight: bold;">Please select a subject for more details or individual downloads. (<a id="dataset-dailylog2016-dl" href="#">Download</a>, ~4.6GB)</div>
+               <div class="row center"></div>
+               <div class="text-justify bs-callout bs-callout-default">
+                  <h4>Description</h4>
+                  Seven individuals (age 23.1&#0177;1.81, height 179.0&#0177;9.09, weight 80.6&#0177;9.41, seven males) collected accelerometer, device orientation, and GPS sensor data and labeled this data simultaneously. The data was collected using a smart-phone (sensor recordning) and smart-watch (manually labeling). The subjects were not supervised but got an introduction and guidelines.
+               </div>
+            </div>
+            <div id="sidebar" class="col-xs-6 col-sm-3 sidebar-offcanvas">
+               <h3 style="font-weight: bold;">Data Sets</h3>
+               <a href="#dataset_realworld" style="color: black; text-decoration: none;">
+                  <div id="submenu_realworld" class="panel panel-default dataset-entry">
+                     <div class="panel-heading" style="background-color: #EEE;">
+                        <h3 class="panel-title" style="font-weight: bold;">RealWorld (HAR) <span class="pull-right">(2016)</span></h3>
+                     </div>
+                     <div class="panel-body">
+                        <div class="row">
+                           <div class="col-md-7" style="padding-right: 0px;">
+                              <div class="row">
+                                 <div class="col-md-12" style="height: 110px; padding-left: 4px;">
+                                    <ul style="padding-left: 20px; margin-left: 0px; font-weight: bold;">
+                                       <li>15 Subjects</li>
+                                       <li>6 Sensors</li>
+                                       <li>7 Body positions</li>
+                                       <li>Video recordings</li>
+                                    </ul>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12"><img class="expand" src="images/expand.png" alt="expand" /></div>
+                              </div>
+                           </div>
+                           <div class="col-md-5" style="padding-left: 0px;">
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right; padding-left: 0px;">Walking</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Running</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Sitting</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Standing</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Lying</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Stairs Up</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Stairs Down</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Jumping</div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </a>
+               <a href="#dataset_dailylog" style="color: black; text-decoration: none;">
+                  <div id="submenu_dailylog" class="panel panel-default dataset-entry">
+                     <div class="panel-heading" style="background-color: #EEE;">
+                        <h3 class="panel-title" style="font-weight: bold;">Daily Log (ADL) <span class="pull-right">(2016)</span></h3>
+                     </div>
+                     <div class="panel-body">
+                        <div class="row">
+                           <div class="col-md-7" style="padding-right: 0px;">
+                              <div class="row">
+                                 <div class="col-md-12" style="height: 110px; padding-left: 4px;">
+                                    <ul style="padding-left: 20px; margin-left: 0px; font-weight: bold;">
+                                       <li>7 Subjects</li>
+                                       <li>Postures</li>
+                                       <li>Accelerometer</li>
+                                       <li>Two weeks</li>
+                                    </ul>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12"><img class="expand" src="images/expand.png" alt="expand" /></div>
+                              </div>
+                           </div>
+                           <div class="col-md-5" style="padding-left: 0px;">
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Housework</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Sport</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Grooming</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Relaxing</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Sleeping</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Eating</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">Housework</div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12" style="text-align: right;">...</div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </a>
+            </div>
+         </div>
+         <!--/row-->
+         <hr>
+         <footer>
+            <div class="col-xs-3 col-lg-3 center"><a href="http://dws.informatik.uni-mannheim.de/en/" target="_blank"><img src="images/uni-mannheim-small.png" alt="University of Mannheim" /></a></div>
+            <div class="col-xs-3 col-lg-3">
+               <div class="center2 height100"><a href="http://dws.informatik.uni-mannheim.de/en/" target="_blank">University of Mannheim - Research Group Data and Web Science</a></div>
+            </div>
+            <div class="col-xs-3 col-lg-3 center" style="line-height: 100px;"><span>&copy; Timo Sztyler 2015 &ndash; 2018</span></div>
+            <div class="col-xs-3 col-lg-3 center"></div>
+         </footer>
+      </div>
+      <!--/.maincontainer--><!-- Bootstrap core JavaScript================================================== --><!-- Placed at the end of the document so the pages load faster --><script src="lib/jquery-2.1.4/jquery-2.1.4.min.js"></script><script src="lib/jquery-ui-1.11.4/jquery-ui.min.js"></script><script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script><script src="lib/ekko-lightbox-3.3.0/ekko-lightbox.min.js"></script><script id="posture_entry" type="text/html"><div class="col-xs-6 col-lg-6"><div class="panel panel-primary "><div class="panel-heading"><span id="posture_headline" /><span class="glyphicon glyphicon-info-sign pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Scenario"></span></div><div class="panel-body"><div class="col-xs-8 col-lg-8"><div><span class="label label-default label-sensor" data-toggle="tooltip" data-placement="left" title="SensorDesc and Settings">Accelerometer</span><span class="label label-success"><a id="acc_csv" class="font-white" href="#">csv</a></span><span class="label label-success"><a id="acc_sqlite" class="font-white" href="#">sqlite</a></span></div><div><span class="label label-default label-sensor" data-toggle="tooltip" data-placement="left" title="SensorDesc and Settings">GPS</span><span class="label label-success"><a id="gps_csv" class="font-white" href="#">csv</a></span><span class="label label-success"><a id="gps_sqlite" class="font-white" href="#">sqlite</a></span></div><div><span class="label label-default label-sensor" data-toggle="tooltip" data-placement="left" title="SensorDesc and Settings">Gyroscope</span><span class="label label-success"><a id="gyr_csv" class="font-white" href="#">csv</a></span><span class="label label-success"><a id="gyr_sqlite" class="font-white" href="#">sqlite</a></span></div><div><span class="label label-default label-sensor" data-toggle="tooltip" data-placement="left" title="SensorDesc and Settings">Light</span><span class="label label-success"><a id="lig_csv" class="font-white" href="#">csv</a></span><span class="label label-success"><a id="lig_sqlite" class="font-white" href="#">sqlite</a></span></div><div><span class="label label-default label-sensor" data-toggle="tooltip" data-placement="left" title="SensorDesc and Settings">Magnetic Field</span><span class="label label-success"><a id="mag_csv" class="font-white" href="#">csv</a></span><span class="label label-success"><a id="mag_sqlite" class="font-white" href="#">sqlite</a></span></div><div><span class="label label-default label-sensor" data-toggle="tooltip" data-placement="left" title="SensorDesc and Settings">Sound Level</span><span class="label label-success"><a id="mic_csv" class="font-white" href="#">csv</a></span><span class="label label-success"><a id="mic_sqlite" class="font-white" href="#">sqlite</a></span></div></div><div class="col-xs-4 col-lg-4 vertical-line"><video id="proband_videothumb" width="120" height="120" preload="none" controls poster="video-standbild.jpg"><source id="proband_videothumb_webm" src="#" type="video/webm" /><source id="proband_videothumb_mp4" src="#" type="video/mp4" /></video><a href="#"><span id="proband_videothumb_label" class="label label-success label-video">Video (h264, HD)</span></a></div></div></div></div></script><script id="dataset_overview_entry" type="text/html"><a class="test" href="#"><div class="col-xs-2 col-sm-2"><div class="panel panel-primary proband-entry" data-value=""><div class="panel-heading" style="padding: 2px 2px;"><h3 class="panel-title">Subject</h3></div><div class="panel-body" style="height: 80px; padding: 10px;">Panel content</div></div></div></a></script><script src="lib/main.js?n=1"></script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug --><script src="../../assets/js/ie10-viewport-bug-workaround.js"></script><script src="offcanvas.js"></script><script src="lib/prettify/run_prettify.js"></script><script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+   </body>
+</html>

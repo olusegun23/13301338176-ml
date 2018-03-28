@@ -1,0 +1,84 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From DemoDataManager:
+* .gitignore
+* README.md
+* proguard-project.txt
+From SensorDataManager:
+* .gitignore
+* README.md
+* build.gradle
+* sensorDataManager.iml
+From SensorManager:
+* .gitignore
+* README.md
+* build.gradle
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+appcompat-v7 => [com.android.support:appcompat-v7:22.2.1]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In SensorDataManager:
+* libs/httpmime-4.1.2.jar => sensorDataManager/libs/httpmime-4.1.2.jar
+* libs/sqlcipher.jar => sensorDataManager/libs/sqlcipher.jar
+* libs/ziputils-1.1.jar => sensorDataManager/libs/ziputils-1.1.jar
+* src/ => sensorDataManager/src/main/java/
+* src/main/AndroidManifest.xml => sensorDataManager/src/main/resources/main/AndroidManifest.xml
+* src/main/jniLibs/armeabi-v7a/libconceal.so => sensorDataManager/src/main/resources/main/jniLibs/armeabi-v7a/libconceal.so
+* src/main/jniLibs/armeabi-v7a/libdatabase_sqlcipher.so => sensorDataManager/src/main/resources/main/jniLibs/armeabi-v7a/libdatabase_sqlcipher.so
+* src/main/jniLibs/armeabi-v7a/libsqlcipher_android.so => sensorDataManager/src/main/resources/main/jniLibs/armeabi-v7a/libsqlcipher_android.so
+* src/main/jniLibs/armeabi-v7a/libstlport_shared.so => sensorDataManager/src/main/resources/main/jniLibs/armeabi-v7a/libstlport_shared.so
+* src/main/jniLibs/armeabi/libconceal.so => sensorDataManager/src/main/resources/main/jniLibs/armeabi/libconceal.so
+* src/main/jniLibs/armeabi/libdatabase_sqlcipher.so => sensorDataManager/src/main/resources/main/jniLibs/armeabi/libdatabase_sqlcipher.so
+* src/main/jniLibs/armeabi/libsqlcipher_android.so => sensorDataManager/src/main/resources/main/jniLibs/armeabi/libsqlcipher_android.so
+* src/main/jniLibs/armeabi/libstlport_shared.so => sensorDataManager/src/main/resources/main/jniLibs/armeabi/libstlport_shared.so
+* src/main/jniLibs/x86/libconceal.so => sensorDataManager/src/main/resources/main/jniLibs/x86/libconceal.so
+* src/main/jniLibs/x86/libdatabase_sqlcipher.so => sensorDataManager/src/main/resources/main/jniLibs/x86/libdatabase_sqlcipher.so
+* src/main/jniLibs/x86/libsqlcipher_android.so => sensorDataManager/src/main/resources/main/jniLibs/x86/libsqlcipher_android.so
+* src/main/jniLibs/x86/libstlport_shared.so => sensorDataManager/src/main/resources/main/jniLibs/x86/libstlport_shared.so
+In SensorManager:
+* src/ => sensorManager/src/main/java/
+* src/main/AndroidManifest.xml => sensorManager/src/main/resources/main/AndroidManifest.xml
+* src/main/res/values/strings.xml => sensorManager/src/main/resources/main/res/values/strings.xml
+* src/main/res/values/styles.xml => sensorManager/src/main/resources/main/res/values/styles.xml
+In DemoDataManager:
+* AndroidManifest.xml => demoDataManager/src/main/AndroidManifest.xml
+* assets/ => demoDataManager/src/main/assets/
+* res/ => demoDataManager/src/main/res/
+* src/ => demoDataManager/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

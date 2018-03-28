@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ES Library Documentation by emotionsense</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ES Libraries Documentation</h1>
+        <p>Online documentation:
+	<br /><a href="../index.html">Home</a>
+	<br /><a href="../sensors.html">What Sensor Data?</a>
+        <br /><a href="../android.html">Collecting Sensor Data</a>
+        <br /><a href="../format.html">Formatting Sensor Data</a>
+        <br /><a href="../data.html">Store/Transfer Data</a>
+	<br /><a href="../research.html">Research</a>
+        <br /><a href="../contributing.html">Contributing</a>
+	<br /><a href="https://github.com/emotionsense">Project Github Page</a></p>
+
+      </header>
+      <section>
+<h1>WiFi</h1>
+<p>This sensor initiates and returns the result of performing a WiFi scan.</p>
+
+<p>This sensor requires permissions to access and change the WiFi and network state. The JSON format for a sample from this sensor is:</p>
+
+<pre><code>{
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"14:28:25:734 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435670905734,
+	"dataType":"WiFi",
+	"unavailable":false,
+	"scanResult":
+	[
+		{
+			"ssid":"",
+			"bssid":"00:00:00:00:00:00",
+			"capabilities":"[ESS]",
+			"level":-86,
+			"frequency":5200
+		}
+	],
+	"senseCycles":1
+}</pre></code>
+
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages <br>Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/lib/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel='stylesheet' href="static/css/navbar.css"/>
+    <link rel='stylesheet' href="static/css/common.css" />
+    <link rel='stylesheet' href="static/css/index.css" />
+    <script type="text/javascript" src="static/lib/jquery.js"></script>
+    <script type="text/javascript" src="static/lib/bootstrap-3.3.7/js/bootstrap.js"></script>
+  </head>
+  <body>
+  	<div id="navbar">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">TMD dataset</a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+              <li class="underline"><a href="tutorial.html">Tutorial</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="underline"><a href="download.html">Download</a></li>
+              <li class="underline"><a href="aboutus.html">About Us</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </div>
+   <div class="jumbotron">
+        <div class="headline">
+            <div class="container">
+                <h1 class="orange">Welcome to TMD dataset</h1>
+                <h2 class="orange">The first free dataset about Transportation Mode Detection</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <hr class="featurette-divider">
+        <!-- What is TMD-->
+        <div class="featurette" id="what_is_tmd">
+            <img class="featurette-image img-rounded img-responsive pull-right" src="static/img/first.png">
+            <h2 class="featurette-heading">What is
+                <span class="orange">Transportation Mode Detection</span>?
+            </h2>
+            <p class="lead">
+                Identify user’s transportation modes through observations of the user, or
+                observation of the environment, is a growing topic of research, with many
+                applications in the field of <strong>Internet of Things (IoT)</strong>.
+                <strong>Transportation mode detection</strong> can provide context information
+                useful to offer appropriate services based on user’s needs and possibilities of interaction.
+        </div>
+        <hr class="featurette-divider">
+
+        <!-- Goal of TMD-->
+        <div class="featurette" id="goal_of_tmd">
+            <img class="featurette-image img-circle img-responsive pull-left" src="static/img/second.png" width="300" height="500">
+            <h2 class="featurette-heading">What is the <span class="orange">goal</span> of TMD?</h2>
+            <p class="lead">
+                User transportation mode recognition can be considered as a <strong>HAR</strong> task
+                (Human Activity Recognition).
+                Its goal is to identify which kind of transportation - walking, driving
+                etc..- a person is using.
+                Transportation mode recognition can provide context information to enhance
+                applications and provide a better user experience, it can be crucial for
+                many different applications, such as <span class="italic">device profiling</span>,
+                <span class="italic">monitoring road and traffic condition</span>,
+                <span class="italic">Healthcare</span>, <span class="italic">Traveling support</span> etc..
+            </p>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- Context acquisition -->
+        <div class="featurette" id="contact">
+            <img class="featurette-image img-circle img-responsive pull-right" src="static/img/smartphone.svg" width="400" height="700">
+            <h2 class="featurette-heading">Context acquisition via
+                <span class="orange">smartphone's sensors</span>
+            </h2>
+            <p class="lead">
+                A sensor measures different physical quantities and provides corresponding raw sensor
+                readings which are a source of information about the user and
+                their environment. Due to advances in sensor technology, sensors are getting more powerful,
+                cheaper and smaller in size. Almost all mobile phones currently include
+                sensors that allow the capture of important context information. For this
+                reason, one of the key sensors employed by context-aware applications is the
+                mobile phone, that has become a central part of users lives.
+            </p>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- Data collection -->
+        <div class="featurette" id="data_collection">
+            <img class="featurette-image img-rounded img-responsive pull-left" src="static/img/tmd_process_01.png" width="500" height="700">
+            <h2 class="featurette-heading">Data collection</h2>
+            <p class="lead">
+                We collect sensors data from thriteen volunteer subjects, ten male, and three female.
+                The set of classes we classify is composed by <strong>walking</strong>, <strong>car</strong>,
+                <strong>still</strong>, <strong>train</strong> and <strong>bus</strong>. <br>
+                In total, our dataset is composed of 226 labeled files (in continuous updating)
+                representing the same number of activities corresponding to more than 31 hours of data:
+                26% of data is annoted as <strong>walking</strong>, 25% as driving a <strong>car</strong>,
+                24% as standing <strong>still</strong>, 20% as being on <strong>train</strong>,
+                and 5% as being on <strong>bus</strong>.
+            </p>
+        </div>
+        <hr class="featurette-divider">
+        <!-- Cleaned and processed data-->
+        <div class="featurette" id="clean_data">
+            <img class="featurette-image img-rounded img-responsive pull-right" src="static/img/magnitude.png" width="400" height="700">
+            <h2 class="featurette-heading">Sensors data <span class="orange">cleaned</span>
+                and processed sensors based on <span class="orange">magnetometer orientation</span>
+            </h2>
+            <p class="lead">
+              Initial data pre-processing phase: data cleaning operations are performed, such as delete measure from
+              the sensors to exclude, make the values of the sound and speed sensors positive etc...
+            </p>
+            <p class="lead">
+            Furthermore some sensors, like ambiental (sound, light and pressure) and proximity,
+            returns a single data value as the result of sense, this can be directly used in
+            dataset. Instead, all the other return more than one values that are related to
+            the coordinate system used, so their values are strongly related to <strong>orientation</strong>.
+            For almost all we can use an orientation-independent metric, <strong>magnitude</strong>.
+            </p>
+        </div>
+
+        <hr class="featurette-divider">
+        <!-- Time windows partition and feature-->
+        <div class="featurette" id="feature_and_time_window">
+            <img class="featurette-image img-rounded img-responsive pull-left" src="static/img/feature_time_window.jpg" width="500">
+            <h2 class="featurette-heading"><span class="orange">Time windows</span> partition and <span class="orange">feature</span> extraction
+            </h2>
+            <p class="lead">
+                After the data is cleaned, the dataset is divided into time windows (5 seconds or half second).
+                Once the dataset has been divided into time windows, we extract four feature from any sensors.
+            </p>
+        </div>
+        <hr class="featurette-divider">
+        <!-- Evaluation -->
+        <div class="featurette" id="evaluation">
+            <img class="featurette-image img-rounded img-responsive pull-right" src="static/img/2classes.png" width="400" height="800">
+            <h2 class="featurette-heading">Evaluation with different machine <span class="orange">learning tecniques</span></h2>
+            <p class="lead">
+                We build three different sensors set and for each set,
+                we build four model with four different <strong>classification algorithms</strong>(Decision Tree, Neural Network,
+                Random Forest and Support Vector Machines) and we got as best accuracy <strong>96%</strong>. Then we perform
+                other experimentation such as the <strong>class-to-class classification</strong>,
+                in which we perform a similar analysis but considering only two classes to discriminate between.
+            </p>
+        </div>
+
+        <hr class="featurette-divider">
+        <div class="featurette">
+            <h2 class="featurette-heading">Complete process</h2>
+            <img class="featurette-image img-rounded img-responsive" src="static/img/sensors_process.png">
+        </div>
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Università di Bologna - 2017</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+  </body>
+</html>

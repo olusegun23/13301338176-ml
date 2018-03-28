@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ravikiran357.mc_project.LoggingActivity">
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ScrollView
+            android:id="@+id/SCROLLER_SV"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:scrollbars="vertical"
+            android:fillViewport="true"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/LOGGING_TV"
+                android:text="LOGS!"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                />
+        </ScrollView>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
+

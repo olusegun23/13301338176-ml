@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=yes, width=device-width, minimum-scale=1.0" />
+  <meta name="format-detection" content="telephone=no" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+        <base href="http://www.informatica.unibo.it/it/index.html" /><!--[if lt IE 7]></base><![endif]-->
+    
+
+    
+        <meta content="Il DISI nasce nell'ambito dell'Università di Bologna come unico punto di riferimento per la didattica, la ricerca ed il trasferimento tecnologico nelle discipline informatiche e dell'ingegneria informatica." name="description" />
+<title>Dipartimento di Informatica - Scienza e Ingegneria - DISI</title>
+<link rel="kss-base-url" href="http://www.informatica.unibo.it/it/index.html/" />
+
+  
+    <link rel="stylesheet" type="text/css" href="http://www.informatica.unibo.it/portal_css/Sunburst%20Theme/base-cachekey0525.css" />
+    <style type="text/css" media="screen">@import url(http://www.informatica.unibo.it/portal_css/Sunburst%20Theme/resourceplone.app.discussion.stylesheetsdiscussion-cachekey9292.css);</style>
+    <style type="text/css" media="screen">@import url(http://www.informatica.unibo.it/portal_css/Sunburst%20Theme/resourceprettyPhoto-cachekey0960.css);</style>
+    <link rel="stylesheet" type="text/css" href="http://www.informatica.unibo.it/portal_css/Sunburst%20Theme/resourceunibotheme.sites.cssimagegallery-cachekey7195.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.informatica.unibo.it/portal_css/Sunburst%20Theme/resourceunibotheme.sites.cssprint-cachekey5717.css" />
+
+  
+    <link rel="kinetic-stylesheet" type="text/css" href="http://www.informatica.unibo.it/portal_kss/Sunburst%20Theme/at-cachekey3821.kss" />
+  
+    <script type="text/javascript" src="http://www.informatica.unibo.it/portal_javascripts/Sunburst%20Theme/jquery-cachekey3060.js"></script>
+    <script type="text/javascript" src="http://www.informatica.unibo.it/portal_javascripts/Sunburst%20Theme/resourceplone.app.discussion.javascriptscomments-cachekey8995.js"></script>
+    <script type="text/javascript" src="http://www.informatica.unibo.it/portal_javascripts/Sunburst%20Theme/resourceunibo.atbase.jsbando_backend-cachekey4505.js"></script>
+    <script type="text/javascript" src="https://www.unibo.it/cookies/cookies.js" async="async" defer="defer"></script>
+    <script type="text/javascript" src="http://www.informatica.unibo.it/portal_javascripts/Sunburst%20Theme/scienzemedicheveterinarie_custom-cachekey6097.js"></script>
+
+
+
+  <meta content="http://www.informatica.unibo.it/it/index.html" property="og:url" />
+
+  <meta content="summary" property="twitter:card" />
+
+  <meta content="Il DISI nasce nell'ambito dell'Università di Bologna come unico punto di riferimento per la didattica, la ricerca ed il trasferimento tecnologico nelle discipline informatiche e dell'ingegneria informatica." property="twitter:description" />
+
+  <meta content="website" property="og:type" />
+
+  <meta content="Il DISI nasce nell'ambito dell'Università di Bologna come unico punto di riferimento per la didattica, la ricerca ed il trasferimento tecnologico nelle discipline informatiche e dell'ingegneria informatica." property="og:description" />
+
+  <meta content="Dipartimento di Informatica - Scienza e Ingegneria - DISI" property="og:title" />
+
+  <meta content="Dipartimento di Informatica - Scienza e Ingegneria - DISI" property="twitter:title" />
+
+
+
+  
+    <meta content="http://www.informatica.unibo.it/it/logo-unibo.png" property="twitter:image" />
+  
+
+
+  
+    <meta content="http://www.informatica.unibo.it/it/logo-unibo.png" property="og:image" />
+  
+
+
+
+
+<meta name="channel_subdir" content="http://www.informatica.unibo.it/it" />
+<link type="text/css" media="screen" rel="stylesheet" href="http://www.informatica.unibo.it/it/sitestyle.css" />
+
+
+
+
+        <link id="profile_css" type="text/css" media="screen" rel="stylesheet" href="http://www.informatica.unibo.it/it/@@site.css?mod=v7.1520349939.38" />
+
+    <link rel="canonical" href="http://www.informatica.unibo.it/it" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.informatica.unibo.it/favicon.ico" />
+    <link rel="apple-touch-icon" href="http://www.informatica.unibo.it/touch_icon.png" />
+
+
+<script type="text/javascript">
+        jQuery(function($){
+            $.datepicker.setDefaults(
+                jQuery.extend($.datepicker.regional['it'],
+                {dateFormat: 'dd/mm/yy'}));
+        });
+        </script>
+
+    <link rel="home" href="http://www.informatica.unibo.it/it" title="Pagina principale" />
+
+    <link rel="contents" href="http://www.informatica.unibo.it/it/sitemap" title="Mappa del sito" />
+
+
+
+
+
+
+    <link rel="search" href="http://www.informatica.unibo.it/it/search_form" title="Cerca nel sito" />
+
+
+
+<script type="text/javascript" charset="iso-8859-1" src="http://www.informatica.unibo.it/it/@@site.js"></script>
+
+
+
+
+        
+        
+        
+        
+        <script type="text/javascript">
+          </script>
+
+        
+        <meta name="generator" content="Plone - http://plone.org" />
+    
+</head>
+<body class="template-homepage_view portaltype-homepage site-it sitetype-departmentsite portal-dipartimenti mainsite-disi section-index.html" dir="ltr"><div id="toolbar-wrapper">
+          <div class="gray-bar"></div>
+          <div class="red-bar"></div>
+          <div class="unibo-noparse" id="toolbar">
+  <div class="gray-bar">
+    <a href="http://www.unibo.it" title="Vai al Portale Unibo.it" class="logo-unibo umtrack" target="_blank" data-umc="topbar" data-uml="Logo unibo">
+      <img alt="Unibo" src="http://www.informatica.unibo.it/++resource++unibo.toolbar/img/toolbar/unibo.png" /></a>
+
+    
+      <form target="_blank" method="get" action="//search.unibo.it/CMSUniboWeb/UniboSearch/results.aspx" class="search" id="uniboSearch">
+        <input type="hidden" name="lang" value="it" />
+        <!-- TODO: check if this is valid for everyone -->
+        
+          <input type="hidden" name="site" value="www.informatica.unibo.it" />
+          <input type="hidden" name="filter" value="site:www.informatica.unibo.it" />
+          <fieldset><input type="text" placeholder="Cerca nel sito" value="" name="query" />
+            <button title="Vai"></button>
+          </fieldset>
+        
+        
+      </form>
+    
+
+    <a data-group="topbar" data-target="#gray-menu" title="Apri menù" href="#" class="open-menu -unibo-toggler close"></a>
+
+    <div id="gray-menu">
+      <div class="with-arrow">
+        <a data-disabled-when="#red-menu-trigger" data-group="topbar" data-target="#popup-address-book" href="//search.unibo.it/CMSUniboWeb/UniboSearch/Rubrica.aspx" title="Apri menù" name="link-address-book" id="link-address-book" class="open-menu -unibo-toggler close umtrack" target="_blank" data-umc="topbar" data-uml="Popup rubrica">Rubrica d'Ateneo</a>
+      </div>
+      <div class="hidden" id="popup-address-book">
+        <form target="_blank" action="//search.unibo.it/CMSUniboWeb/UniboSearch/Rubrica.aspx" method="get" class="search">
+          <fieldset>
+            <input type="hidden" value="FullTextPanel" name="tab" />
+            <input type="hidden" name="lang" value="it" />
+            <input type="radio" id="pers" value="people" checked="checked" name="tipo" />
+            <label for="pers">Persone</label>
+            <input type="radio" id="strut" value="struct" name="tipo" />
+            <label for="strut">Strutture</label>
+            <input type="text" placeholder="Cerca nella rubrica" value="" name="query" />
+            <button title="Vai" class="umtrack" data-umc="topbar" data-uml="Cerca Rubrica"></button>
+          </fieldset>
+        </form>
+        <a href="#popup-address-book" class="-unibo-toggler-close umtrack" style="display: inline;" data-umc="topbar" data-uml="Chiudi Popup rubrica">Chiudi</a>
+      </div>
+      <div class="with-arrow um">
+        <a data-disabled-when="#red-menu-trigger" data-group="topbar" data-target="#popup-services" href="http://www.unibo.it/it/servizi-e-opportunita/servizi-online" title="Apri menù" name="link-services" id="link-services" class="open-menu -unibo-toggler close umtrack" target="_blank" data-umc="topbar" data-uml="Popup servizi">Servizi Online</a>
+      </div>
+      <div class="hidden" id="popup-services">
+        <div class="list-wrap" id="servizionline-studenti-menu">
+          <h4>Studenti</h4>
+          <ul>
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - AlmaEnglish" href="http://www.cilta.unibo.it/CILTA/AlmaEnglish/default">AlmaEnglish</a></li>
+            
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - Almaesami" href="https://almaesami.unibo.it/almaesami/studenti/home.htm">Almaesami</a></li>
+            
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - AlmaRM" href="https://almarm.unibo.it/almarm/welcomeStudenti.htm">AlmaRM</a></li>
+            
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - Autocertificazioni e certificati" href="https://studenti.unibo.it">Autocertificazioni e certificati</a></li>
+            
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - Convenzioni e tirocini" href="http://www.unibo.it/it/servizi-e-opportunita/servizi-online/guida-servizi-online-studenti/convenzioni-e-tirocini-online">Convenzioni e tirocini</a></li>
+            
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - Liste di distribuzione" href="http://www.unibo.it/it/servizi-e-opportunita/servizi-online/guida-servizi-online-studenti/liste-di-distribuzione-docenti-studenti">Liste di distribuzione</a></li>
+            
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - Materiale didattico" href="https://iol.unibo.it">Materiale didattico</a></li>
+            
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - Unibostore" href="http://www.unibostore.it/">Unibostore</a></li>
+            
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - Piani di studio" href="https://studenti.unibo.it">Piani di studio</a></li>
+            
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - Servizi bibliotecari" href="http://www.sba.unibo.it/it">Servizi bibliotecari</a></li>
+            
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - Studenti Online" href="https://studenti.unibo.it">Studenti Online</a></li>
+            
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - Tesi online" href="http://www.unibo.it/it/servizi-e-opportunita/servizi-online/guida-servizi-online-studenti/ams-tesi-online">Tesi online</a></li>
+            
+            
+              <li><a class="umtrack" data-umc="topbar" data-uml="Studenti - WI-FI" href="http://www.unibo.it/it/servizi-e-opportunita/servizi-online/guida-servizi-online-studenti/wi-fi-connettersi-senza-cavo">WI-FI</a></li>
+            
+          </ul>
+        </div>
+
+        <div class="list-wrap" id="servizionline-personale-menu">
+          <h4>Personale</h4>
+          <ul>
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Almaesami" href="https://almaesami.unibo.it/almaesami/welcome.htm">Almaesami</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Almaregistri" href="https://almaregistri.unibo.it/almaregistri/welcome.htm">Almaregistri</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - AlmaRM" href="https://almarm.unibo.it/almarm/personale/home.htm">AlmaRM</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Cedolini web" href="https://cedolini.unibo.it/">Cedolini web</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Incarichi extraistituzionali" href="https://incarichiextraistituzionali.unibo.it/incarichiextraistituzionali/init.do">Incarichi extraistituzionali</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - IRIS - Archivio produzione scientifica" href="https://cris.unibo.it">IRIS - Archivio produzione scientifica</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Liste di distribuzione" href="http://www.unibo.it/it/servizi-e-opportunita/servizi-online/guida-servizi-online-studenti/liste-di-distribuzione-docenti-studenti">Liste di distribuzione</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Materiale didattico" href="https://iol.unibo.it">Materiale didattico</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - NormAteneo" href="http://www.normateneo.unibo.it/">NormAteneo</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - OrganiWeb" href="https://intranet.unibo.it/organiweb">OrganiWeb</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Piattaforma stampati" href="http://www.stampatiunibo.it/">Piattaforma stampati</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Presenze web" href="https://presenzeweb.unibo.it/presenzeweb/init.do">Presenze web</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Servizi bibliotecari" href="http://www.sba.unibo.it/it">Servizi bibliotecari</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Sito Web Personale" href="http://www.unibo.it/it/servizi-e-opportunita/servizi-online/il-mio-portale/sito-web-personale">Sito Web Personale</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Tesi online" href="http://www.unibo.it/it/servizi-e-opportunita/servizi-online/guida-servizi-online-studenti/ams-tesi-online">Tesi online</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Titulus" href="https://intranet.unibo.it/MioPortale/Pagine/TitulusProtocollo.aspx">Titulus</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - UniboImmagine " href="http://uniboimmagine.unibo.it">UniboImmagine </a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - Web U-Gov – Reportistica Contabile Progetti" href="https://www.unibo.wu.u-gov.it/">Web U-Gov – Reportistica Contabile Progetti</a></li>
+            
+              
+              <li><a class="umtrack" data-umc="topbar" data-uml="Personale - WI-FI" href="http://www.unibo.it/it/servizi-e-opportunita/servizi-online/guida-servizi-online-studenti/wi-fi-connettersi-senza-cavo">WI-FI</a></li>
+            
+          </ul>
+        </div>
+
+        <a style="display: inline;" class="-unibo-toggler-close umtrack" href="#popup-services" data-umc="topbar" data-uml="Chiudi Popup servizi">Chiudi</a>
+      </div>
+    </div>
+  </div>
+  <div class="red-bar">
+    <a data-group="topbar" data-target="#red-menu" title="Apri menù" href="#" id="red-menu-trigger" class="open-menu -unibo-toggler close"></a>
+    <div id="red-menu">
+      <div>
+        <a href="https://intranet.unibo.it/" target="_blank" class="umtrack" data-umc="topbar" data-uml="Intranet">Intranet d'Ateneo</a>
+      </div>
+      <div class="with-arrow">
+        <a data-disabled-when="#red-menu-trigger" data-group="topbar" data-target="#popup-email" class="umtrack" href="http://www.unibo.it/it/servizi-e-opportunita/servizi-online/la-mia-e-mail" title="Apri menù" name="link-email" id="link-email" target="_blank" data-umc="topbar" data-uml="Popup email">La mia e-mail</a>
+      </div>
+      <div class="hidden" id="popup-email">
+        <ul>
+          <li>
+            <a href="http://www.unibo.it/it/servizi-e-opportunita/servizi-online/la-mia-e-mail/la-mia-e-mail-per-gli-studenti" target="_blank" class="umtrack" data-umc="topbar" data-uml="Email Studenti">La mia e-mail Studenti</a>
+          </li>
+          <li>
+            <a href="https://mail.unibo.it/" target="_blank" class="umtrack" data-umc="topbar" data-uml="Email Personale">La mia e-mail Personale</a>
+          </li>
+        </ul>
+        <a href="#popup-email" class="-unibo-toggler-close umtrack" style="display: inline;" data-umc="topbar" data-uml="Chiudi Popup email">Chiudi</a>
+      </div>
+      <div>
+        <a href="https://www.unibo.it/it/servizi-e-opportunita/servizi-online/il-mio-portale" class="umtrack" target="_blank" data-umc="topbar" data-uml="Mio portale">Il mio portale</a>
+      </div>
+    </div>
+  </div>
+</div>
+        </div><!-- access keys --><div id="hiddenKeys">
+        <a accesskey="c" href="/++theme++unibotheme.sites/#contentAnchor">vai al contenuto della pagina</a>
+        <a accesskey="n" href="/++theme++unibotheme.sites/#menuAnchor">vai al menu di navigazione</a>
+    </div><!-- sezione principale --><div id="page">
+        <!-- Header -->
+        <div id="header">
+            <div id="date">
+                <ul>
+                    <li class="underlineLogin" id="portal-personaltools-wrapper-container"></li>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <div id="graphicHeader">
+  <div class="logoUnibo">
+    <a href="http://www.unibo.it/" title="Portale Università di Bologna"><span>ALMA MATER STUDIORUM </span>
+      <span>UNIVERSITÀ DI BOLOGNA</span><img src="http://www.informatica.unibo.it/it/++theme++unibotheme.sites/images/logo.gif" alt="Logo dell'Università di Bologna - link alla home page del Portale" /></a>
+  </div>
+  <div class="header">
+    <a href="http://www.informatica.unibo.it/it"><div>
+      <span>Dipartimento di Informatica - Scienza e Ingegneria - DISI</span><img src="http://www.informatica.unibo.it/it/logo" alt="Dipartimento di Informatica - Scienza e Ingegneria - DISI" />
+    </div></a>
+  </div>
+  <div class="clearBoth"></div>
+</div>
+        <div class="clearBoth"></div>
+                    <!-- banner links (navigazione orizzontale nella fascia sotto la testata) -->
+        <a href="/++theme++unibotheme.sites/" class="print" id="js_print" style="display: none;" onclick="javascript:this.style.visibility='hidden';window.print();history.back();return false;"></a>
+        <div id="secondaryNavigation">
+            <div class="small-menu">
+                <a class="open-menu -unibo-toggler close" href="/++theme++unibotheme.sites/" title="Apri menù" data-target="#mainNavigation" data-group="topbar"><span> Menù</span></a>
+            </div>
+            <div id="languageSelection"><ul>
+    
+      <li>
+        <a href="http://www.cse.unibo.it " class="en" title="English Version"><span class="langs">en
+           <span class="pointer"></span></span></a>
+      </li>
+    
+  </ul></div>
+            <div id="menu">
+    <ul>
+      
+        
+        
+        <li class="first-item">
+          <a class="tool" href="http://www.informatica.unibo.it/it/Dipartimento/uffici-e-sedi">Contatti</a>
+        </li>
+        
+        
+      
+      
+        
+        
+        
+        <li class="False">
+          <a class="tool" href="https://svc.unibo.it/dipartimenti/DISI">Spazi virtuali di collaborazione</a>
+        </li>
+        
+      
+    </ul>
+  </div>
+        </div>
+        <div class="clearBoth"></div>
+        <!-- Content -->
+        <div id="content" class="unibo-parse"><dl class="portalMessage info unibo-noparse" id="kssPortalMessage" style="display:none">
+        <dt>Info</dt>
+        <dd></dd>
+    </dl>
+            <div id="leftSideContent">
+                    <a id="navigationAnchor"> </a>
+                    <div id="mainNavigationWrapper" class="unibo-noparse">
+                        <ul id="mainNavigation" class="home-navigation">
+        <li id="portaltab-index_html" class="selected">
+          <a href="http://www.informatica.unibo.it/it/index.html">
+              <span class="title">Home</span>
+          </a>
+        </li> 
+        
+    	    <li>
+                    
+                      
+                    
+                    <a class="title" href="http://www.informatica.unibo.it/it/Dipartimento">Dipartimento</a>
+                    
+                        <p class="description">Organizzazione, persone e contatti</p>
+                    
+            </li>
+        
+        
+    	    <li>
+                    
+                      
+                    
+                    <a class="title" href="http://www.informatica.unibo.it/it/ricerca">Ricerca</a>
+                    
+                        <p class="description">Aree, progetti e pubblicazioni</p>
+                    
+            </li>
+        
+        
+    	    <li>
+                    
+                      
+                    
+                    <a class="title" href="http://www.informatica.unibo.it/it/didattica">Didattica</a>
+                    
+                        <p class="description">Lauree, lauree magistrali e dottorato</p>
+                    
+            </li>
+        
+        
+    	    <li>
+                    
+                      
+                    
+                    <a class="title" href="http://www.informatica.unibo.it/it/servizi-e-strutture">Servizi e strutture</a>
+                    
+                        <p class="description">Laboratori, servizi e biblioteche</p>
+                    
+            </li>
+        
+    </ul>
+                    </div>
+                
+                    
+                         
+          <div class="box banner">
+            <a href="http://www.informatica.unibo.it/it/aziende/aziende" class="umtrack" data-umc="banner" data-uml="Aziende">
+              <h5>Aziende</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/aziende/@@images/fc6a10c7-180b-4830-b78b-e70fb40c4177.png" height="55" width="275" />
+              
+            </a>
+          </div>
+      
+                    
+                    
+                         
+          <div class="box banner">
+            <a href="http://mistic.web.cs.unibo.it" class="umtrack" data-umc="banner" data-uml="Museo dell'Informatica">
+              <h5>Museo dell'Informatica</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/museo-dellinformatica/@@images/f9c9dc9f-89e0-4cbf-9905-98a5221849d5.png" height="55" width="275" />
+              
+            </a>
+          </div>
+      
+                    
+                    
+                         
+          <div class="box banner">
+            <a href="http://www.unibo.it/it/ateneo/sostenere-alma-mater/cosa-puoi-sostenere/sostieni-la-ricerca/sostieni-la-ricerca-in-ambito-scientifico" class="umtrack" data-umc="banner" data-uml="Sostieni l'Ateneo di Bologna">
+              <h5>Sostieni l'Ateneo di Bologna</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/sostieni-lateneo-di-bologna/@@images/119f553c-8ee4-4b01-a8f6-7d925302cac8.png" height="60" width="275" />
+              
+            </a>
+          </div>
+      
+                    
+                    
+                         
+          <div class="box banner">
+            <a href="https://jobplacement.unibo.it/" class="umtrack" data-umc="banner" data-uml="Job Placement Unibo">
+              <h5>Job Placement Unibo</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/job-placement-unibo/@@images/31a1c486-092c-40a2-902f-14457f5680cc.png" height="60" width="275" />
+              
+            </a>
+          </div>
+      
+                    
+                    
+                         
+          <div class="box banner">
+            <a href="http://www.unibo.it/it/ricerca/progetti-e-iniziative/centro-di-risorse-per-la-ricerca-multimediale-crr-mm" class="umtrack" data-umc="banner" data-uml="Servizi multimediali per la ricerca">
+              <h5>Servizi multimediali per la ricerca</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/servizi-multimediali-per-la-ricerca/@@images/516b6532-dc92-4d0b-bc76-2509db7af179.png" height="60" width="275" />
+              
+            </a>
+          </div>
+      
+                    
+                    
+                         
+          <div class="box banner">
+            <a href="http://alumni.unibo.it" class="umtrack" data-umc="banner" data-uml="Ambasciatori del “made in Unibo”">
+              <h5>Ambasciatori del “made in Unibo”</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/ambasciatori-del-201cmade-in-unibo201d/@@images/4258d710-ba53-4a50-89ce-75910a2265e7.png" height="60" width="275" />
+              
+            </a>
+          </div>
+      
+                    
+                    
+                         
+          <div class="box banner">
+            <a href="http://www.unibo.it/it/ateneo/sostenere-lalma-mater/5-per-mille" class="umtrack" data-umc="banner" data-uml="campagna 5X1000">
+              <h5>campagna 5X1000</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/campagna-5x1000/@@images/f68498ac-9873-4214-a2d1-8ee0193bf12f.png" height="60" width="275" />
+              
+            </a>
+          </div>
+      
+                    
+                    
+                         
+          <div class="box banner">
+            <a href="https://www.instagram.com/unibo/" class="umtrack" data-umc="banner" data-uml="Instagram">
+              <h5>Instagram</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/instagram/@@images/267373ca-7bd7-42c8-a042-95bb00f12901.png" height="60" width="275" />
+              
+            </a>
+          </div>
+      
+                    
+                    
+                         
+          <div class="box banner">
+            <a href="https://eventi.unibo.it/unibolife" class="umtrack" data-umc="banner" data-uml="UniboLife">
+              <h5>UniboLife</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/unibolife/@@images/df728a28-d042-440c-a16a-170ed1113b82.png" height="60" width="275" />
+              
+            </a>
+          </div>
+      
+                    
+                </div><div id="mainContent">
+                    <div id="breadCrumbsWrapper" class="unibo-noparse">
+                        <div id="breadCrumbs"> </div>
+                    </div>
+                    
+                    <div id="mainWrapper">
+                        <div id="mainSpacer" class="documentViewable">
+                            <a id="contentAnchor"> </a>
+                            
+                        
+
+                            
+
+                            
+
+                             <div id="viewlet-above-content-title">
+    <h5 class="hiddenStructure">Sezioni</h5>
+ 
+    
+    
+     
+
+</div>
+                             
+           
+        
+                             <div id="viewlet-below-content-title">
+
+
+
+
+</div>
+
+                             
+           
+        
+
+                             <div id="viewlet-above-content-body"></div>
+                             <div id="content-core">
+                                 
+            
+
+                
+
+                
+      
+
+    
+
+                
+
+                
+
+                
+
+                
+
+                
+                    <div class="twinBoxes ">
+                        <div class="box">
+                            
+          <div class="doubleAccess">
+            
+      
+        <!-- <h5 tal:content="string:${widget/label}">References</h5> -->
+        
+        
+            
+              
+                
+                    <div class="highlightsContainerBackground">
+                        <a href="http://www.informatica.unibo.it/it/didattica/didattica"><img src="http://www.informatica.unibo.it/it/risorse/immagini/libro3/@@images/8035e485-043e-4966-94c9-31afa812d000.png" height="90" width="285" /></a>
+                    </div>
+                
+                <h2>
+                  <a href="http://www.informatica.unibo.it/it/didattica/didattica">La didattica</a>
+                </h2>
+              
+              
+                  <p>L'offerta didattica del Dipartimento di Informatica – Scienza e Ingegneria: dai corsi di laurea di primo livello alla formazione avanzata dei corsi magistrali e del Dottorato.</p>
+              
+          
+        
+        
+      
+    
+          </div>
+      
+                        </div>
+                        <div class="box">
+                            
+          <div class="doubleAccess">
+            
+      
+        <!-- <h5 tal:content="string:${widget/label}">References</h5> -->
+        
+        
+            
+              
+                
+                    <div class="highlightsContainerBackground">
+                        <a href="http://www.informatica.unibo.it/it/ricerca/sommario"><img src="http://www.informatica.unibo.it/it/risorse/immagini/codice/@@images/307b74f5-55d1-41b1-b451-8db8de534654.jpeg" height="90" width="300" /></a>
+                    </div>
+                
+                <h2>
+                  <a href="http://www.informatica.unibo.it/it/ricerca/sommario">La ricerca</a>
+                </h2>
+              
+              
+                  <p>Mission del DISI è perseguire l'eccellenza nella ricerca scientifica e tecnologica in ambito informatico mediante attività e progetti di ricerca nazionali e internazionali.</p>
+              
+          
+        
+        
+      
+    
+          </div>
+      
+                        </div>
+                    </div>
+                
+
+                
+
+                
+                  <div class="box visualClear">
+                    <div class="boxSpacer focus">
+                       <h2>In primo piano</h2>
+                       <div class="body">
+                         
+      
+        <!-- <h5 tal:content="string:${widget/label}">References</h5> -->
+        <dl>
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://www.informatica.unibo.it/it/Dipartimento/presentazione-del-disi">Presentazione del DISI</a>
+                  </dt>
+                
+              
+              
+                
+                  <dd>
+                      I materiali della giornata di presentazione del DISI al pubblico (14 e 15 marzo 2014).
+                  </dd>
+                
+              
+          
+        
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://www.informatica.unibo.it/it/didattica/materiale-orientamento-a.a.-2013-2014">Orientamento in entrata</a>
+                  </dt>
+                
+              
+              
+                
+                  <dd>
+                      Studiare al DISI significa acquisire competenze informatiche complete e ad ampio spettro per comprendere a fondo i pilastri su cui si fonda la società dell'informazione. Chiedi maggiori informazioni sui Corsi di Laurea.
+                  </dd>
+                
+              
+          
+        
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://www.informatica.unibo.it/it/ricerca/scheda-della-ricerca-sua-rd">Scheda della ricerca (SUA-RD)</a>
+                  </dt>
+                
+              
+              
+                
+                  <dd>
+                      La scheda SUA-RD (Scheda Unica della Ricerca Dipartimentale) è parte del sistema di autovalutazione, valutazione e accreditamento (AVA) e prepara gli Atenei alle visite di valutazione per l’accreditamento periodico, come previsto dalle norme vigenti.
+                  </dd>
+                
+              
+          
+        
+        </dl>
+      
+    
+                     </div>
+                   </div>
+                 </div>
+             
+             
+
+
+                
+                  <div class="box visualClear">
+                    <div class="boxSpacer focus">
+                       <h2>Dottorato</h2>
+                       <div class="body">
+                         
+      
+        <!-- <h5 tal:content="string:${widget/label}">References</h5> -->
+        <dl>
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://www.informatica.unibo.it/it/didattica/dottorato-di-ricerca-in-informatica">Dottorato di Ricerca in Computer Science and Engineering</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        
+            
+              
+                
+                  <dt>
+                    <a href="https://phd.unibo.it/sehm2/en">Monitoraggio e Gestione delle Strutture e dell'Ambiente (SEHM2)</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://www.unibo.it/en/teaching/phd/2017-2018/data-science-and-computation">Data Science and Computation</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        </dl>
+      
+    
+                      </div>
+                    </div>
+                  </div>
+                
+
+                <div class="twinBoxes HpTwin">
+                    
+                      <div class="box">
+                        <h3>I Corsi di Laurea triennale</h3>
+                        <div class="boxSpacer">
+                          
+      
+        <!-- <h5 tal:content="string:${widget/label}">References</h5> -->
+        <dl>
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://corsi.unibo.it/informatica">Laurea in Informatica</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://corsi.unibo.it/laurea/informaticamanagement">Laurea in Informatica per il management</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://corsi.unibo.it/ingegneriainformaticaL">Laurea in Ingegneria Informatica</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://corsi.unibo.it/Laurea/IngegneriaScienzeInformatiche">Laurea in Ingegneria e Scienze Informatiche</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        </dl>
+      
+    
+                        </div>
+                      </div>
+                    
+                    
+                      <div class="box">
+                        <h3>I Corsi di Laurea magistrale</h3>
+                        <div class="boxSpacer">
+                          
+      
+        <!-- <h5 tal:content="string:${widget/label}">References</h5> -->
+        <dl>
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://corsi.unibo.it/informatica-magistrale/Pagine/default.aspx">Laurea Magistrale in Informatica</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://corsi.unibo.it/ingegneriainformaticaM/Pagine/default.aspx">Laurea Magistrale in Ingegneria informatica</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://corsi.unibo.it/Magistrale/IngegneriaScienzeInformatiche/Pagine/default.aspx">Laurea Magistrale in Ingegneria e Scienze Informatiche</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        </dl>
+      
+    
+                        </div>
+                      </div>
+                    
+
+                </div>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+            
+        
+                             </div>
+                             <div id="viewlet-below-content-body">
+
+
+
+    <div class="visualClear"><!-- --></div>
+
+    <div class="documentActions">
+        
+
+        
+
+    </div>
+
+
+<div id="uid" style="display:none">b81fb91c-40b6-4916-a1e4-8a9dfd4bc8a6</div>
+
+</div>
+
+                            
+                        </div>
+                        
+                    </div>
+                </div><div id="rightSideContent">
+                
+<div id="noticeBoard" class="box">
+    <div class="boxSpacer notice">
+        <div id="newsDiv">
+            
+                <h4>
+                    <a title="RSS feed 2.0" href="http://www.informatica.unibo.it/it/avvisi/rss">
+                        <img alt="RSS feed 2.0" class="rss" src="http://www.informatica.unibo.it/rss.gif" />
+                    </a>
+                    Avvisi
+                </h4>
+                <div class="body">
+                    
+                        <dl>
+                            
+                            <dt class="published">
+                                <a title="" href="http://www.informatica.unibo.it/it/avvisi/apertura-ieee-student-branch-di-bologna">Apertura IEEE Student Branch di Bologna</a>
+                                
+                                
+                            </dt>
+                            <dd class="published">
+                                <span class="date">Pubblicato il 23 novembre 2017</span>
+                            </dd>
+                            
+                        </dl>
+                        <dl>
+                            
+                            <dt class="published">
+                                <a title="" href="http://www.informatica.unibo.it/it/avvisi/corsi-di-dottorato-al-via-l2019indagine-sulla-valutazione-dei-corsi">Corsi di dottorato: al via l’indagine sulla valutazione dei corsi</a>
+                                
+                                
+                            </dt>
+                            <dd class="published">
+                                <span class="date">Pubblicato il 20 novembre 2017</span>
+                            </dd>
+                            
+                        </dl>
+                    
+                    
+
+                    <span class="goToFullItem">
+                        <a href="http://www.informatica.unibo.it/it/avvisi">Vedi tutto</a>
+                    </span>
+                </div>
+            
+        </div>
+        <div id="eventsDiv">
+            
+                <h4>
+                    <a title="RSS feed 2.0" href="http://www.informatica.unibo.it/it/eventi/rss">
+                        <img alt="RSS feed 2.0" class="rss" src="http://www.informatica.unibo.it/rss.gif" />
+                    </a>
+                    Eventi
+                </h4>
+                <div class="body">
+                     
+                    
+                    <p>Non ci sono Eventi</p>
+                    
+                    <span class="goToFullItem">
+                        <a href="http://www.informatica.unibo.it/it/eventi">Vedi tutto</a>
+                    </span>
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+                    
+                      
+       <div class="box boxBandi">
+          <div class="boxSpacer boxRightColum showList">
+          <h4>Bandi</h4>
+          <p>I bandi pubblicati, la relativa documentazione e l'archivio</p>
+            <div class="body">
+              
+              <div class="clearBoth"></div>
+               <span class="goToFullItem">
+                  <a href="http://www.informatica.unibo.it/it/bandi">Consulta la sezione</a>
+              </span>
+          </div>
+        </div>
+      </div>
+    
+                    
+                
+                     <div class="box">
+                         <div class="boxSpacer showList">
+                            <h4>Sede di Cesena</h4>
+                            <div class="body">
+                              
+      
+        <!-- <h5 tal:content="string:${widget/label}">References</h5> -->
+        <dl>
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://www.informatica.unibo.it/it/Dipartimento/unita-organizzativa-sede-di-cesena">Unità organizzativa - sede di Cesena</a>
+                  </dt>
+                
+              
+              
+                
+                  <dd>
+                      
+                  </dd>
+                
+              
+          
+        
+        </dl>
+      
+    
+                            </div>
+                            <div class="clearBoth"></div>
+                         </div>
+                     </div>
+                
+                     <div class="box">
+                         <div class="boxSpacer showList">
+                            <h4>Servizi per gli studenti</h4>
+                            <div class="body">
+                              
+      
+        <!-- <h5 tal:content="string:${widget/label}">References</h5> -->
+        <dl>
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://www.unibo.it/Portale/Ateneo/Strutture/Strutture+di+servizio/80080/AlmaWIFI/default.htm">Collegarsi ad AlmaWifi</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://www.cilta.unibo.it/CILTA/AlmaEnglish/default">Migliorare l'inglese con AlmaEnglish</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        
+            
+              
+                
+                  <dt>
+                    <a href="https://cas.unibo.it/cas/login?service=https%3A%2F%2Fstudenti.unibo.it%2Fsol%2Fstudenti%2Fj_acegi_cas_security_check%3Bjsessionid%3DCA82E069A7628CB525920E15DE41FFB6.uri-joss5&amp;cas_aware_sessionid=CA82E069A7628CB525920E15DE41FFB6.uri-joss5">Studenti Online - area riservata</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        </dl>
+      
+    
+                            </div>
+                            <div class="clearBoth"></div>
+                         </div>
+                     </div>
+                
+                     <div class="box">
+                         <div class="boxSpacer showList">
+                            <h4>Redazione web</h4>
+                            <div class="body">
+                              
+      
+        <!-- <h5 tal:content="string:${widget/label}">References</h5> -->
+        <dl>
+        
+            
+              
+                
+                  <dt>
+                    <a href="http://www.informatica.unibo.it/it/Dipartimento/redazione-web">Suggerimenti e segnalazioni per migliorare il sito</a>
+                  </dt>
+                
+              
+              
+                
+                  
+                
+              
+          
+        
+        </dl>
+      
+    
+                            </div>
+                            <div class="clearBoth"></div>
+                         </div>
+                     </div>
+                <div id="mobileSideContent">
+                    
+                    <div class="box banner">
+            <a href="http://www.informatica.unibo.it/it/aziende/aziende" class="umtrack" data-umc="banner" data-uml="Aziende">
+              <h5>Aziende</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/aziende/@@images/fc6a10c7-180b-4830-b78b-e70fb40c4177.png" height="55" width="275" />
+              
+            </a>
+          </div><div class="box banner">
+            <a href="http://mistic.web.cs.unibo.it" class="umtrack" data-umc="banner" data-uml="Museo dell'Informatica">
+              <h5>Museo dell'Informatica</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/museo-dellinformatica/@@images/f9c9dc9f-89e0-4cbf-9905-98a5221849d5.png" height="55" width="275" />
+              
+            </a>
+          </div><div class="box banner">
+            <a href="http://www.unibo.it/it/ateneo/sostenere-alma-mater/cosa-puoi-sostenere/sostieni-la-ricerca/sostieni-la-ricerca-in-ambito-scientifico" class="umtrack" data-umc="banner" data-uml="Sostieni l'Ateneo di Bologna">
+              <h5>Sostieni l'Ateneo di Bologna</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/sostieni-lateneo-di-bologna/@@images/119f553c-8ee4-4b01-a8f6-7d925302cac8.png" height="60" width="275" />
+              
+            </a>
+          </div><div class="box banner">
+            <a href="https://jobplacement.unibo.it/" class="umtrack" data-umc="banner" data-uml="Job Placement Unibo">
+              <h5>Job Placement Unibo</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/job-placement-unibo/@@images/31a1c486-092c-40a2-902f-14457f5680cc.png" height="60" width="275" />
+              
+            </a>
+          </div><div class="box banner">
+            <a href="http://www.unibo.it/it/ricerca/progetti-e-iniziative/centro-di-risorse-per-la-ricerca-multimediale-crr-mm" class="umtrack" data-umc="banner" data-uml="Servizi multimediali per la ricerca">
+              <h5>Servizi multimediali per la ricerca</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/servizi-multimediali-per-la-ricerca/@@images/516b6532-dc92-4d0b-bc76-2509db7af179.png" height="60" width="275" />
+              
+            </a>
+          </div><div class="box banner">
+            <a href="http://alumni.unibo.it" class="umtrack" data-umc="banner" data-uml="Ambasciatori del “made in Unibo”">
+              <h5>Ambasciatori del “made in Unibo”</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/ambasciatori-del-201cmade-in-unibo201d/@@images/4258d710-ba53-4a50-89ce-75910a2265e7.png" height="60" width="275" />
+              
+            </a>
+          </div><div class="box banner">
+            <a href="http://www.unibo.it/it/ateneo/sostenere-lalma-mater/5-per-mille" class="umtrack" data-umc="banner" data-uml="campagna 5X1000">
+              <h5>campagna 5X1000</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/campagna-5x1000/@@images/f68498ac-9873-4214-a2d1-8ee0193bf12f.png" height="60" width="275" />
+              
+            </a>
+          </div><div class="box banner">
+            <a href="https://www.instagram.com/unibo/" class="umtrack" data-umc="banner" data-uml="Instagram">
+              <h5>Instagram</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/instagram/@@images/267373ca-7bd7-42c8-a042-95bb00f12901.png" height="60" width="275" />
+              
+            </a>
+          </div><div class="box banner">
+            <a href="https://eventi.unibo.it/unibolife" class="umtrack" data-umc="banner" data-uml="UniboLife">
+              <h5>UniboLife</h5>
+              
+                  <img src="http://www.informatica.unibo.it/it/risorse/banners/unibolife/@@images/df728a28-d042-440c-a16a-170ed1113b82.png" height="60" width="275" />
+              
+            </a>
+          </div>
+                </div></div>
+           <div style="clear:both"></div>
+       </div>
+       <div style="clear:both"></div>
+        <!-- Footer  -->
+        <div id="footer" class="istituzionale">
+      <div class="link">
+        <div class="follow-us">
+         <p>Seguici su:</p>
+        <ul>
+            <li>
+              <a target="_blank" title="Seguici su YouTube - Apre nuova finestra" href="https://www.youtube.com/user/UniBologna" data-umc="footer" data-uml="Youtube" class="umtrack"><i class="fa fa-youtube-play fa-lg" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a target="_blank" title="Seguici su Instagram - Apre nuova finestra" href="https://www.instagram.com/unibo/" data-umc="footer" data-uml="Instagram" class="umtrack"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a target="_blank" title="Seguici su Facebook - Apre nuova finestra" href="https://www.facebook.com/unibo.it" data-umc="footer" data-uml="Facebook" class="umtrack"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a target="_blank" title="Seguici su Twitter - Apre nuova finestra" href="https://twitter.com/UniboMagazine" data-umc="footer" data-uml="Twitter Magazine" class="umtrack"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a target="_blank" title="Seguici su Linkedin - Apre nuova finestra" href="https://www.linkedin.com/company/university-of-bologna" data-umc="footer" data-uml="Linkedin" class="umtrack"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+        </div>
+        <div class="generic-link">
+          <ul role="list">
+            
+              <li><a href="http://www.unibo.it/it/ateneo/contatti">Contatti</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/it/ateneo/chi-siamo/piano-strategico">Piano strategico</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/it/ateneo/posta-elettronica-certificata-pec">Posta elettronica certificata - PEC</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/it/ateneo/chi-siamo/bilanci-di-ateneo/bilanci-di-ateneo">Bilanci di Ateneo</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/it/ateneo/organizzazione/amministrazione-generale">Uffici dell'amministrazione generale</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/QualityAssurance/Pagine/default.aspx">Qualità dei corsi: dati statistici</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/it/ateneo/sedi-e-strutture/urp-ufficio-relazioni-con-il-pubblico">Ufficio relazioni con il pubblico</a></li>
+            
+            
+              <li><a href="http://www.magna-charta.org/">Osservatorio Magna Charta</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/ufficiostampa">Ufficio stampa</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/it/ateneo/elenco-siti-tematici">Elenco Siti tematici</a></li>
+            
+            
+              <li><a href="http://www.studentidisabili.unibo.it/">Studenti con disabilità o DSA</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/it/ateneo/bandi-gare-e-concorsi/atti-di-notifica">Atti di notifica</a></li>
+            
+          </ul>
+        </div>
+        <div class="lawful-link">
+          <ul role="list">
+            
+              <li><a href="http://www.unibo.it/it/ateneo/amministrazione-trasparente">Amministrazione trasparente</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/it/ateneo/bandi-gare-e-concorsi">Bandi, gare e concorsi</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/it/servizi-e-opportunita/laccessibilita-dei-siti-unibo.it">Accessibilità</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/it/ateneo/privacy-e-note-legali/privacy/informative-sul-trattamento-dei-dati-personali">Privacy</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/it/ateneo/privacy-e-note-legali/note-legali">Note Legali</a></li>
+            
+            
+              <li><a href="http://www.unibo.it/it/ateneo/dati-di-monitoraggio">Dati di monitoraggio</a></li>
+            
+          </ul>
+        </div>
+        <div class="copyright" role="contentinfo">
+          ©Copyright 2018 - ALMA MATER STUDIORUM - Università di Bologna - Via Zamboni,
+          <span class="ios-numbers">33 - 40126</span>
+          Bologna - Partita IVA:
+          <span class="ios-numbers">01131710376</span>
+        </div>
+      </div>
+    </div>
+        <!-- Footer (obsoleto) -->
+        
+        <div class="clear"> </div>
+    </div>
+
+        <!-- Piwik -->
+        
+          <script type="text/javascript">var idsite=10940, subdir='/it', host='informatica.unibo.it', piwik_url='https://analytics.unibo.it';</script>
+          <script type="text/javascript">
+          var _paq = _paq || [];
+          if(host){
+            _paq.push(['setDomains', ["*." + host]]);
+          }
+          if(subdir){
+            _paq.push(['setCookiePath', subdir]);
+          }
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u=piwik_url + "/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', parseInt(idsite)]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+          })();
+          </script>
+          <noscript><p><img src=" https://analytics.unibo.it/piwik.php?idsite=10940}" style="border:0;" alt="" /></p></noscript>
+        
+        <!-- End Piwik Code -->
+
+        <!-- Analytics Code -->
+        
+          <script type="text/javascript">var analytics_id='UA-44259222-1';</script>
+          <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', analytics_id, 'auto');
+            ga('send', 'pageview');
+          </script>
+        
+        <!-- End Analytics Code -->
+
+        <!-- Common Code -->
+        <script type="text/javascript">
+          if(window.jQuery){
+            $(document).delegate("a.umtrack", "click", function(){
+              var category=$(this).data('umc')||'link',
+              action=$(this).data('uma')||'click',
+              label=$(this).data('uml')||($(this).attr('title')+" - "+$(this).attr('href'));
+              if (typeof _paq !== 'undefined') {
+                _paq.push(['trackEvent',category,action,label]);
+              }
+              if (typeof ga !== 'undefined') {
+                ga('send', 'event', category, action, label);
+              }
+            });
+          }
+        </script>
+        <!-- End Common Code -->
+
+      </body>
+</html>

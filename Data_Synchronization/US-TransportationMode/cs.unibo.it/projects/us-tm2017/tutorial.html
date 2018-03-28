@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Get Started!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/lib/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel='stylesheet' href="static/css/navbar.css"/>
+    <link rel='stylesheet' href="static/css/common.css"/>
+    <link rel='stylesheet' href="static/css/tutorial.css" />
+    <link rel='stylesheet' href="static/css/code_style.css" />
+    <script type="text/javascript" src="static/lib/jquery.js"></script>
+    <script type="text/javascript" src="static/lib/bootstrap-3.3.7/js/bootstrap.js"></script>
+  </head>
+  <body>
+  	<div id="navbar">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">TMD dataset</a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+              <li class="underline"><a href="tutorial.html">Tutorial</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="underline"><a href="download.html">Download</a></li>
+              <li class="underline"><a href="aboutus.html">About Us</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </div>
+    <div class="container">
+      <h1 class="orange center_text">Tutorial</h1>
+      <div id="chose_where_start">
+        <div class="container">
+          <div class="row">
+              <center>
+                <a class="btn btn-warning btn-lg" href="#raw_data">Start with raw data</a>
+                <a class="btn btn-warning btn-lg" href="#balanced">Start with balanced dataset</a>
+              </center>
+          </div>
+        </div>
+      </div>
+        <div class="lead" id="before_start">
+            <h2 class="orange">Before start...</h2>
+            All the pieces of code you will find in this guide are documented in our Github guide
+            where you can also download our code. Below is the link to our repository: <br>
+            <a href="https://github.com/vlomonaco/US-TransportationMode" class="center_text" target="_blank">
+                <img src="static/img/github.png" width="50"><span class="github"> Transportation Mode Detection with
+                Unconstrained Smartphones Sensors</span>
+            </a>
+        </div>
+        <div id="raw_data" class="lead">
+        <h2 class="orange">Start with raw data</h2>
+          Before using this guide, you have to download <a class="orange" href="static/dataset/raw_data/raw_data.tar.gz" target="_blank">raw data</a>
+          or you can build your own dataset or expand our using this <a class="orange" href="static/apk/SensorCollector.apk">app</a> (for bugs,send an email to developers. Contacts <a class="orange" href="aboutus.html">here</a>). <br>
+        <center class="margin_top_down">
+          <figure>
+            <img src="static/img/app.png" height="300">
+            <figcaption>Fig 1: Initial screen of the application used to collect data (Sensor collector)</figcaption>
+          </figure>
+        </center>
+        Data collection was controlled by an Android application running on the user’s phone as they performed
+        activities. This application, through a simple graphical user interface, shown in Figure 1, permitted
+        volunteers to record their name, start and stop the data collection, and label the activity being
+        performed. We asked users to use the application during specific activities such as walking,
+        being on a car or on a train or on a bus or standing still. Above we refer to activities with this
+        abbreviations:<br>
+        <span class="italic center_text">T M = {bus, car, train, still, walking} </span><br>
+        The application registers each sensor event with a maximum frequency of 20 Hz. Events occurs every time a sensor
+        detects a change in the parameters it is measuring, providing four pieces of information:
+        <ul class="lead">
+          <li>the name of the sensor that triggered the event;</li>
+          <li>the timestamp for the event;</li>
+          <li>the accuracy of the event;</li>
+          <li>the raw sensor data that triggered the event.</li>
+        </ul>
+        The length and content of the raw sensor data depend on the type of sensor.
+        Each raw data registered has the following structure: <br>
+            <span class="italic">< timestamp, sensor<sub>i</sub> , sensorOutput<sub>i</sub> ></span><br>
+        The application saves each sample on a csv file on the device. The maximum frequency of sampling (20Hz)
+        ensures small file size suitable to be stored in a smartphone. The file’s data was collected directly
+        from files stored on the phones via a USB connection.<br>
+        Result files contained <strong>raw data</strong> from twenty-three sensors. Twenty-three is the number
+        of sensors of which we collect data (we will see that not all will be used for the model though).
+        Instead of deciding before hands which sensors to use based on the task being performed,
+        we choose to collect data from all sensors available on the device and then we decide which sensor is
+        good to keep. <br>
+        In our study we exclude sensors that are not supported by enough devices (support is too low), and sensor
+        that collect data that can me too misleading for the actual classification of the activity. <br> <br>
+        After collecting our data or after downloading the dataset, we are ready to start with the
+        creation of the balanced dataset.
+<pre class="margin_top_down">
+<code id="main">
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+	<span class="n">dataset</span> <span class="o">=</span> <span class="n">TMDataset</span><span class="p">()</span>
+	<span class="n">dataset</span><span class="o">.</span><span class="n">create_balanced_dataset</span><span class="p">()</span>
+</code>
+</pre>
+       We analyze dataset composition in term of class and user contribution and we fill balance time with minimum
+       number of <strong>window</strong> for transportation mode. In order to facilitate the processing of data,
+       the samples need to be cut, namely windowed. The size of the time window depends on the types of actions
+       to be recognized. <br>
+       To do this, within our <strong>create_balanced_dataset</strong> function, we call the <strong>create_dataset</strong> function:
+       this function is intended to generate a single dataset starting by joining all the raw data.
+<pre class="margin_top_down">
+<code id="create_dataset">
+<span class="k">def</span> <span class="nf">__create_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        [...]
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sintetic</span><span class="p">:</span>
+        <span class="c1"># create files with time window if not exsist</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dir_src</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__create_time_files</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dir_dst</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dir_dst</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">dir_dst</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dir_dst</span><span class="p">)</span>
+
+        <span class="n">filenames</span> <span class="o">=</span> <span class="n">listdir</span><span class="p">(</span><span class="n">dir_src</span><span class="p">)</span>
+
+        <span class="n">result_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_dst</span><span class="p">,</span> <span class="n">file_dst</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">result_file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">result_file</span><span class="p">:</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">):</span>
+                    <span class="n">current_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_src</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">current_file_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">current_file</span><span class="p">:</span>  <span class="c1"># tm file</span>
+                        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+                        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">current_file</span><span class="p">:</span>
+                            <span class="c1"># if the current line is not the first, the header</span>
+                            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                                <span class="n">result_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                                    <span class="n">result_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+
+</code>
+</pre>
+      Within the previous function shown, we notice the presence of the function <strong>__create_time_files</strong> which allows us to divide our files
+      into time windows and to go and calculate the features. We generated statistical features based on the multiple
+      raw sensor readings. For each sensor we generate 4 different features:
+      <ul class="lead">
+          <li>maximum</li>
+          <li>minimum</li>
+          <li>mean</li>
+          <li>standard deviation</li>
+      </ul>
+<pre class="margin_top_down">
+<code id="create_time_files">
+<span class="k">def</span> <span class="nf">__create_time_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    [...]
+        <span class="c1"># define time range</span>
+        <span class="n">end_current</span> <span class="o">=</span> <span class="n">start_current</span> <span class="o">+</span> <span class="n">window_dim</span>
+        <span class="k">if</span> <span class="n">end_time</span> <span class="o">&lt;=</span> <span class="n">end_current</span><span class="p">:</span>
+            <span class="n">range_current</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">start_current</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">start_current</span> <span class="o">=</span> <span class="n">end_time</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">range_current</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">start_current</span><span class="p">,</span> <span class="n">end_current</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">start_current</span> <span class="o">=</span> <span class="n">end_current</span>
+        <span class="c1"># df of the current time window</span>
+        <span class="n">df_current</span> <span class="o">=</span> <span class="n">df_file</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_file</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">range_current</span><span class="p">)]</span>
+        <span class="n">nfeature</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sintetic</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">df_current</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;target&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">df_current_tm</span> <span class="o">=</span> <span class="n">df_current</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;target&quot;</span><span class="p">]</span>
+                <span class="n">current_user</span> <span class="o">=</span> <span class="n">df_current</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;user&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">equal</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">for</span> <span class="n">tm</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">df_current_tm</span><span class="o">.</span><span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">df_current_tm</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">tm</span><span class="p">]</span> <span class="o">==</span> <span class="n">df_current_tm</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">tm</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+                        <span class="n">equal</span> <span class="o">=</span> <span class="bp">False</span>
+                        <span class="k">break</span>
+
+                <span class="k">if</span> <span class="n">equal</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">current_tm</span> <span class="o">=</span> <span class="n">df_current_tm</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">currentLine</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">featureNames</span><span class="p">:</span>
+            <span class="n">currentFeatureSerie</span> <span class="o">=</span> <span class="n">df_current</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span>
+            <span class="n">currentMean</span> <span class="o">=</span> <span class="n">currentFeatureSerie</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">currentMin</span> <span class="o">=</span> <span class="n">currentFeatureSerie</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">currentMax</span> <span class="o">=</span> <span class="n">currentFeatureSerie</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">currentStd</span> <span class="o">=</span> <span class="n">currentFeatureSerie</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">previous_mean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">currentMean</span><span class="p">))</span>
+                <span class="n">current_mean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">currentMean</span><span class="p">))</span>
+                <span class="n">previous_min</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">currentMin</span><span class="p">))</span>
+                <span class="n">current_min</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">currentMin</span><span class="p">))</span>
+                <span class="n">previous_max</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">currentMax</span><span class="p">))</span>
+                <span class="n">current_max</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">currentMax</span><span class="p">))</span>
+                <span class="n">previous_std</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">currentStd</span><span class="p">))</span>
+                <span class="n">current_std</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">currentStd</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">currentMean</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;nan&#39;</span><span class="p">:</span>
+                    <span class="n">current_mean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">previous_mean</span><span class="p">[</span><span class="n">nfeature</span><span class="p">]))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">current_mean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">currentMean</span><span class="p">))</span>
+                <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">currentMin</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;nan&#39;</span><span class="p">:</span>
+                    <span class="n">current_min</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">previous_min</span><span class="p">[</span><span class="n">nfeature</span><span class="p">]))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">current_min</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">currentMin</span><span class="p">))</span>
+                <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">currentMax</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;nan&#39;</span><span class="p">:</span>
+                    <span class="n">current_max</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">previous_max</span><span class="p">[</span><span class="n">nfeature</span><span class="p">]))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">current_max</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">currentMax</span><span class="p">))</span>
+                <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">currentStd</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;nan&#39;</span><span class="p">:</span>
+                    <span class="n">current_std</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">previous_std</span><span class="p">[</span><span class="n">nfeature</span><span class="p">]))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">current_std</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">currentStd</span><span class="p">))</span>
+                <span class="n">currentLine</span> <span class="o">=</span> <span class="n">currentLine</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">current_mean</span><span class="p">[</span><span class="n">nfeature</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span>
+                <span class="n">currentLine</span> <span class="o">=</span> <span class="n">currentLine</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">current_min</span><span class="p">[</span><span class="n">nfeature</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span>
+                <span class="n">currentLine</span> <span class="o">=</span> <span class="n">currentLine</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">current_max</span><span class="p">[</span><span class="n">nfeature</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span>
+                <span class="n">currentLine</span> <span class="o">=</span> <span class="n">currentLine</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">current_std</span><span class="p">[</span><span class="n">nfeature</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span>
+                <span class="n">nfeature</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">df_current</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># select &#39;activityrecognition#0&#39; and &#39;activityrecognition#1&#39; from  df_current</span>
+            <span class="n">df_current_google</span> <span class="o">=</span> <span class="n">df_current</span><span class="p">[[</span><span class="s1">&#39;activityrecognition#0&#39;</span><span class="p">,</span> <span class="s1">&#39;activityrecognition#1&#39;</span><span class="p">]]</span>
+            <span class="n">df_current_google</span> <span class="o">=</span> <span class="n">df_current_google</span><span class="p">[</span><span class="n">df_current_google</span><span class="p">[</span><span class="s1">&#39;activityrecognition#1&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">current_values</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="n">df_current_google</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">current_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">previous_activityRec</span><span class="p">)</span>
+                <span class="n">current_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">previous_activityRecProba</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">df_current_google</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">df_row</span> <span class="o">=</span> <span class="n">df_current_google</span>
+                    <span class="n">current_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_row</span><span class="p">[</span><span class="s1">&#39;activityrecognition#0&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+                    <span class="n">current_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_row</span><span class="p">[</span><span class="s1">&#39;activityrecognition#1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+                    <span class="n">previous_activityRec</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                    <span class="n">previous_activityRecProba</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># pick prediction with max probability to be correct</span>
+                    <span class="n">activity0</span> <span class="o">=</span> <span class="n">df_current_google</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_current_google</span><span class="p">[</span><span class="s1">&#39;activityrecognition#1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()][</span>
+                        <span class="s1">&#39;activityrecognition#0&#39;</span><span class="p">]</span>
+                    <span class="n">activity1</span> <span class="o">=</span> <span class="n">df_current_google</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_current_google</span><span class="p">[</span><span class="s1">&#39;activityrecognition#1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()][</span>
+                        <span class="s1">&#39;activityrecognition#1&#39;</span><span class="p">]</span>
+                    <span class="n">current_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">activity0</span><span class="p">)</span>
+                    <span class="n">current_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">activity1</span><span class="p">)</span>
+                    <span class="n">previous_activityRec</span> <span class="o">=</span> <span class="n">activity0</span>
+                    <span class="n">previous_activityRecProba</span> <span class="o">=</span> <span class="n">activity1</span>
+
+        <span class="n">previous_mean</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">current_mean</span><span class="p">)</span>
+        <span class="n">previous_min</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">current_min</span><span class="p">)</span>
+        <span class="n">previous_max</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">current_max</span><span class="p">)</span>
+        <span class="n">previous_std</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">current_std</span><span class="p">)</span>
+        [...]
+</code>
+</pre>
+    The computation of time window and feature is done into a <span class="italic">clean</span> dataset.
+    With <span class="italic">clean</span>, we mean a set of operation that we do before generate our balanced
+    dataset. <br>
+    One of the most important operation is the the trasformation of the data come from sensors. Each sensor
+    returns an array of values, with different lengths and content. Before use them is important to consider
+    if they are influenced by the orientation of the device during experiments. <br>
+    Some sensors, like ambiental (sound, light and pressure) and proximity,
+    returns a single data value as the result of sense, this can be directly used in
+    dataset. Instead, all the other return more than one values that are related to
+    the coordinate system used, so their values are strongly related to <strong>orientation</strong>. <br>
+    For almost all we can use an orientation-independent metric, <strong>magnitude</strong>.
+    Magnitude is an appropriate transformation for
+    all the remaining sensor except for rotation vector and game rotation vector,
+    that capture the rotation of the device, rotation can be described by an angle &#952.
+<pre class="margin_top_down">
+<code id="transform_raw_data">
+<span class="k">def</span> <span class="nf">transform_raw_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      [...]
+      <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_src</span><span class="p">,</span> <span class="nb">file</span><span class="p">))</span> <span class="k">as</span> <span class="n">current_file</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_dst</span><span class="p">,</span> <span class="nb">file</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_result</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">current_file</span><span class="p">:</span>
+                        <span class="n">line_data</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                        <span class="n">endLine</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">line_data</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+                        <span class="n">current_time</span> <span class="o">=</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="n">sensor</span> <span class="o">=</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                        <span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">line_data</span><span class="p">[(</span><span class="nb">len</span><span class="p">(</span><span class="n">line_data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sintetic</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+                        <span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">line_data</span><span class="p">[(</span><span class="nb">len</span><span class="p">(</span><span class="n">line_data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sintetic</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+                        <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="c1"># check sensors</span>
+                        <span class="k">if</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">const</span><span class="o">.</span><span class="n">SENSORS_TO_EXCLUDE_FROM_DATASET</span><span class="p">:</span>  <span class="c1"># the sensor is not to exlude</span>
+                            <span class="k">if</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">const</span><span class="o">.</span><span class="n">SENSOR_TO_TRANSFORM_MAGNITUDE</span><span class="p">:</span>  <span class="c1"># not to transofrom</span>
+                                <span class="k">if</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">const</span><span class="o">.</span><span class="n">SENSOR_TO_TRANSFROM_4ROTATION</span><span class="p">:</span>  <span class="c1"># not to trasform (4 rotation)</span>
+                                    <span class="k">if</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">const</span><span class="o">.</span><span class="n">SENSOR_TO_TAKE_FIRST</span><span class="p">:</span>  <span class="c1"># not to take only first data</span>
+                                        <span class="c1"># report the line as it is</span>
+                                        <span class="n">current_sensor</span> <span class="o">=</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                                        <span class="n">line_result</span> <span class="o">=</span> <span class="n">current_time</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">current_sensor</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">endLine</span>
+                                    <span class="k">else</span><span class="p">:</span>
+                                        <span class="n">current_sensor</span> <span class="o">=</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                                        <span class="n">vector_data</span> <span class="o">=</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sintetic</span> <span class="k">else</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">2</span><span class="p">:(</span><span class="nb">len</span><span class="p">(</span><span class="n">line_data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)]</span>
+                                        <span class="n">vector_data</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vector_data</span><span class="p">]</span>
+                                        <span class="n">line_result</span> <span class="o">=</span> <span class="n">current_time</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">current_sensor</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">vector_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">user</span> <span class="o">+</span> <span class="n">target</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                <span class="k">else</span><span class="p">:</span>  <span class="c1"># the sensor is to transform 4 rotation</span>
+                                    <span class="n">current_sensor</span> <span class="o">=</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                                    <span class="n">vector_data</span> <span class="o">=</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sintetic</span> <span class="k">else</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">2</span><span class="p">:(</span><span class="nb">len</span><span class="p">(</span><span class="n">line_data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)]</span>
+                                    <span class="n">vector_data</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vector_data</span><span class="p">]</span>
+                                    <span class="n">magnitude</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">vector_data</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+                                    <span class="n">line_result</span> <span class="o">=</span> <span class="n">current_time</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">current_sensor</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">magnitude</span><span class="p">)</span> <span class="o">+</span> <span class="n">user</span> <span class="o">+</span> <span class="n">target</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                            <span class="k">else</span><span class="p">:</span>  <span class="c1"># the sensor is to transform</span>
+                                <span class="n">current_sensor</span> <span class="o">=</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                                <span class="n">vector_data</span> <span class="o">=</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sintetic</span> <span class="k">else</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">2</span><span class="p">:(</span><span class="nb">len</span><span class="p">(</span><span class="n">line_data</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">)]</span>
+                                <span class="n">vector_data</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vector_data</span><span class="p">]</span>
+                                <span class="n">magnitude</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(((</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">vector_data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">)),</span>
+                                                           <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">vector_data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">)),</span>
+                                                           <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">vector_data</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">)))))</span>
+                                <span class="n">line_result</span> <span class="o">=</span> <span class="n">current_time</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">current_sensor</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">magnitude</span><span class="p">)</span> <span class="o">+</span> <span class="n">user</span> <span class="o">+</span> <span class="n">target</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                            <span class="n">file_result</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line_result</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.json&quot;</span><span class="p">):</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_src</span><span class="p">,</span><span class="nb">file</span><span class="p">),</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_dst</span><span class="p">,</span><span class="nb">file</span><span class="p">))</span>
+      [...]
+</code>
+</pre>
+      Other operations to clean up the dataset can be summarized as follows and managed within the
+      <strong>clean_files</strong> function:
+      <ul class="lead">
+        <li>we delete measure from the sensors to exclude from our computation;</li>
+        <li>we make the values of the sound and speed sensors positive</li>
+        <li>if time windows have incorrect values ("/", ">", "<", "-", "_"...), we delete file</li>
+        <li>if a file is empty, we delete it</li>
+    </ul>
+<pre class="margin_top_down">
+<code id="clean_file">
+<span class="k">def</span> <span class="nf">clean_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       [...]
+        <span class="n">filenames</span> <span class="o">=</span> <span class="n">listdir</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">DIR_RAW_DATA_ORIGINAL</span><span class="p">)</span>
+        <span class="c1"># iterate on files in raw data directory - delete files with incorrect rows</span>
+        <span class="n">nFiles</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">deletedFiles</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="nb">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">):</span>
+                <span class="n">nFiles</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="c1"># to_delete be 1 if the file have to be excluded from the dataset</span>
+                <span class="n">to_delete</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">DIR_RAW_DATA_ORIGINAL</span><span class="p">,</span> <span class="nb">file</span><span class="p">))</span> <span class="k">as</span> <span class="n">current_file</span><span class="p">:</span>
+                    <span class="n">res_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">DIR_RAW_DATA_CORRECT</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">res_file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_result</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">current_file</span><span class="p">:</span>
+                            <span class="n">line_data</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+                            <span class="n">first_line</span> <span class="o">=</span> <span class="bp">True</span>
+                            <span class="k">if</span> <span class="n">first_line</span><span class="p">:</span>
+                                <span class="n">first_line</span> <span class="o">=</span> <span class="bp">False</span>
+                                <span class="k">if</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;activityrecognition&quot;</span><span class="p">:</span>
+                                    <span class="n">line_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
+
+                            <span class="n">endLine</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">line_data</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+                            <span class="c1"># check if time data is correct, if is negative, make modulo</span>
+                            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">patternNegative</span><span class="p">,</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                                <span class="n">current_time</span> <span class="o">=</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="c1"># if is not a number the file must be deleted</span>
+                                <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">patternNumber</span><span class="p">,</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                                    <span class="n">to_delete</span> <span class="o">=</span> <span class="mi">1</span>
+                                <span class="n">current_time</span> <span class="o">=</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                            <span class="c1"># check sensor, if is in sensors_to_exclude don&#39;t consider</span>
+                            <span class="k">if</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">const</span><span class="o">.</span><span class="n">SENSORS_TO_EXCLUDE_FROM_FILES</span><span class="p">:</span>
+                                <span class="n">current_sensor</span> <span class="o">=</span> <span class="n">line_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                                <span class="n">line_result</span> <span class="o">=</span> <span class="n">current_time</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">current_sensor</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">endLine</span>
+                                <span class="n">file_result</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line_result</span><span class="p">)</span>
+
+                <span class="c1"># remove files with incorrect values for time</span>
+                <span class="k">if</span> <span class="n">to_delete</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;  Delete: &quot;</span> <span class="o">+</span> <span class="nb">file</span> <span class="o">+</span> <span class="s2">&quot; --- Time with incorrect values&quot;</span><span class="p">)</span>
+                    <span class="n">deletedFiles</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">res_file_path</span><span class="p">)</span>
+
+        <span class="c1"># delete empty files</span>
+        <span class="n">file_empty</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">filenames</span> <span class="o">=</span> <span class="n">listdir</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">DIR_RAW_DATA_CORRECT</span><span class="p">)</span>
+        <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+            <span class="n">full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">DIR_RAW_DATA_CORRECT</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
+            <span class="c1"># check if file is empty</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">full_path</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">deletedFiles</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">file_empty</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;  Delete: &quot;</span> <span class="o">+</span> <span class="nb">file</span> <span class="o">+</span> <span class="s2">&quot; --- is Empty&quot;</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">full_path</span><span class="p">)</span>
+
+        <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;^[0-9]+,[a-z,A-Z._]+,[-,0-9a-zA-Z.]+$&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+        <span class="c1"># pattern = re.compile(&quot;^[0-9]+,[a-z,A-Z,\.,_]+,[-,0-9,a-z,A-Z,\.]+$&quot;, re.VERBOSE)</span>
+        <span class="n">filenames</span> <span class="o">=</span> <span class="n">listdir</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">DIR_RAW_DATA_CORRECT</span><span class="p">)</span>
+        <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+            <span class="n">n_error</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">DIR_RAW_DATA_CORRECT</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
+            <span class="c1"># check if all row respect regular expression</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">full_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">match</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                        <span class="n">n_error</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">n_error</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">deletedFiles</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">full_path</span><span class="p">)</span>
+        [...]
+</code>
+</pre>
+    <br>
+
+      </div>
+          <div id="balanced" class="lead">
+             <h2 class="orange">Start with balanced dataset</h2>
+              Before you start reading this section, you must have the balanced dataset we discussed above.
+              The balanced dataset can be downloaded in our <a href="download.html" class="orange">download section</a>
+              or built through the steps described above. <br>
+              Before applying our machine learning techniques, you must split our balanced dataset into a training set
+              and test set. This is automatically generated through the <strong>split_dataset</strong> function. This feature is applied
+              after building the balanced dataset. If you already have the dataset, it is only partitioned.
+<pre class="margin_top_down">
+<code id="split_dataset">
+<span class="k">def</span> <span class="nf">__split_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+    [...]
+    <span class="n">training</span><span class="p">,</span> <span class="n">cv</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">split_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">train_perc</span><span class="o">=</span><span class="n">const</span><span class="o">.</span><span class="n">TRAINING_PERC</span><span class="p">,</span> <span class="n">cv_perc</span><span class="o">=</span><span class="n">const</span><span class="o">.</span><span class="n">CV_PERC</span><span class="p">,</span>
+                                    <span class="n">test_perc</span><span class="o">=</span><span class="n">const</span><span class="o">.</span><span class="n">TEST_PERC</span><span class="p">)</span>
+    <span class="n">training</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">dir_src</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">file_training_dst</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">dir_src</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">file_test_dst</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">cv</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">dir_src</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">file_cv_dst</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code>
+</pre>
+            Now, we are ready to apply machine learning techniques to build a <strong>model</strong>.
+<pre class="margin_top_down">
+<code id="start_detection">
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+	<span class="n">detection</span> <span class="o">=</span> <span class="n">TMDetection</span><span class="p">()</span>
+</code>
+</pre>
+              However, current methods have two key limitations, first on the dataset,
+              on the way it is collected as on the dimension in user’s, and second on sensors choice.<br>
+              We try to overcome the first limitation collecting data from thirteen users
+              without any restriction on the device’s position and on the sensor device characteristics.
+              Now we investigate how transportation mode recognition can benefit from the use of sensor data
+              from sensors already available on mobile phones. <br>
+              In literature, the use of GSM, GPS, accelerometer and gyroscope data has
+                already been explored reaching good accuracy results. Unfortunately, due
+                to the lack of recognized dataset by the scientific community, compare these
+                results in not possible. To the best of our knowledge, no study has been
+                conducted on the possibility to take advantage from other device’s sensors.<br>
+              Before expanding the base sensors on which the classification model is
+                built, is important to consider the current mobile context. Mobile and handheld devices
+                are generally constrained due to resource limitations primarily
+                caused by limited battery life, limited size of memory or limited power of the processor.<br>
+              Limitations on resource motivated us to carefully consider if, how,
+                and when to use sensors data. We also have to consider that many sensors are
+                always active and already providing services to the system, then collection
+                and use will not result in a greater battery consumption. However, we still
+                have to consider memory and CPU consumption needed to process the data
+                because that can impact other applications and the overall user experience.<br>
+              Appears clear the need of
+                a trade-off between the consumption of resources and the accuracy of the
+                model. Obviously, this equilibrium point changes under different scenarios.
+                Applications have different accuracy requirements or different use cases or
+                even different devices on which they are used. All of these variations can
+                make more or less relevant resource consumption. <br>
+              For these reasons it seems hard to find one model right for all situations
+                but it is clear the importance to understand which and how much mobile
+                phone sensors data can help in distinguishing between different user activity.<br>
+              We have selected <strong>fifteen sensors</strong> among those that have been
+                collected by our volunteers, based on activity and user support. Among
+                these fifteen sensors, there are some whose data can give their contribution
+                to the transportation mode recognition, others which introduce only noise.<br>
+                Based on meaning reasons, we exclude from data usedcfor training model the following
+                sensors:
+              <ul class="lead">
+                  <li>light</li>
+                  <li>pression</li>
+                  <li>magnetic field</li>
+                  <li>magnetic field uncalibrated</li>
+                  <li>gravity</li>
+                  <li>proximity</li>
+              </ul>
+              From remaining nine possibly relevant sensors we have created <strong>three different sensors set</strong>.<br>
+              <strong>First</strong> set contain only three sensors whose are base sensors and have almost complete or complete users support
+              (accelerometer, gyroscope, and sound). The <strong>second</strong> set contains sensors from first set plus all the
+              other sensor excluded speed, that is a GPS-based sensor, for its high consumption of the battery.
+              Lastly, the <strong>third</strong> set contains all sensor that we define as relevant for the task.
+              <table class="table lead margin_top_down">
+                  <thead>
+                    <th>Sensors of first class of classification</th>
+                    <th>Sensors of second class of classification</th>
+                    <th>Sensors of third class of classification</th>
+                  </thead>
+                  <tbody>
+                  <tr>
+                      <td>Accelerometer</td>
+                      <td>Accelerometer</td>
+                      <td>Accelerometer</td>
+                  </tr>
+                  <tr>
+                      <td>Sound</td>
+                      <td>Sound</td>
+                      <td>Sound</td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td>Orientation</td>
+                      <td>Orientation</td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td>Linear acceleration</td>
+                      <td>Linear acceleration</td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td>Speed</td>
+                  </tr>
+                  <tr>
+                      <td>Gyroscope</td>
+                      <td>Gyroscope</td>
+                      <td>Gyroscope</td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td>Rotation vector</td>
+                      <td>Rotation vector</td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td>Game rotation vector</td>
+                      <td>Game rotation vector</td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td>Gyroscope uncalibrated</td>
+                      <td>Gyroscope uncalibrated</td>
+                  </tr>
+                  </tbody>
+              </table>
+              Our main purpose is to create three different models, based on these three
+                different set and see which of them perform better on the test set and try to
+                understand why. <br>
+              For each set, we build four model with four different <strong>classification algorithms</strong>:
+              <ul class="lead">
+                  <li><strong>Decision Trees</strong> (DT)</li>
+                  <li><strong>Random Forest</strong> (RF)</li>
+                  <li><strong>Support Vector Machines</strong>(SVM)</li>
+                  <li><strong>Neural Network</strong> (NN)</li>
+              </ul>
+              Choosing every time the model that is the most accurate for transportation mode inference
+              on the test set. NN and SVM, require accurate selection of thresholds and parameters.<br>
+
+             <h3 class="orange">Single sensors dataset</h3>
+              Random forest is widely used and seems to perform pretty well on different datasets.
+              Therefore, for a first investigation of how the sensors can be discriminating with the defined
+              classes, we choose random forest algorithm. <br>
+              We first restricted the dataset to the features related to a single sensor, trained the model
+              on this new dataset, and then tested on the test set.
+<pre class="margin_top_down">
+    <code>
+<span class="k">def</span> <span class="nf">single_sensor_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">sensor</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">accuracy</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">std</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_sensors</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">s</span> <span class="o">!=</span> <span class="s2">&quot;activityrecognition&quot;</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+                <span class="n">features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_sensor_features</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+                <span class="n">train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+                <span class="n">train_features</span><span class="p">,</span> <span class="n">train_classes</span><span class="p">,</span> <span class="n">test_features</span><span class="p">,</span> <span class="n">test_classes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_sets_for_classification</span><span class="p">(</span><span class="n">train</span><span class="p">,</span>
+                                                                                                                <span class="n">test</span><span class="p">,</span>
+                                                                                                                <span class="n">features</span><span class="p">)</span>
+                <span class="n">singleAcc</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">REPEAT</span><span class="p">):</span>
+                    <span class="c1"># build classifier</span>
+                    <span class="n">classifier_forest</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">const</span><span class="o">.</span><span class="n">PAR_RF_ESTIMATOR</span><span class="p">)</span>
+                    <span class="n">classifier_forest</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_features</span><span class="p">,</span> <span class="n">train_classes</span><span class="p">)</span>
+                    <span class="n">test_prediction_forest</span> <span class="o">=</span> <span class="n">classifier_forest</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_features</span><span class="p">)</span>
+                    <span class="n">acc_forest</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_classes</span><span class="p">,</span> <span class="n">test_prediction_forest</span><span class="p">)</span>
+                    <span class="n">singleAcc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">acc_forest</span><span class="p">)</span>
+                <span class="n">accM</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">singleAcc</span><span class="p">)</span>
+                <span class="n">variance</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">accM</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">singleAcc</span><span class="p">))</span>
+                <span class="n">standard_deviation</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">variance</span><span class="p">))</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">accM</span><span class="p">,</span> <span class="n">standard_deviation</span><span class="p">)</span>
+
+                <span class="n">accuracy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accM</span><span class="p">)</span>
+                <span class="n">std</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">standard_deviation</span><span class="p">)</span>
+                <span class="n">sensor</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">df_single_sensor_acc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;sensor&#39;</span><span class="p">:</span> <span class="n">sensor</span><span class="p">,</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">:</span> <span class="n">accuracy</span><span class="p">,</span> <span class="s1">&#39;dev_standard&#39;</span><span class="p">:</span> <span class="n">std</span><span class="p">})</span>
+        <span class="n">df_single_sensor_acc</span> <span class="o">=</span> <span class="n">df_single_sensor_acc</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        [...]
+    </code>
+</pre>
+         This preliminary result shows in Figure 2 gives us the idea of how great can be
+         the impact of different sensors.
+              <center class="margin_top_down">
+                  <figure >
+                      <img src="static/img/single_sensor_accuracy.png">
+                      <figcaption>Fig 2: The accuracy of the model trained on a dataset composed of
+                        features of a single sensor with random forest algorithm</figcaption>
+                  </figure>
+              </center>
+              Accuracy’s values with only one sensor are between 0.57 and 0.75, so all
+              considered sensors have the capability to capture some pattern related to the
+              activity the user is performing during the measurements. <br>
+              According to what we could expect, <strong>accelerometer</strong> and <strong>linear acceleration</strong>
+                data are two of most discriminating of the considered sensors. Even if no
+                studies have investigated the use of the linear acceleration data, its relevance
+                is the direct consequence of accelerometer, because its data are based only
+                on accelerometer sensors. <strong>Gyroscope</strong> reaches good accuracy, but this result
+                was to be expected from previous studies. The most interesting result is the
+                high relevance of <strong>sound’s data</strong>. At the best of our knowledge no one has
+                investigated the use of microphone data, although it is an essential sensor for
+                mobile phone use, so is present in all devices.
+        <h3 class="orange">Three sensors set dataset</h3>
+        For reasons that we already explained previously, we start from dataset formed by a smaller set
+        of sensors. The 1, 2, 3 parameters assigned to the functions refer to the three different set of
+        sensors shown in the previous table.<br>
+<pre class="margin_top_down">
+    <code id="classification_algorithms">
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+	<span class="n">detection</span> <span class="o">=</span> <span class="n">TMDetection</span><span class="p">()</span>
+
+<span class="c1">#	detection.decision_tree(1)</span>
+<span class="c1">#	detection.decision_tree(2)</span>
+<span class="c1">#	detection.decision_tree(3)</span>
+
+<span class="c1">#	detection.random_forest(1)</span>
+<span class="c1">#	detection.random_forest(2)</span>
+<span class="c1">#	detection.random_forest(3)</span>
+
+<span class="c1">#	detection.neural_network(1)</span>
+<span class="c1">#	detection.neural_network(2)</span>
+<span class="c1">#	detection.neural_network(3)</span>
+
+<span class="c1">#	detection.support_vector_machine(1)</span>
+<span class="c1">#	detection.support_vector_machine(2)</span>
+<span class="c1">#	detection.support_vector_machine(3)</span>
+
+[...]
+</code>
+</pre>
+
+              Sensors included in the first set (parameter 1) are accelerometer, sound, and gyroscope.
+              These three sensors have the highest values of accuracy taken individually.<br>
+              <strong>First dataset D<sub>first</sub></strong> is formed by twelve features, four for each sensor.
+              We perform classification with the four classification algorithms mentioned before.
+              The overall accuracy for algorithms is between 82% and 88%.
+              Even if random forest produce the highest accuracy values (88%), all algorithms perform
+              substantially well. <br>
+              By expanding the dataset adding all other relevant sensors except speed,
+                for battery saving purposes, we reach better results in term of accuracy. With
+              <strong>second set dataset D<sub>second</sub></strong> , formed by eight sensor and
+              thirty-two features, accuracy increases up to values between 86% and 93%. <br>
+              Lastly we train a model on the <strong>third dataset D<sub>third</sub></strong> formed by all nine
+              relevant sensors and thirty-six features, differ from previous D<sub>second</sub> only for
+                speed derived features. Result show how considering speed, further increasing the ability
+              of the model to infer which transportation mode the user is
+                currently using. In this last case, the accuracy reached a range level between
+                91% and 96%
+              <table class="table lead margin_top_down">
+                <thead>
+                    <th>Algorithm</th>
+                    <th>Accuracy of first dataset</th>
+                    <th>Accuracy of second dataset</th>
+                    <th>Accuracy of third dataset</th>
+                </thead>
+                  <tbody>
+                    <tr>
+                        <td>Decision Tree (DT)</td>
+                        <td>82%</td>
+                        <td>86%</td>
+                        <td>91%</td>
+                    </tr>
+                    <tr>
+                        <td>Random Forest (RF)</td>
+                        <td>88%</td>
+                        <td>93%</td>
+                        <td>96%</td>
+                    </tr>
+                    <tr>
+                        <td>Support Vector Machine (SVM)</td>
+                        <td>85%</td>
+                        <td>93%</td>
+                        <td>95%</td>
+                    </tr>
+                    <tr>
+                        <td>Neural Network (NN)</td>
+                        <td>85%</td>
+                        <td>92%</td>
+                        <td>95%</td>
+                    </tr>
+                  </tbody>
+              </table>
+              However, typically context-aware applications do not need to recognize all the classes
+              as we did, since they generally need only a subset of them.
+              Therefore, the next analysis we perform is devoted to the <strong>class-to-class classification</strong>,
+              in which we perform a similar analysis but considering only two classes to discriminate between.
+              <h3 class="orange">Two classes classification</h3>
+              Obviously, reducing the amount of classes to be classified raises without any exception the accuracy
+              of any classification algorithm. However, we report only the results from the RF, since it has shown
+              the best results also for this analysis.
+<pre class="margin_top_down">
+<code id="classes_combination">
+<span class="k">def</span> <span class="nf">classes_combination</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sensors_set</span><span class="p">):</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_sensors_set_features</span><span class="p">(</span><span class="n">sensors_set</span><span class="p">))</span>
+        <span class="n">class_combination</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">DIR_RESULTS</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">DIR_RESULTS</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">DIR_RESULTS</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sensors_set</span><span class="p">)</span> <span class="o">+</span> <span class="n">const</span><span class="o">.</span><span class="n">FILE_TWO_CLASSES_COMBINATION</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;combination, algorithm, accuracy&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">combination</span> <span class="ow">in</span> <span class="n">class_combination</span><span class="p">:</span>
+                <span class="n">cc_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">combination</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">|</span> <span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">combination</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+                <span class="n">cc_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">combination</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">|</span> <span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">combination</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+                <span class="n">train_features</span><span class="p">,</span> <span class="n">train_classes</span><span class="p">,</span> <span class="n">test_features</span><span class="p">,</span> <span class="n">test_classes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_sets_for_classification</span><span class="p">(</span>
+                    <span class="n">cc_train</span><span class="p">,</span> <span class="n">cc_test</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span>
+
+                <span class="c1"># buil all classifier</span>
+                <span class="n">classifier_tree</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+                <span class="n">classifier_forest</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">const</span><span class="o">.</span><span class="n">PAR_RF_ESTIMATOR</span><span class="p">)</span>
+                <span class="n">classifier_nn</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">PAR_NN_NEURONS</span><span class="p">[</span><span class="n">sensors_set</span><span class="p">],),</span>
+                                              <span class="n">alpha</span><span class="o">=</span><span class="n">const</span><span class="o">.</span><span class="n">PAR_NN_ALPHA</span><span class="p">[</span><span class="n">sensors_set</span><span class="p">],</span> <span class="n">max_iter</span><span class="o">=</span><span class="n">const</span><span class="o">.</span><span class="n">PAR_NN_MAX_ITER</span><span class="p">,</span>
+                                              <span class="n">tol</span><span class="o">=</span><span class="n">const</span><span class="o">.</span><span class="n">PAR_NN_TOL</span><span class="p">)</span>
+                <span class="n">classifier_svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">const</span><span class="o">.</span><span class="n">PAR_SVM_C</span><span class="p">[</span><span class="n">sensors_set</span><span class="p">],</span> <span class="n">gamma</span><span class="o">=</span><span class="n">const</span><span class="o">.</span><span class="n">PAR_SVM_GAMMA</span><span class="p">[</span><span class="n">sensors_set</span><span class="p">],</span>
+                                     <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+                <span class="c1"># train all classifier</span>
+                <span class="n">classifier_tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_features</span><span class="p">,</span> <span class="n">train_classes</span><span class="p">)</span>
+                <span class="n">classifier_forest</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_features</span><span class="p">,</span> <span class="n">train_classes</span><span class="p">)</span>
+                <span class="n">classifier_nn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_features</span><span class="p">,</span> <span class="n">train_classes</span><span class="p">)</span>
+                <span class="n">classifier_svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_features</span><span class="p">,</span> <span class="n">train_classes</span><span class="p">)</span>
+
+                <span class="c1"># use classifier on test set</span>
+                <span class="n">test_prediction_tree</span> <span class="o">=</span> <span class="n">classifier_tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_features</span><span class="p">)</span>
+                <span class="n">test_prediction_forest</span> <span class="o">=</span> <span class="n">classifier_forest</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_features</span><span class="p">)</span>
+                <span class="n">test_prediction_nn</span> <span class="o">=</span> <span class="n">classifier_nn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_features</span><span class="p">)</span>
+                <span class="n">test_prediction_svm</span> <span class="o">=</span> <span class="n">classifier_svm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_features</span><span class="p">)</span>
+
+                <span class="c1"># evaluate classifier</span>
+                <span class="n">acc_tree</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_classes</span><span class="p">,</span> <span class="n">test_prediction_tree</span><span class="p">)</span>
+                <span class="n">acc_forest</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_classes</span><span class="p">,</span> <span class="n">test_prediction_forest</span><span class="p">)</span>
+                <span class="n">acc_nn</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_classes</span><span class="p">,</span> <span class="n">test_prediction_nn</span><span class="p">)</span>
+                <span class="n">acc_svm</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_classes</span><span class="p">,</span> <span class="n">test_prediction_svm</span><span class="p">)</span>
+    [...]
+</code>
+</pre>
+              Figure 3 reports the accuracy when classifying all the possible couples of classes. At first,
+              it is straightforward to note how some couples are more challenging than others, especially
+              for D<sub>first</sub> and D<sub>second</sub>. For instance, <strong>{Bus,Car}</strong>,
+              <strong>{Bus,Train}</strong> and <strong>{Car,Train}</strong> highlight a considerable
+              increase in accuracy when switching from D<sub>first</sub> to D<sub>second</sub> and eventually
+              to D<sub>third</sub>, hence confirming the importance of the speed feature for motorized classes.
+              On the other hand, recognizing couples of activities in which one is <strong>{Walking}</strong>
+              is easier even for D<sub>first</sub>.
+              Hence, for those tasks the importance of having the features obtained from the speed is lower.
+              <center class="margin_top_down">
+                  <figure>
+                      <img src="static/img/2classes.png" width="700">
+                      <figcaption>
+                          Fig 3: Class-vs-class accuracy on the test set with respect to the three different sensors sets
+                          D<sub>first</sub>, D<sub>second</sub> and D<sub>third</sub>.
+                          Letters B, C, S, W, T stand for <strong>B</strong>us, <strong>C</strong>ar,
+                          <strong>S</strong>till, <strong>W</strong>alking and <strong>T</strong>rain respectively.
+                      </figcaption>
+                  </figure>
+              </center>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
