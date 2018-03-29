@@ -281,8 +281,12 @@ public class HarService extends Service {
 		public void onHarDataChange(HumanActivity ha) {
 			// get gps
 			Location location = mLocationCollector.getLocation();
-			UserActivityInfo data = new UserActivityInfo(ha.mStartTime, ha.mActivity,
-					location.getTime(), location.getLatitude(), location.getLongitude());
+			// UserActivityInfo data = new UserActivityInfo(ha.mStartTime, ha.mActivity,location.getTime(), location.getLatitude(), location.getLongitude());
+
+			UserActivityInfo data = new UserActivityInfo(ha.mStartTime, ha.mActivity,ha.mStartTime, location.getLatitude(), location.getLongitude());
+
+
+
 			// send event
 			EventBus.getDefault().post(new HarDataUpdateEvent(data));
 			//
