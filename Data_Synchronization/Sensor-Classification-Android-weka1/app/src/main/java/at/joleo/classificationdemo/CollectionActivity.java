@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.util.Date;
 
 import android.R.string;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,7 +17,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.ActionBarActivity;
+
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -29,7 +30,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CollectionActivity extends ActionBarActivity implements
+public class CollectionActivity extends Activity implements
 		SensorEventListener {
 
 	private Button newButton;

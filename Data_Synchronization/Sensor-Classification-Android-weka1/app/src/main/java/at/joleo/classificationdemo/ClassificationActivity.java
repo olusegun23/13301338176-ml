@@ -1,5 +1,5 @@
 package at.joleo.classificationdemo;
-
+import android.app.Activity;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,7 +19,7 @@ import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Remove;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.ActionBarActivity;
+
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -32,7 +32,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ClassificationActivity extends ActionBarActivity {
+public class ClassificationActivity extends Activity {
 
 	private Button startButton;
 	private Button toggleLogButton;

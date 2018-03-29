@@ -12,6 +12,6 @@
         android:id="@+id/classificationAction"
         android:orderInCategory="100"
         android:title="@string/classification"
-        app:showAsAction="never"/>
+        android:showAsAction="never"/>
 
 </menu>
