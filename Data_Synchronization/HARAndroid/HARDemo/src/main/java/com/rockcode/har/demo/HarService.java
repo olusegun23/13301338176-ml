@@ -283,7 +283,7 @@ public class HarService extends Service {
 			Location location = mLocationCollector.getLocation();
 			// UserActivityInfo data = new UserActivityInfo(ha.mStartTime, ha.mActivity,location.getTime(), location.getLatitude(), location.getLongitude());
 
-			UserActivityInfo data = new UserActivityInfo(ha.mStartTime, ha.mActivity,ha.mStartTime, location.getLatitude(), location.getLongitude());
+			UserActivityInfo data = new UserActivityInfo(ha.mStartTime, ha.mActivity,ha.mStartTime, 1.0,1.0);
 
 
 
