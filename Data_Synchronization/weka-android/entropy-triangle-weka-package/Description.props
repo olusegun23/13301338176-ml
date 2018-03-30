@@ -1,0 +1,94 @@
+# Description of "Entropy Triangle" Weka package
+
+# Package name (required)
+PackageName=EntropyTriangle
+
+# Version (required)
+Version=1.1
+
+#Date (year-month-day)
+Date=2017-03-27
+
+# Title (required)
+Title=A set of information-theoretic tools for the assessment of classifiers
+
+# Category (recommended)
+Category=Classifiers Evaluation, Visualization
+
+# Author (required)
+Author=Antonio Pastor
+
+# Maintainer (required)
+Maintainer=Antonio Pastor <anpastor.at.it.uc3m.es>
+
+# License (required)
+License=GPL 3.0
+
+# Description (required)
+Description=This package installs a set of information-theoretic evaluation metrics \
+and a visualization plugin with an exploratory analysis method for the assessment of classifiers. \n\
+\n\
+For more information, see: \n\
+\n\
+<ul><li>\
+    Valverde-Albacete, F. J., & Pel&aacute;ez-Moreno, C. (2010). \
+    Two information-theoretic tools to assess the performance of multi-class classifiers. \
+    Pattern Recognition Letters, Volume 31, Issue 12, 1 September 2010, Pages 1665-1671. \
+    <a href="http://dx.doi.org/10.1016/j.patrec.2010.05.017">http://dx.doi.org/10.1016/j.patrec.2010.05.017</a>\
+</li></ul>\
+<ul><li>\
+    Valverde-Albacete, F. J., & Pel&aacute;ez-Moreno, C. (2014). \
+    100% classification accuracy considered harmful: \
+    The normalized information transfer factor explains the accuracy paradox. \
+    PLoS ONE 9(1). \
+    <a href="http://dx.doi.org/10.1371/journal.pone.0084217">http://dx.doi.org/10.1371/journal.pone.0084217</a>\
+</li></ul>
+
+# Package URL for obtaining the package archive (required)
+# direct download with redirect to latest release or static link
+PackageURL=http://github.com/apastor/entropy-triangle-weka-package/releases/download/1.1/EntropyTriangle.zip
+
+# URL for further information
+URL=http://apastor.github.io/entropy-triangle-weka-package/
+
+# Dependencies (format: packageName (equality/inequality version_number)
+Depends=weka (>=3.7.8)
+
+# Message to display in installation. Can be used to provide
+# special instructions (e.g. manual stuff needed to complete
+# the installation process). (optional).
+#MessageToDisplayOnInstallation=Funky package requires some extra\n\
+# stuff to be installed after installing this package. You will\n\
+# need to blah, blah, blah in order to blah, blah, blah...
+
+# Prevent package from being loaded by Weka if the named
+# files/directories are not present (relative to the package's
+# root directory). Useful for packages that require the user
+# to manually install some third-party library(s). (optional)
+#DoNotLoadIfFileNotPresent=lib/someLibrary.jar,otherStuff/important,...
+
+# Log message to be displayed if package can't be loaded due to
+# missing files/directories. (optional)
+#DoNotLoadIfFileNotPresentMessage=funkyPackage can't be loaded because some \
+# funky libraries are missing. Please download funkyLibrary.jar from \
+# http://www.funky.com and install in $WEKA_HOME/packages/funkyPackage/lib
+
+# Prevent package from being loaded by Weka if the named
+# classes can't be instantiated. Useful for packages that rely
+# on stuff that has to be installed manually (an example is
+# Java3D, which installs itself into the system JRE/JDK. (optional)
+#DoNotLoadIfClassNotPresent=com.some.class.from.some.Where,org.some.other.Class,...
+
+# Log message to be displayed if package can't be loaded due to
+# missing classes. (optional).
+#DoNotLoadIfClassNotPresentMessage=funkyPackage can't be loaded because \
+# com.funky.FunkyClass can't be instantiated. Have you downloaded and run \
+# the funky software installer for your platform?
+
+# Prevent package from being loaded by Weka if one or more (comma-separated)
+# environment variables or java properties are not set. (optional).
+#DoNotLoadIfEnvVarNotSet=
+
+# Log message to be displayed if package can't be loaded due to unset
+# environment variables or java properties.
+#DoNotLoadIfEnvVarNotSetMessage=

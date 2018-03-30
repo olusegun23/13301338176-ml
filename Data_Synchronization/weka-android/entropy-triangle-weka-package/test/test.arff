@@ -1,0 +1,28 @@
+@relation '23-07-2015 18:33'
+
+@attribute Dataset string
+@attribute Classifier string
+@attribute 'Classifier options' string
+@attribute 'Classifier version UID' string
+@attribute time string
+@attribute Correct numeric
+@attribute Incorrect numeric
+@attribute 'Kappa statistic' numeric
+@attribute 'K&B information score' numeric
+@attribute 'K&B relative info score' numeric
+@attribute 'weighted F measure' numeric
+@attribute 'Average cost' numeric
+@attribute 'Total cost' numeric
+@attribute 'weighted Area Under ROC' numeric
+@attribute 'Remaining perplexity' numeric
+@attribute EMA numeric
+@attribute 'NIT factor' numeric
+@attribute 'Information Transfer factor' numeric
+@attribute 'Variation of Information' numeric
+@attribute 'Class perplexity' numeric
+
+@data
+segment,trees.J48,'-C 0.25 -M 2',-217733168393644444,18:33:01,0.961728,0.038272,0.955298,2.691307,77701.512115,0.961152,0,0,0.984548,1.175442,0.850743,0.846903,5.928321,0.466111,6.9684
+segment,bayes.NaiveBayes,'NO OPTIONS',5995231201785697655,18:33:01,0.77037,0.22963,0.731558,2.129252,61474.269349,0.747765,0,0,0.960746,1.645907,0.607568,0.604825,4.233775,1.303561,6.9684
+segment,rules.ZeroR,'NO OPTIONS',48055541465867954,18:33:02,0.116049,0.883951,0,0,0,0.024134,0,0,0.5,6.9684,0.143505,0.142857,1,2.800827,6.9684
+segment,rules.OneR,'-B 6',-3459427003147861443,18:33:02,0.644444,0.355556,0.584578,1.732761,50027.069158,0.626511,0,0,0.791776,2.400612,0.416561,0.41468,2.90276,2.463585,6.9684

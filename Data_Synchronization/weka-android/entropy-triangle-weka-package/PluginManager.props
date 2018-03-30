@@ -1,0 +1,8 @@
+# Specify a new plugin Evaluation metric
+weka.classifiers.evaluation.AbstractEvaluationMetric = \
+	weka.etplugin.metrics.Ema, \
+	weka.etplugin.metrics.Nit, \
+	weka.etplugin.metrics.ClassPerplexity, \
+	weka.etplugin.metrics.RemainingPerplexity, \
+	weka.etplugin.metrics.InformationTransferFactor, \
+	weka.etplugin.metrics.VariationOfInformation

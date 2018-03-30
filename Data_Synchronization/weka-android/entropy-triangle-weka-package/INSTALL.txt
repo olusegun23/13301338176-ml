@@ -1,0 +1,20 @@
+# BUILD
+
+To build the project from source use ant from this directory. 
+It's necessary to specify the project build file (build_package.xml) and the weka.jar as library. 
+Optionally you can set the build command, make_package is the default one.
+
+NOTE: The package has been tested to build and run under Oracle and OpenJDK v1.7 or later.
+
+$ ant -f ./build_package.xml -lib <path-to>/weka.jar make_package
+
+
+# INSTALL
+
+To install the package on Weka use the GUI of the Weka Package Manager
+or use the package manager from the command line as follows:
+
+# Add weka.jar to claspath
+$ export CLASSPATH=${CLASSPATH}:<path-to>/weka.jar
+
+$ java weka.core.WekaPackageManager -install-package EntropyTriangle.zip
