@@ -1,0 +1,4 @@
+- An operator should not create Variable in it's run Scope. Op/kernel should only use scope->GetVariable and judge if the return value is nullptr.
+- In most cases, Variables should be initialized by python.
+- Sometimes(such as RNN op) Operator can create child scopes, and it can create Variables in the scope created by itself.
+- If Op wants to store some states in Scope as Variable, it should add them to inputs/outputs of this Op, and Python will help to create the Variables.

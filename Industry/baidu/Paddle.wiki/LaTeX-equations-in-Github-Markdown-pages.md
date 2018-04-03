@@ -1,0 +1,3 @@
+I learned this technique from [this comment](https://github.com/github/markup/issues/897#issuecomment-231591884).  It suggests using a [Web service](https://www.codecogs.com/latex/eqneditor.php).  When you type some LaTeX equations on that Web page, it generates a segment of HTML code, which you can copy and paste into your Markdown page.  For example:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=E=mc^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E=mc^2" title="E=mc^2" /></a>
