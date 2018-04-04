@@ -1,0 +1,4 @@
+/media/haijunz/e7922522-c0f2-4a8b-b623-dc7d2e356fa4/clion-2018.1/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/crd-ml/QC-git/aware-git/self-contain/algo
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/crd-ml/QC-git/aware-git/self-contain/algo/cmake-build-debug

@@ -1,6 +1,10 @@
-#ifndef CMC_COMMONS_H
-#define CMC_COMMONS_H
-
+#ifndef COMMONS_H
+#define COMMONS_H
+#include <mutex>
+#include<thread>
+#include <functional>
+#include <memory>
+#include <utility>
 #include <string>
 #include <iostream>
 #include <map>
@@ -42,6 +46,9 @@
 #include <ios>
 #include <iostream>
 #include <fstream>
+
+#include <functional>
+#include <type_traits>
 
 
 #define DEBUG(info)  std::cout << "\n debug::"<<info << "   -FILE:["<<__FILE__<<"]  FUCTION:["<<__FUNCTION__<<"]  LINE:[" << __LINE__<< "] \n";
@@ -94,6 +101,87 @@
 
 
     };  // class utils
+
+
+
+
+
+class BenchmarkSpeed
+{
+public:
+    BenchmarkSpeed(const std::string &name) :
+            mStart(std::chrono::high_resolution_clock::now()),
+            mName(name)
+    {}
+
+    ~BenchmarkSpeed()
+    {
+        std::chrono::duration<double, std::milli> diff = std::chrono::high_resolution_clock::now() - mStart;
+        std::cout << "...Benchmark" << mName << "' take " << diff.count() << " milliseconds" << std::endl;
+    }
+
+private:
+    std::chrono::time_point<std::chrono::high_resolution_clock> mStart;
+    std::string mName;
+};
+
+
+#define BENCHMARKSPPED_START(functionname)  BenchmarkSpeed(functionname);
+#define BENCHMARKSPPED_END(functionname);
+
+
+
+class NonCopyable
+{
+protected:
+    NonCopyable() {}
+    ~NonCopyable() {}
+private:
+    NonCopyable( const NonCopyable& );
+    const NonCopyable& operator=( const NonCopyable& );
+};
+
+
+
+template <class T>
+class Singleton : private NonCopyable {
+public:
+    template <typename... Args>
+    static T& getInstance(Args&&... args) {
+
+        /*call_once(
+                get_once_flag(),
+                [] (Args&&... args) {
+                    instance_.reset(new T(std::forward<Args>(args)...));
+                }, std::forward<Args>(args)...);
+        */
+        call_once(
+          get_once_flag(),
+          [&, args...] () {
+            instance_.reset(new T(std::forward<Args>(args)...));
+          });
+
+        return *instance_.get();
+    }
+
+
+
+
+
+protected:
+    explicit Singleton<T>() {}
+    ~Singleton<T>() {}
+
+private:
+    static std::unique_ptr<T> instance_;
+    static std::once_flag& get_once_flag() {
+        static std::once_flag once_;
+        return once_;
+    }
+};
+
+template<class T> std::unique_ptr<T> Singleton<T>::instance_ = nullptr;
+
 
 
 

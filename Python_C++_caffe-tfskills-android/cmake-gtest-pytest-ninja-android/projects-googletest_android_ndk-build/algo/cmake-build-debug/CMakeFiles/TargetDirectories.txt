@@ -1,0 +1,4 @@
+/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/crd-ml/QC-git/aware-git/self-contain/algo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/crd-ml/QC-git/aware-git/self-contain/algo/cmake-build-debug/CMakeFiles/edit_cache.dir
+/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/crd-ml/QC-git/aware-git/self-contain/algo/cmake-build-debug/CMakeFiles/test.dir
+/media/haijunz/27a263b4-e313-4b58-a422-0201e4cb11ed/crd-ml/QC-git/aware-git/self-contain/algo/cmake-build-debug/CMakeFiles/testcmc.dir

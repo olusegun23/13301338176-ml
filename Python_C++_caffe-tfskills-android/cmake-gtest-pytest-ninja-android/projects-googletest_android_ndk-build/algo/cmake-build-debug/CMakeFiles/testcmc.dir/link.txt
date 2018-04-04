@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -g   CMakeFiles/testcmc.dir/algo.cpp.o CMakeFiles/testcmc.dir/main.cpp.o CMakeFiles/testcmc.dir/testalgo.cpp.o  -o testcmc /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a -lpthread 

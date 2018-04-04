@@ -6,11 +6,8 @@ find_package(GTest REQUIRED)
 find_package(Threads REQUIRED)
 
 file(GLOB SRCS *.cpp)
-ADD_EXECUTABLE(testcmc ${SRCS})
-#target_include_directories(testcmc PUBLIC
-#        "${CMAKE_CURRENT_SOURCE_DIR}"
-#        )
-
+add_executable(testcmc ${SRCS})
+target_include_directories(testcmc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(testcmc GTest::GTest GTest::Main)
 
